@@ -1385,6 +1385,79 @@ tr:hover .row-actions {
   }
 }
 
+/* Page Hierarchy: visual key + row labels */
+
+.hierarchy-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border: var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  font: var(--text-body-sm);
+  color: var(--color-neutral-600);
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-swatch.red { background: #e11d48; }
+.legend-swatch.yellow { background: #f59e0b; }
+.legend-swatch.grey { background: #9ca3af; }
+.legend-swatch.blue { background: #38bdf8; }
+.legend-swatch.purple { background: #8b5cf6; }
+
+.hierarchy-demo {
+  padding: var(--space-3);
+}
+
+.hierarchy-row-label {
+  font: var(--text-label-caps);
+  color: var(--color-neutral-500);
+  margin: var(--space-3) 0 var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.hierarchy-row-label.red { color: #be123c; }
+.hierarchy-row-label.yellow { color: #b45309; }
+.hierarchy-row-label.grey { color: #6b7280; }
+.hierarchy-row-label.blue { color: #0369a1; }
+.hierarchy-row-label.purple { color: #6d28d9; }
+
+.hierarchy-row {
+  background: var(--color-white);
+  border: var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* outlines for the demo blocks (subtle, like your screenshot) */
+.red-outline { outline: 2px solid #e11d48; outline-offset: 2px; border-radius: var(--radius-md); }
+.yellow-outline { outline: 2px solid #f59e0b; outline-offset: 2px; border-radius: var(--radius-md); }
+.grey-outline { outline: 2px solid #9ca3af; outline-offset: 2px; border-radius: var(--radius-md); }
+.blue-outline { outline: 2px solid #38bdf8; outline-offset: 2px; border-radius: var(--radius-md); }
+.purple-outline { outline: 2px solid #8b5cf6; outline-offset: 2px; border-radius: var(--radius-md); }
+
+/* table-menu needs a left container for filter + search (single row) */
+.table-menu-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
 /* Print */
 @media print {
   .doc-shell { display: block; }
