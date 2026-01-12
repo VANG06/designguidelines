@@ -284,7 +284,7 @@ kbd {
   font: var(--text-body-sm);
   font-weight: 500;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   cursor: pointer;
   transition: all var(--duration-fast) var(--easing);
   text-decoration: none;
