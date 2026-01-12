@@ -1,81 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vanguard UI Design Guidelines</title>
-  
-  
-  <link rel="stylesheet" href="styles.css">
-<!-- Inter Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- All CSS must live in styles.css -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  
-  <!-- Mobile Header -->
+
   <header class="mobile-header">
-    <button class="menu-btn" onclick="toggleNav()" aria-label="Toggle navigation">
+    <button class="btn btn-ghost btn-icon" onclick="toggleNav()" aria-label="Toggle navigation">
       <i data-lucide="menu" width="24" height="24"></i>
     </button>
-    <h1>Vanguard UI Guidelines</h1>
+    <span class="mobile-title">Vanguard UI Guidelines</span>
   </header>
-  
-  <div class="shell">
-    <!-- Navigation -->
-    <nav class="nav" id="nav" aria-label="Main navigation">
-      <div class="nav-logo">Vanguard UI</div>
-      
-      <div class="nav-section">Foundation</div>
-      <a href="#principles" class="nav-link"><i data-lucide="compass"></i> IT Principles</a>
-      <a href="#scope" class="nav-link"><i data-lucide="target"></i> Scope</a>
-      
-      <div class="nav-section">Tokens</div>
-      <a href="#colours" class="nav-link"><i data-lucide="palette"></i> Colours</a>
-      <a href="#category-colours" class="nav-link"><i data-lucide="tags"></i> Category Colours</a>
-      <a href="#typography" class="nav-link"><i data-lucide="type"></i> Typography</a>
-      <a href="#spacing" class="nav-link"><i data-lucide="move"></i> Spacing</a>
-      <a href="#icons" class="nav-link"><i data-lucide="smile"></i> Icons</a>
-      
-      <div class="nav-section">Components</div>
-      <a href="#buttons" class="nav-link"><i data-lucide="square"></i> Buttons</a>
-      <a href="#segmented" class="nav-link"><i data-lucide="toggle-left"></i> Segmented Control</a>
-      <a href="#tags" class="nav-link"><i data-lucide="tag"></i> Tags & Chips</a>
-      <a href="#inputs" class="nav-link"><i data-lucide="text-cursor-input"></i> Inputs</a>
-      <a href="#progress" class="nav-link"><i data-lucide="bar-chart-2"></i> Progress Bars</a>
-      <a href="#tables" class="nav-link"><i data-lucide="table"></i> Tables</a>
-      <a href="#cards" class="nav-link"><i data-lucide="credit-card"></i> Cards</a>
-      <a href="#alerts" class="nav-link"><i data-lucide="alert-triangle"></i> Alerts & Panels</a>
-      
-      <div class="nav-section">Patterns</div>
-      <a href="#navigation" class="nav-link"><i data-lucide="layout"></i> Tabs & Navigation</a>
-      <a href="#layouts" class="nav-link"><i data-lucide="columns"></i> Layouts</a>
-      <a href="#page-layout" class="nav-link"><i data-lucide="layout-grid"></i> Page Layout &amp; Hierarchy</a>
-      <a href="#dashboards" class="nav-link"><i data-lucide="pie-chart"></i> Dashboards</a>
-      <a href="#ai" class="nav-link"><i data-lucide="sparkles"></i> AI UX</a>
-      <a href="#accessibility" class="nav-link"><i data-lucide="accessibility"></i> Accessibility</a>
-      <a href="#governance" class="nav-link"><i data-lucide="shield-check"></i> Governance</a>
+
+  <div class="doc-shell">
+    <nav class="doc-nav" id="nav">
+      <div class="doc-nav-logo">Vanguard UI</div>
+
+      <div class="doc-nav-section">Foundation</div>
+      <a href="#principles" class="doc-nav-link"><i data-lucide="compass"></i> Principles</a>
+      <a href="#approach" class="doc-nav-link"><i data-lucide="layout"></i> Approach</a>
+
+      <div class="doc-nav-section">Tokens</div>
+      <a href="#colours" class="doc-nav-link"><i data-lucide="palette"></i> Colours</a>
+      <a href="#typography" class="doc-nav-link"><i data-lucide="type"></i> Typography</a>
+      <a href="#spacing" class="doc-nav-link"><i data-lucide="move"></i> Spacing</a>
+      <a href="#radius" class="doc-nav-link"><i data-lucide="square"></i> Radius</a>
+      <a href="#icons" class="doc-nav-link"><i data-lucide="smile"></i> Icons</a>
+
+      <div class="doc-nav-section">Page Structure</div>
+      <a href="#page-hierarchy" class="doc-nav-link"><i data-lucide="layers"></i> Page Hierarchy</a>
+      <a href="#navigation" class="doc-nav-link"><i data-lucide="menu"></i> Navigation</a>
+      <a href="#command-palette" class="doc-nav-link"><i data-lucide="search"></i> Global Search</a>
+
+      <div class="doc-nav-section">Components</div>
+      <a href="#buttons" class="doc-nav-link"><i data-lucide="mouse-pointer-click"></i> Buttons</a>
+      <a href="#tags" class="doc-nav-link"><i data-lucide="tag"></i> Tags</a>
+      <a href="#inputs" class="doc-nav-link"><i data-lucide="text-cursor-input"></i> Inputs</a>
+      <a href="#tables" class="doc-nav-link"><i data-lucide="table"></i> Tables</a>
+      <a href="#cards" class="doc-nav-link"><i data-lucide="credit-card"></i> Cards & KPIs</a>
+      <a href="#alerts" class="doc-nav-link"><i data-lucide="alert-triangle"></i> Alerts</a>
+      <a href="#modals" class="doc-nav-link"><i data-lucide="square"></i> Modals</a>
+
+      <div class="doc-nav-section">Patterns</div>
+      <a href="#action-hierarchy" class="doc-nav-link"><i data-lucide="split"></i> Action Hierarchy</a>
+      <a href="#bulk-actions" class="doc-nav-link"><i data-lucide="check-square"></i> Bulk Actions</a>
+      <a href="#density" class="doc-nav-link"><i data-lucide="minimize-2"></i> Density</a>
+      <a href="#accessibility" class="doc-nav-link"><i data-lucide="accessibility"></i> Accessibility</a>
     </nav>
-    
-    <!-- Main Content -->
-    <main class="main">
-      
-      <!-- Title -->
+
+    <main class="doc-main">
+
+      <button class="btn btn-primary print-btn" onclick="window.print()">
+        <i data-lucide="printer" width="16" height="16"></i> Print
+      </button>
+
       <header>
         <h1>Vanguard UI Design Guidelines</h1>
-        <p class="subtitle">Web Application & Website Specification • v1.1 • Developer & AI Reference</p>
-        <p>Single authoritative UI/UX design system for all Vanguard web applications and websites. Desktop-first, responsive, token-driven, accessible.</p>
+        <p class="subtitle">Customer Portal Design System • v3.1</p>
       </header>
-      
-      <!-- Section 1: IT Principles -->
+
+      <!-- PRINCIPLES -->
       <section id="principles">
-        <h2><i data-lucide="compass" width="24" height="24"></i> 1. IT Principles</h2>
-        <p>All UI decisions must trace back to these five core principles:</p>
-        
-        <div class="table-wrapper">
+        <h2><i data-lucide="compass" width="22" height="22"></i> 1. IT Principles</h2>
+        <p>All UI decisions trace back to these core principles:</p>
+
+        <div class="demo-box">
           <table>
             <thead>
               <tr>
@@ -85,1065 +83,803 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td><strong>User-First</strong></td><td>Reduce cognitive load</td><td>Next action obvious</td></tr>
-              <tr><td><strong>Autonomy by Design</strong></td><td>Enable self-service</td><td>No IT dependency</td></tr>
-              <tr><td><strong>Process-First</strong></td><td>Reflect real workflows</td><td>Order → Execute → Post</td></tr>
+              <tr><td><strong>User-first</strong></td><td>Reduce cognitive load</td><td>Next action is obvious</td></tr>
+              <tr><td><strong>Autonomy by design</strong></td><td>Enable self-service</td><td>No support dependency</td></tr>
+              <tr><td><strong>Process-first</strong></td><td>Reflect real workflows</td><td>Browse → Select → Action</td></tr>
               <tr><td><strong>Integrated</strong></td><td>Consistent patterns</td><td>Same components everywhere</td></tr>
-              <tr><td><strong>Speed with Control</strong></td><td>Fast & predictable</td><td>Safe, reversible actions</td></tr>
+              <tr><td><strong>Speed with control</strong></td><td>Fast & predictable</td><td>Safe, reversible actions</td></tr>
             </tbody>
           </table>
         </div>
       </section>
-      
-      <!-- Section 2: Scope -->
-      <section id="scope">
-        <h2><i data-lucide="target" width="24" height="24"></i> 2. Scope</h2>
-        <div class="card-grid">
-          <div class="card">
-            <h4><i data-lucide="check" width="16" height="16"></i> In Scope</h4>
-            <p>Web applications, public websites, internal tools, admin interfaces, AI-assisted UX.</p>
-          </div>
-          <div class="card">
-            <h4><i data-lucide="x" width="16" height="16"></i> Out of Scope</h4>
-            <p>Native mobile apps, ERP implementation details.</p>
-          </div>
-          <div class="card">
-            <h4><i data-lucide="monitor" width="16" height="16"></i> Approach</h4>
-            <p>Desktop-first, responsive tablet/mobile, grid-based, 8pt spacing system.</p>
-          </div>
-        </div>
+
+      <!-- APPROACH -->
+      <section id="approach">
+        <h2><i data-lucide="layout" width="22" height="22"></i> 2. Approach</h2>
+
+        <h4>Desktop-first, responsive</h4>
+        <p>Design for desktop as the primary experience. Layouts reflow gracefully on smaller screens.</p>
+
+        <h4>Clean, utilitarian aesthetic</h4>
+        <p>Customer portals should feel calm, professional and easy to interpret. Use borders and spacing (not colour) to create structure.</p>
+
+        <h4>Neutral-dominant (95% rule)</h4>
+        <p>Most of the UI uses neutral colours. Reserve colour for primary actions, active states, focus rings, and semantic status.</p>
+
+        <h4>Small radii, crisp lines</h4>
+        <p>Use small radii (4–6px) on cards, buttons and table containers. Prefer subtle borders and minimal elevation.</p>
+
+        <h4>Primary colour = brand-blue</h4>
+        <p>Our main brand-blue (<code>#004674</code>) is sacred and is also the primary accent for interactive UI (buttons, selected state, focus).</p>
       </section>
-      
-      <!-- Section 3.1-3.3: Colours -->
+
+      <!-- COLOURS -->
       <section id="colours">
-        <h2><i data-lucide="palette" width="24" height="24"></i> 3. Colours — Brand & Semantic</h2>
-        <p class="note">Tokens define intent, not decoration. Neutral colours should dominate 80–90% of the interface.</p>
-        
-        <h3>3.1 Brand Anchors (Core Identity)</h3>
-        <p>These colours represent the Vanguard brand and should be used for identity elements, not primary actions.</p>
+        <h2><i data-lucide="palette" width="22" height="22"></i> 3. Colours</h2>
+        <p class="note">Use neutral first. Colour is functional: actions, selection, and status.</p>
+
+        <h3>Primary (Actions & Active State)</h3>
+        <p>Primary is used for buttons, selected nav, focus ring, links, and “active” indicators.</p>
         <div class="swatch-grid">
           <div class="swatch">
-            <div class="swatch-color" style="background: #0B2A4A;"><code style="color: #0B2A4A;">#0B2A4A</code></div>
-            <div class="swatch-label">brand-blue<br>Core identity</div>
+            <div class="swatch-color" style="background: var(--color-primary);">
+              <code style="color: white;">var(--color-primary)</code>
+            </div>
+            <div class="swatch-label">primary</div>
           </div>
           <div class="swatch">
-            <div class="swatch-color" style="background: #FC0303;"><code style="color: #FC0303;">#FC0303</code></div>
-            <div class="swatch-label">brand-red<br>Accent identity</div>
+            <div class="swatch-color" style="background: var(--color-primary-hover);">
+              <code style="color: white;">primary-hover</code>
+            </div>
+            <div class="swatch-label">hover</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: var(--color-primary-light); border: 1px solid var(--color-primary-muted);">
+              <code>primary-light</code>
+            </div>
+            <div class="swatch-label">light</div>
           </div>
         </div>
-        
-        <h3>3.2 Accent Colour (Primary Actions)</h3>
-        <p>The accent colour is used for primary actions, selected states, and interactive elements. It harmonises with brand-blue while providing better visibility for UI controls.</p>
-        <div class="card">
-          <div class="swatch-row">
-            <span class="swatch-row-label">accent</span>
-            <div class="swatch-cell" style="background: #0891B2; color: white;">Default<br>#0891B2</div>
-            <div class="swatch-cell" style="background: #0E7490; color: white;">Hover<br>#0E7490</div>
-            <div class="swatch-cell" style="background: #155E75; color: white;">Active<br>#155E75</div>
-            <div class="swatch-cell" style="background: #ECFEFF; color: #0891B2;">Light<br>#ECFEFF</div>
-          </div>
-        </div>
-        
-        <h3>3.3 Neutral Palette</h3>
+
+        <h3>Brand (Identity Only)</h3>
+        <p>Brand colours are available for identity, but UI interaction should still follow the Primary/Semantic rules.</p>
         <div class="swatch-grid">
           <div class="swatch">
-            <div class="swatch-color" style="background: #1F2933;"><code style="color: #1F2933;">#1F2933</code></div>
-            <div class="swatch-label">neutral-dark<br>Primary text</div>
+            <div class="swatch-color" style="background: var(--color-brand-blue);">
+              <code style="color: white;">#004674</code>
+            </div>
+            <div class="swatch-label">brand-blue</div>
           </div>
           <div class="swatch">
-            <div class="swatch-color" style="background: #6B7280;"><code style="color: #6B7280;">#6B7280</code></div>
-            <div class="swatch-label">neutral-mid<br>Secondary text</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #E5E7EB;"><code>#E5E7EB</code></div>
-            <div class="swatch-label">neutral-light<br>Borders</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #F8FAFC; border: 1px solid #E5E7EB;"><code>#F8FAFC</code></div>
-            <div class="swatch-label">neutral-surface<br>Backgrounds</div>
+            <div class="swatch-color" style="background: var(--color-brand-red);">
+              <code style="color: white;">#ff0000</code>
+            </div>
+            <div class="swatch-label">brand-red</div>
           </div>
         </div>
-        
-        <h3>3.4 Semantic Colour Tokens</h3>
-        <div class="card">
-          <div class="swatch-row">
-            <span class="swatch-row-label">success</span>
-            <div class="swatch-cell" style="background: #15803D; color: white;">Default</div>
-            <div class="swatch-cell" style="background: #166534; color: white;">Hover</div>
-            <div class="swatch-cell" style="background: #DCFCE7; color: #15803D;">Light</div>
-            <div class="swatch-cell" style="background: white; border: 1px solid #86EFAC; color: #15803D;">Border</div>
-          </div>
-          <div class="swatch-row">
-            <span class="swatch-row-label">warning</span>
-            <div class="swatch-cell" style="background: #B45309; color: white;">Default</div>
-            <div class="swatch-cell" style="background: #92400E; color: white;">Hover</div>
-            <div class="swatch-cell" style="background: #FEF3C7; color: #B45309;">Light</div>
-            <div class="swatch-cell" style="background: white; border: 1px solid #FCD34D; color: #B45309;">Border</div>
-          </div>
-          <div class="swatch-row">
-            <span class="swatch-row-label">danger</span>
-            <div class="swatch-cell" style="background: #DC2626; color: white;">Default</div>
-            <div class="swatch-cell" style="background: #B91C1C; color: white;">Hover</div>
-            <div class="swatch-cell" style="background: #FEE2E2; color: #DC2626;">Light</div>
-            <div class="swatch-cell" style="background: white; border: 1px solid #FCA5A5; color: #DC2626;">Border</div>
-          </div>
-          <div class="swatch-row">
-            <span class="swatch-row-label">info</span>
-            <div class="swatch-cell" style="background: #2563EB; color: white;">Default</div>
-            <div class="swatch-cell" style="background: #1D4ED8; color: white;">Hover</div>
-            <div class="swatch-cell" style="background: #DBEAFE; color: #2563EB;">Light</div>
-            <div class="swatch-cell" style="background: white; border: 1px solid #93C5FD; color: #2563EB;">Border</div>
-          </div>
+
+        <h3>Semantic (Status Only)</h3>
+        <p>Status colours are for outcomes/alerts only. Avoid using them for navigation or decoration.</p>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background: var(--color-success);"><code style="color:white;">success</code></div><div class="swatch-label">success</div></div>
+          <div class="swatch"><div class="swatch-color" style="background: var(--color-warning);"><code style="color:white;">warning</code></div><div class="swatch-label">warning</div></div>
+          <div class="swatch"><div class="swatch-color" style="background: var(--color-danger);"><code style="color:white;">danger</code></div><div class="swatch-label">danger</div></div>
+          <div class="swatch"><div class="swatch-color" style="background: var(--color-info);"><code style="color:white;">info</code></div><div class="swatch-label">info</div></div>
         </div>
       </section>
-      
-      <!-- Section 3.5: Category Colours -->
-      <section id="category-colours">
-        <h2><i data-lucide="tags" width="24" height="24"></i> 3.5 Category Colours</h2>
-        <p>Use for tags, chips, floor-zone cards, and status indicators. Each colour has a light background, text colour, and border for accessible combinations.</p>
-        
-        <div class="swatch-grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
-          <div class="swatch">
-            <div class="swatch-color" style="background: #3B82F6;"><code style="color: #3B82F6;">#3B82F6</code></div>
-            <div class="swatch-label">cat-blue</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #14B8A6;"><code style="color: #14B8A6;">#14B8A6</code></div>
-            <div class="swatch-label">cat-teal</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #F97316;"><code style="color: #F97316;">#F97316</code></div>
-            <div class="swatch-label">cat-orange</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #8B5CF6;"><code style="color: #8B5CF6;">#8B5CF6</code></div>
-            <div class="swatch-label">cat-purple</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #EC4899;"><code style="color: #EC4899;">#EC4899</code></div>
-            <div class="swatch-label">cat-pink</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #22C55E;"><code style="color: #22C55E;">#22C55E</code></div>
-            <div class="swatch-label">cat-green</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #EF4444;"><code style="color: #EF4444;">#EF4444</code></div>
-            <div class="swatch-label">cat-red</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: #EAB308;"><code style="color: #EAB308;">#EAB308</code></div>
-            <div class="swatch-label">cat-yellow</div>
-          </div>
-        </div>
-        
-        <h4>Zone Card Example</h4>
-        <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
-          <div class="card-zone">
-            <div class="card-zone-header" style="background: var(--color-cat-blue);">Zone A</div>
-            <div class="card-zone-body">
-              <div style="font: var(--text-heading-md);">12</div>
-              <div style="font: var(--text-caption); color: var(--color-neutral-mid);">Active units</div>
-            </div>
-          </div>
-          <div class="card-zone">
-            <div class="card-zone-header" style="background: var(--color-cat-teal);">Zone B</div>
-            <div class="card-zone-body">
-              <div style="font: var(--text-heading-md);">8</div>
-              <div style="font: var(--text-caption); color: var(--color-neutral-mid);">Active units</div>
-            </div>
-          </div>
-          <div class="card-zone">
-            <div class="card-zone-header" style="background: var(--color-cat-orange);">Zone C</div>
-            <div class="card-zone-body">
-              <div style="font: var(--text-heading-md);">5</div>
-              <div style="font: var(--text-caption); color: var(--color-neutral-mid);">Active units</div>
-            </div>
-          </div>
-          <div class="card-zone">
-            <div class="card-zone-header" style="background: var(--color-cat-purple);">Zone D</div>
-            <div class="card-zone-body">
-              <div style="font: var(--text-heading-md);">3</div>
-              <div style="font: var(--text-caption); color: var(--color-neutral-mid);">Active units</div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Section: Typography -->
+
+      <!-- TYPOGRAPHY -->
       <section id="typography">
-        <h2><i data-lucide="type" width="24" height="24"></i> 3.6 Typography</h2>
-        <p><strong>Font:</strong> Inter (fallback: system-ui, -apple-system, Segoe UI, Roboto). Sentence case only.</p>
-        
-        <div class="card">
-          <p style="font: var(--text-heading-xl); margin-bottom: var(--space-1);">heading-xl — 32px/600</p>
-          <p style="font: var(--text-heading-lg); margin-bottom: var(--space-1);">heading-lg — 24px/600</p>
-          <p style="font: var(--text-heading-md); margin-bottom: var(--space-1);">heading-md — 20px/600</p>
-          <p style="font: var(--text-body-lg); margin-bottom: var(--space-1);">body-lg — 16px/400</p>
-          <p style="font: var(--text-body-md); margin-bottom: var(--space-1);">body-md — 14px/400 (default)</p>
-          <p style="font: var(--text-body-sm); margin-bottom: var(--space-1);">body-sm — 12px/400</p>
-          <p style="font: var(--text-label); margin-bottom: var(--space-1);">label — 12px/500</p>
-          <p style="font: var(--text-caption);">caption — 11px/400</p>
+        <h2><i data-lucide="type" width="22" height="22"></i> 4. Typography</h2>
+        <p><strong>Font:</strong> Inter. <strong>Case:</strong> Sentence case (except uppercase labels).</p>
+
+        <div class="demo-box">
+          <p style="font: var(--text-heading-xl); margin-bottom: 8px;">heading-xl — 28px/600</p>
+          <p style="font: var(--text-heading-lg); margin-bottom: 8px;">heading-lg — 22px/600</p>
+          <p style="font: var(--text-heading-md); margin-bottom: 8px;">heading-md — 18px/600</p>
+          <p style="font: var(--text-body-md); margin-bottom: 8px;">body-md — 14px/400 (default)</p>
+          <p style="font: var(--text-body-sm); margin-bottom: 8px;">body-sm — 13px/400</p>
+          <p style="font: var(--text-label); margin-bottom: 8px;">label — 12px/500</p>
+          <p style="font: var(--text-label-caps); text-transform: uppercase; letter-spacing: 0.03em;">label-caps — 11px/600</p>
         </div>
       </section>
-      
-      <!-- Section: Spacing -->
+
+      <!-- SPACING -->
       <section id="spacing">
-        <h2><i data-lucide="move" width="24" height="24"></i> 3.7 Spacing (8pt System)</h2>
-        <p>All spacing must be multiples of 8.</p>
-        
-        <div class="spacing-demo">
-          <div class="spacing-box"><div class="spacing-visual" style="width: 8px; height: 8px;"></div><span class="spacing-label">space-1<br>8px</span></div>
-          <div class="spacing-box"><div class="spacing-visual" style="width: 16px; height: 16px;"></div><span class="spacing-label">space-2<br>16px</span></div>
-          <div class="spacing-box"><div class="spacing-visual" style="width: 24px; height: 24px;"></div><span class="spacing-label">space-3<br>24px</span></div>
-          <div class="spacing-box"><div class="spacing-visual" style="width: 32px; height: 32px;"></div><span class="spacing-label">space-4<br>32px</span></div>
-          <div class="spacing-box"><div class="spacing-visual" style="width: 40px; height: 40px;"></div><span class="spacing-label">space-5<br>40px</span></div>
-          <div class="spacing-box"><div class="spacing-visual" style="width: 48px; height: 48px;"></div><span class="spacing-label">space-6<br>48px</span></div>
-          <div class="spacing-box"><div class="spacing-visual" style="width: 56px; height: 56px;"></div><span class="spacing-label">space-7<br>56px</span></div>
-          <div class="spacing-box"><div class="spacing-visual" style="width: 64px; height: 64px;"></div><span class="spacing-label">space-8<br>64px</span></div>
-        </div>
-        
-        <h3>3.8 Radius & Elevation</h3>
-        <div class="card-grid">
-          <div class="card" style="border-radius: var(--radius-sm);"><code>radius-sm: 4px</code><br><span class="note">Inputs, tables</span></div>
-          <div class="card" style="border-radius: var(--radius-md);"><code>radius-md: 8px</code><br><span class="note">Cards, modals</span></div>
-          <div class="card" style="border-radius: var(--radius-lg);"><code>radius-lg: 12px</code><br><span class="note">Tags, large containers</span></div>
-          <div class="card" style="border-radius: var(--radius-full); width: 80px; text-align: center;"><code>radius-full</code><br><span class="note">Pills</span></div>
+        <h2><i data-lucide="move" width="22" height="22"></i> 5. Spacing</h2>
+        <p>Base unit: 4px. Common increments use multiples of 4 and 8.</p>
+
+        <div class="spacing-grid">
+          <div class="spacing-item"><div class="spacing-box" style="width: 4px; height: 16px;"></div><span class="spacing-label">4px</span></div>
+          <div class="spacing-item"><div class="spacing-box" style="width: 8px; height: 16px;"></div><span class="spacing-label">8px</span></div>
+          <div class="spacing-item"><div class="spacing-box" style="width: 12px; height: 16px;"></div><span class="spacing-label">12px</span></div>
+          <div class="spacing-item"><div class="spacing-box" style="width: 16px; height: 16px;"></div><span class="spacing-label">16px</span></div>
+          <div class="spacing-item"><div class="spacing-box" style="width: 24px; height: 16px;"></div><span class="spacing-label">24px</span></div>
+          <div class="spacing-item"><div class="spacing-box" style="width: 32px; height: 16px;"></div><span class="spacing-label">32px</span></div>
+          <div class="spacing-item"><div class="spacing-box" style="width: 48px; height: 16px;"></div><span class="spacing-label">48px</span></div>
         </div>
       </section>
-      
-      <!-- Section: Icons -->
+
+      <!-- RADIUS -->
+      <section id="radius">
+        <h2><i data-lucide="square" width="22" height="22"></i> 6. Radius & Borders</h2>
+        <p>Small radii for a crisp, professional interface. Avoid large rounded corners.</p>
+
+        <div class="radius-grid">
+          <div class="radius-item"><div class="radius-box" style="border-radius: 2px;"></div><span class="radius-label">xs 2px</span></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius: 4px;"></div><span class="radius-label">sm 4px</span></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius: 6px;"></div><span class="radius-label">md 6px</span></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius: 8px;"></div><span class="radius-label">lg 8px</span></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius: 9999px;"></div><span class="radius-label">full</span></div>
+        </div>
+
+        <h4>Border tokens</h4>
+        <ul>
+          <li><code>--border-default</code> — primary separators</li>
+          <li><code>--border-subtle</code> — table row dividers</li>
+          <li><code>--border-strong</code> — stronger emphasis edges</li>
+        </ul>
+      </section>
+
+      <!-- ICONS -->
       <section id="icons">
-        <h2><i data-lucide="smile" width="24" height="24"></i> 3.9 Iconography</h2>
-        <p><strong>Library:</strong> Lucide icons only. <strong>Sizes:</strong> 16px inline, 20px buttons, 24px navigation. Icons accompany text—never replace.</p>
-        
+        <h2><i data-lucide="smile" width="22" height="22"></i> 7. Iconography</h2>
+        <p><strong>Library:</strong> Lucide. <strong>Sizes:</strong> 14px compact, 16px default, 18–20px nav. Icons accompany text—never replace it.</p>
+
         <div class="icon-grid">
-          <div class="icon-item"><i data-lucide="search" width="24" height="24"></i><span>Search</span></div>
-          <div class="icon-item"><i data-lucide="menu" width="24" height="24"></i><span>Menu</span></div>
-          <div class="icon-item"><i data-lucide="x" width="24" height="24"></i><span>X</span></div>
-          <div class="icon-item"><i data-lucide="check" width="24" height="24"></i><span>Check</span></div>
-          <div class="icon-item"><i data-lucide="plus" width="24" height="24"></i><span>Plus</span></div>
-          <div class="icon-item"><i data-lucide="trash-2" width="24" height="24"></i><span>Trash</span></div>
-          <div class="icon-item"><i data-lucide="pencil" width="24" height="24"></i><span>Edit</span></div>
-          <div class="icon-item"><i data-lucide="settings" width="24" height="24"></i><span>Settings</span></div>
-          <div class="icon-item"><i data-lucide="filter" width="24" height="24"></i><span>Filter</span></div>
-          <div class="icon-item"><i data-lucide="download" width="24" height="24"></i><span>Download</span></div>
-          <div class="icon-item"><i data-lucide="alert-triangle" width="24" height="24"></i><span>Warning</span></div>
-          <div class="icon-item"><i data-lucide="info" width="24" height="24"></i><span>Info</span></div>
+          <div class="icon-item"><i data-lucide="search" width="20" height="20"></i><span>search</span></div>
+          <div class="icon-item"><i data-lucide="home" width="20" height="20"></i><span>home</span></div>
+          <div class="icon-item"><i data-lucide="settings" width="20" height="20"></i><span>settings</span></div>
+          <div class="icon-item"><i data-lucide="bell" width="20" height="20"></i><span>bell</span></div>
+          <div class="icon-item"><i data-lucide="user" width="20" height="20"></i><span>user</span></div>
+          <div class="icon-item"><i data-lucide="plus" width="20" height="20"></i><span>plus</span></div>
+          <div class="icon-item"><i data-lucide="download" width="20" height="20"></i><span>download</span></div>
+          <div class="icon-item"><i data-lucide="filter" width="20" height="20"></i><span>filter</span></div>
+          <div class="icon-item"><i data-lucide="eye" width="20" height="20"></i><span>eye</span></div>
+          <div class="icon-item"><i data-lucide="check" width="20" height="20"></i><span>check</span></div>
+          <div class="icon-item"><i data-lucide="x" width="20" height="20"></i><span>x</span></div>
+          <div class="icon-item"><i data-lucide="alert-triangle" width="20" height="20"></i><span>alert</span></div>
         </div>
       </section>
-      
-      <!-- Section: Buttons -->
+
+      <!-- PAGE HIERARCHY (CUSTOMER PORTAL VERSION OF THE PATTERN) -->
+      <section id="page-hierarchy">
+        <h2><i data-lucide="layers" width="22" height="22"></i> 8. Page Hierarchy</h2>
+        <p>This is the standard stacked layout used across customer portals. Each row has a distinct purpose and should remain consistent across modules.</p>
+
+        <div class="demo-box demo-box-flush demo-box-dark">
+          <!-- Row 1: Header -->
+          <div class="page-header">
+            <div class="page-header-context">
+              <h1>Acme Industries Ltd</h1>
+              <div class="meta">Account #10042 • Auckland, NZ</div>
+            </div>
+            <div class="page-header-actions">
+              <div class="mode-toggle">
+                <button class="mode-toggle-btn active"><i data-lucide="building-2" width="16" height="16"></i> Business</button>
+                <button class="mode-toggle-btn"><i data-lucide="user" width="16" height="16"></i> Personal</button>
+              </div>
+              <div class="user-info">
+                <div class="user-info-name">Sarah Mitchell</div>
+                <div class="user-info-email">sarah@acme.co.nz</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Primary Nav + global search/settings/role -->
+          <div class="primary-nav">
+            <div class="primary-nav-items">
+              <a href="#" class="primary-nav-item"><i data-lucide="home" width="16" height="16"></i> Dashboard</a>
+              <a href="#" class="primary-nav-item active"><i data-lucide="shopping-cart" width="16" height="16"></i> Orders</a>
+              <a href="#" class="primary-nav-item"><i data-lucide="file-text" width="16" height="16"></i> Invoices</a>
+              <a href="#" class="primary-nav-item"><i data-lucide="package" width="16" height="16"></i> Products</a>
+              <a href="#" class="primary-nav-item"><i data-lucide="headphones" width="16" height="16"></i> Support</a>
+            </div>
+            <div class="primary-nav-actions">
+              <div class="global-search">
+                <i data-lucide="search" width="16" height="16"></i>
+                <input type="text" placeholder="Search...">
+                <kbd>⌘K</kbd>
+              </div>
+              <button class="btn btn-ghost btn-icon"><i data-lucide="bell" width="18" height="18"></i></button>
+              <button class="btn btn-ghost btn-icon"><i data-lucide="settings" width="18" height="18"></i></button>
+              <button class="btn btn-secondary btn-sm">Manager</button>
+            </div>
+          </div>
+
+          <!-- Row 3: KPI strip -->
+          <div class="kpi-strip">
+            <div class="kpi-strip-card">
+              <div class="kpi-strip-label">Open Orders</div>
+              <div class="kpi-strip-value">7</div>
+            </div>
+            <div class="kpi-strip-card">
+              <div class="kpi-strip-label">Outstanding Invoices</div>
+              <div class="kpi-strip-value">3</div>
+            </div>
+            <div class="kpi-strip-card">
+              <div class="kpi-strip-label">Deliveries In Transit</div>
+              <div class="kpi-strip-value">2</div>
+            </div>
+            <div class="kpi-strip-card">
+              <div class="kpi-strip-label">Support Tickets</div>
+              <div class="kpi-strip-value">1</div>
+            </div>
+          </div>
+
+          <!-- Row 4: Secondary (page switcher / filters) -->
+          <div class="secondary-nav">
+            <a href="#" class="secondary-nav-item active">All Orders</a>
+            <a href="#" class="secondary-nav-item">Pending</a>
+            <a href="#" class="secondary-nav-item">In Transit</a>
+            <a href="#" class="secondary-nav-item">Delivered</a>
+            <a href="#" class="secondary-nav-item">Returns</a>
+          </div>
+
+          <!-- Row 5: Action bar (primary left, distinct right) -->
+          <div class="action-bar action-bar--demo">
+            <div class="action-bar-left">
+              <div class="section-tabs">
+                <button class="section-tab active">Records (20)</button>
+                <button class="section-tab">Shipments (9)</button>
+              </div>
+              <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> Create Request</button>
+            </div>
+            <div class="action-bar-right">
+              <button class="btn btn-secondary"><i data-lucide="download" width="16" height="16"></i> Export</button>
+              <button class="btn btn-secondary"><i data-lucide="refresh-cw" width="16" height="16"></i> Sync</button>
+            </div>
+          </div>
+
+          <!-- Row 6: Table menu (context search left, table tools right) -->
+          <div class="table-container table-container--flush">
+            <div class="table-menu">
+              <div class="table-search">
+                <i data-lucide="search" width="16" height="16"></i>
+                <input type="text" placeholder="Search orders...">
+              </div>
+              <div class="table-actions">
+                <div class="view-toggle">
+                  <button class="view-toggle-btn"><i data-lucide="grid" width="14" height="14"></i> Cards</button>
+                  <button class="view-toggle-btn active"><i data-lucide="list" width="14" height="14"></i> Columns</button>
+                </div>
+                <button class="btn btn-secondary btn-sm"><i data-lucide="columns" width="14" height="14"></i> Columns</button>
+              </div>
+            </div>
+
+            <!-- Row 7: Table -->
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 44px;"><input type="checkbox" class="table-checkbox" aria-label="Select all"></th>
+                  <th class="sortable">Order # <span class="sort-icon"><i data-lucide="chevrons-up-down" width="14" height="14"></i></span></th>
+                  <th>Customer</th>
+                  <th class="sortable sorted">Created <span class="sort-icon"><i data-lucide="chevron-down" width="14" height="14"></i></span></th>
+                  <th class="align-right">Total</th>
+                  <th>Status</th>
+                  <th class="align-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
+                  <td><code>ORD-2026-0894</code></td>
+                  <td>Acme Industries Ltd</td>
+                  <td>Jan 10, 2026</td>
+                  <td class="align-right">$2,268.00</td>
+                  <td><span class="tag tag-primary"><i data-lucide="loader" width="12" height="12"></i> Processing</span></td>
+                  <td class="align-right">
+                    <div class="row-actions">
+                      <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
+                  <td><code>ORD-2026-0891</code></td>
+                  <td>CloudFirst Ltd</td>
+                  <td>Jan 8, 2026</td>
+                  <td class="align-right">$1,450.00</td>
+                  <td><span class="tag tag-info"><i data-lucide="truck" width="12" height="12"></i> In Transit</span></td>
+                  <td class="align-right">
+                    <div class="row-actions">
+                      <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
+                  <td><code>ORD-2026-0887</code></td>
+                  <td>SmartTech HQ</td>
+                  <td>Jan 5, 2026</td>
+                  <td class="align-right">$895.00</td>
+                  <td><span class="tag tag-success"><i data-lucide="check" width="12" height="12"></i> Delivered</span></td>
+                  <td class="align-right">
+                    <div class="row-actions">
+                      <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Bulk actions toolbar (pattern preview) -->
+            <div class="bulk-bar">
+              <div class="bulk-bar-left">
+                <strong>3 selected</strong>
+                <span class="bulk-bar-sep">•</span>
+                <button class="btn btn-secondary btn-sm">Export</button>
+                <button class="btn btn-secondary btn-sm">Mark as Delivered</button>
+              </div>
+              <div class="bulk-bar-right">
+                <button class="btn btn-ghost btn-sm">Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h4 class="mt-4">Row-by-row checklist</h4>
+        <ol>
+          <li><strong>Header:</strong> account context + user + (optional) mode/toggle</li>
+          <li><strong>Primary row:</strong> module navigation + global search + settings + role</li>
+          <li><strong>KPI row:</strong> module-specific KPIs</li>
+          <li><strong>Secondary row:</strong> page filters / switcher</li>
+          <li><strong>Action row:</strong> primary actions left, distinct/system actions right</li>
+          <li><strong>Table menu row:</strong> contextual search left, view/columns/actions right</li>
+          <li><strong>Table:</strong> sortable/filterable, bulk selection + bulk action bar</li>
+        </ol>
+      </section>
+
+      <!-- NAVIGATION -->
+      <section id="navigation">
+        <h2><i data-lucide="menu" width="22" height="22"></i> 9. Navigation</h2>
+
+        <h3>Primary navigation</h3>
+        <p>Horizontal module bar. Icons + labels required. Active state uses primary colour (brand-blue).</p>
+        <div class="demo-box demo-box-flush">
+          <div class="primary-nav">
+            <div class="primary-nav-items">
+              <a href="#" class="primary-nav-item"><i data-lucide="home" width="16" height="16"></i> Dashboard</a>
+              <a href="#" class="primary-nav-item active"><i data-lucide="shopping-cart" width="16" height="16"></i> Orders</a>
+              <a href="#" class="primary-nav-item"><i data-lucide="file-text" width="16" height="16"></i> Invoices</a>
+              <a href="#" class="primary-nav-item"><i data-lucide="headphones" width="16" height="16"></i> Support</a>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="mt-4">Secondary navigation (underline tabs)</h3>
+        <p>Underline-style tabs for page-level filtering/switching. Active underline uses primary colour.</p>
+        <div class="demo-box demo-box-flush">
+          <div class="secondary-nav">
+            <a href="#" class="secondary-nav-item active">Overview</a>
+            <a href="#" class="secondary-nav-item">Billing</a>
+            <a href="#" class="secondary-nav-item">Documents</a>
+            <a href="#" class="secondary-nav-item">Activity</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- GLOBAL SEARCH -->
+      <section id="command-palette">
+        <h2><i data-lucide="search" width="22" height="22"></i> 10. Global Search</h2>
+        <p>Global search is available from every module. Trigger via <kbd>⌘</kbd>+<kbd>K</kbd>. Results are grouped and keyboard navigable.</p>
+
+        <div class="demo-box" style="display:flex; justify-content:center; background: var(--color-neutral-100);">
+          <div class="command-palette-demo">
+            <div class="command-input">
+              <i data-lucide="search" width="18" height="18"></i>
+              <input type="text" placeholder="Search orders, invoices, products..." value="barrier" />
+            </div>
+            <div class="command-results">
+              <div class="command-group">
+                <div class="command-group-label">Products</div>
+                <div class="command-item focused">
+                  <i data-lucide="package" width="18" height="18"></i>
+                  <div class="command-item-content">
+                    <div class="command-item-title">Safety <mark>Barrier</mark> Yellow 2.0m</div>
+                    <div class="command-item-meta">SKU: SB-2000-Y • $189.00</div>
+                  </div>
+                </div>
+                <div class="command-item">
+                  <i data-lucide="package" width="18" height="18"></i>
+                  <div class="command-item-content">
+                    <div class="command-item-title">Pedestrian <mark>Barrier</mark> Gate</div>
+                    <div class="command-item-meta">SKU: PBG-100 • $245.00</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="command-group">
+                <div class="command-group-label">Orders</div>
+                <div class="command-item">
+                  <i data-lucide="shopping-cart" width="18" height="18"></i>
+                  <div class="command-item-content">
+                    <div class="command-item-title">Order #ORD-2026-0891</div>
+                    <div class="command-item-meta">Contains <mark>barrier</mark> products • Jan 8</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="command-footer">
+              <span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+              <span><kbd>↵</kbd> Select</span>
+              <span><kbd>Esc</kbd> Close</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BUTTONS -->
       <section id="buttons">
-        <h2><i data-lucide="square" width="24" height="24"></i> 4.1 Buttons</h2>
-        
-        <h4>Primary Actions (Accent Colour)</h4>
-        <p>Primary buttons use the accent colour for better visibility and action affordance.</p>
-        <div class="btn-group">
-          <button class="btn btn-primary"><i data-lucide="check" width="16" height="16"></i> Primary Action</button>
-          <button class="btn btn-primary-outline"><i data-lucide="plus" width="16" height="16"></i> Secondary Primary</button>
+        <h2><i data-lucide="mouse-pointer-click" width="22" height="22"></i> 11. Buttons</h2>
+        <h4>Primary</h4>
+        <p>Primary uses brand-blue and is reserved for the main action in a row or area.</p>
+        <div class="demo-row">
+          <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> New Order</button>
+          <button class="btn btn-primary"><i data-lucide="credit-card" width="16" height="16"></i> Pay Invoice</button>
         </div>
-        
-        <h4>Multiple Primary Actions</h4>
-        <p>When workflows require two distinct primary actions (e.g., automatic vs manual), use solid and outlined variants with adequate spacing.</p>
-        <div class="btn-group-primary mb-3">
-          <button class="btn btn-primary"><i data-lucide="zap" width="16" height="16"></i> Run Automatic</button>
-          <button class="btn btn-primary-outline"><i data-lucide="hand" width="16" height="16"></i> Run Manual</button>
+
+        <h4>Secondary</h4>
+        <div class="demo-row">
+          <button class="btn btn-secondary"><i data-lucide="download" width="16" height="16"></i> Export</button>
+          <button class="btn btn-secondary">Cancel</button>
         </div>
-        
-        <h4>Other Button Types</h4>
-        <div class="btn-group">
-          <button class="btn btn-brand">Brand</button>
-          <button class="btn btn-secondary">Secondary</button>
-          <button class="btn btn-ghost">Ghost</button>
-          <button class="btn btn-danger"><i data-lucide="trash-2" width="16" height="16"></i> Destructive</button>
+
+        <h4>Ghost</h4>
+        <div class="demo-row">
+          <button class="btn btn-ghost"><i data-lucide="filter" width="16" height="16"></i> Filter</button>
+          <button class="btn btn-ghost btn-icon"><i data-lucide="settings" width="18" height="18"></i></button>
         </div>
-        
-        <h4>Button States</h4>
-        <div class="btn-group">
-          <button class="btn btn-primary">Default</button>
-          <button class="btn btn-primary" style="background: var(--color-accent-hover);">Hover</button>
-          <button class="btn btn-primary" style="background: var(--color-accent-active);">Active</button>
-          <button class="btn btn-primary" disabled>Disabled</button>
+
+        <h4>Danger</h4>
+        <div class="demo-row">
+          <button class="btn btn-danger"><i data-lucide="trash-2" width="16" height="16"></i> Cancel Order</button>
         </div>
-        
-        <h4>Rules</h4>
-        <ul>
-          <li>Up to <strong>two primary actions</strong> when workflows require distinct options</li>
-          <li>Use hierarchy (solid vs outlined) and spacing to differentiate</li>
-          <li>Destructive buttons must require confirmation</li>
-          <li>Minimum touch target: 44×44px</li>
-        </ul>
       </section>
-      
-      <!-- Section: Segmented Control -->
-      <section id="segmented">
-        <h2><i data-lucide="toggle-left" width="24" height="24"></i> 4.2 Segmented Control</h2>
-        <p>A group of equal-width buttons where only one option is active. Use for mode switches with equal prominence.</p>
-        
-        <h4>Default</h4>
-        <div class="segmented-control mb-3">
-          <button class="segmented-control-item active">Pedestrian</button>
-          <button class="segmented-control-item">Vehicle</button>
-        </div>
-        
-        <h4>Three Options</h4>
-        <div class="segmented-control mb-3">
-          <button class="segmented-control-item">Day</button>
-          <button class="segmented-control-item active">Week</button>
-          <button class="segmented-control-item">Month</button>
-        </div>
-        
-        <h4>Large Variant</h4>
-        <div class="segmented-control segmented-control-lg mb-3">
-          <button class="segmented-control-item active">List View</button>
-          <button class="segmented-control-item">Grid View</button>
-          <button class="segmented-control-item">Map View</button>
-        </div>
-        
-        <h4>Usage Rules</h4>
-        <ul>
-          <li>Use for mutually exclusive options with <strong>equal prominence</strong></li>
-          <li>2–5 options maximum</li>
-          <li>Active state uses accent colour</li>
-          <li>All items should have equal width</li>
-          <li>Use tabs for content sections, segmented control for mode/view switches</li>
-        </ul>
-      </section>
-      
-      <!-- Section: Tags -->
+
+      <!-- TAGS -->
       <section id="tags">
-        <h2><i data-lucide="tag" width="24" height="24"></i> 4.3 Tags & Chips</h2>
-        <p>Pill-shaped elements for statuses, categories, and priority labels. Use <code>radius-lg (12px)</code> and padding multiples of 8.</p>
-        
-        <h4>Category Tags</h4>
-        <div class="tag-list mb-3">
-          <span class="tag tag-blue">Blue</span>
-          <span class="tag tag-teal">Teal</span>
-          <span class="tag tag-orange">Orange</span>
-          <span class="tag tag-purple">Purple</span>
-          <span class="tag tag-pink">Pink</span>
-          <span class="tag tag-green">Green</span>
-          <span class="tag tag-red">Red</span>
-          <span class="tag tag-yellow">Yellow</span>
+        <h2><i data-lucide="tag" width="22" height="22"></i> 12. Tags</h2>
+
+        <h4>Solid (status/active states)</h4>
+        <div class="demo-row">
+          <span class="tag tag-primary"><i data-lucide="loader" width="12" height="12"></i> Processing</span>
+          <span class="tag tag-info"><i data-lucide="truck" width="12" height="12"></i> In Transit</span>
+          <span class="tag tag-success"><i data-lucide="check" width="12" height="12"></i> Delivered</span>
+          <span class="tag tag-danger"><i data-lucide="alert-circle" width="12" height="12"></i> Overdue</span>
         </div>
-        
-        <h4>Status Tags</h4>
-        <div class="tag-list mb-3">
-          <span class="tag tag-success"><i data-lucide="check-circle" width="12" height="12"></i> Complete</span>
-          <span class="tag tag-warning"><i data-lucide="clock" width="12" height="12"></i> Pending</span>
-          <span class="tag tag-danger"><i data-lucide="alert-circle" width="12" height="12"></i> Error</span>
-          <span class="tag tag-info"><i data-lucide="info" width="12" height="12"></i> Info</span>
-          <span class="tag tag-accent"><i data-lucide="star" width="12" height="12"></i> Featured</span>
+
+        <h4>Outlined (neutral labels)</h4>
+        <div class="demo-row">
+          <span class="tag tag-outline"><i data-lucide="clock" width="12" height="12"></i> Pending</span>
+          <span class="tag tag-outline"><i data-lucide="check" width="12" height="12"></i> Paid</span>
+          <span class="tag tag-outline-primary">Priority</span>
         </div>
-        
-        <h4>Sizes</h4>
-        <div class="tag-list mb-3" style="align-items: center;">
-          <span class="tag tag-sm tag-blue">Small</span>
-          <span class="tag tag-blue">Default</span>
-          <span class="tag tag-lg tag-blue">Large</span>
-        </div>
-        
-        <h4>Priority Labels</h4>
-        <div class="tag-list mb-3">
-          <span class="tag tag-red"><i data-lucide="alert-triangle" width="12" height="12"></i> Critical</span>
-          <span class="tag tag-orange"><i data-lucide="arrow-up" width="12" height="12"></i> High</span>
-          <span class="tag tag-yellow">Medium</span>
-          <span class="tag tag-default">Low</span>
-        </div>
-        
-        <h4>Rules</h4>
-        <ul>
-          <li>Always include text (icons alone insufficient)</li>
-          <li>Must meet contrast requirements (use light bg + dark text)</li>
-          <li>Padding: 4px 8px (default), 2px 6px (small), 8px 16px (large)</li>
-        </ul>
       </section>
-      
-      <!-- Section: Inputs -->
+
+      <!-- INPUTS -->
       <section id="inputs">
-        <h2><i data-lucide="text-cursor-input" width="24" height="24"></i> 4.4 Inputs & Forms</h2>
-        
-        <div class="card">
-          <div class="form-group">
-            <label class="form-label" for="name">Full name <span style="color: var(--color-danger);">*</span></label>
-            <input type="text" id="name" class="form-input" placeholder="Enter your name">
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label" for="email">Email address</label>
-            <input type="email" id="email" class="form-input error" value="invalid-email">
-            <div class="form-error"><i data-lucide="alert-circle" width="14" height="14"></i> Enter a valid email (e.g. name@example.com)</div>
-          </div>
-        </div>
-        
-        <h4>Rules</h4>
-        <ul>
-          <li>Labels always visible — no placeholder-only labels</li>
-          <li>Errors explain <strong>HOW TO FIX</strong></li>
-          <li>Focus state uses accent colour</li>
-        </ul>
-      </section>
-      
-      <!-- Section: Progress Bars -->
-      <section id="progress">
-        <h2><i data-lucide="bar-chart-2" width="24" height="24"></i> 4.5 Progress Bars</h2>
-        <p>Reusable for health metrics, fill percentages, and loading states. Height: 6px default, 8px large.</p>
-        
-        <div class="card">
-          <div class="progress-labeled mb-3">
-            <div class="progress-label">
-              <span>Capacity Used</span>
-              <span class="progress-label-value">75%</span>
+        <h2><i data-lucide="text-cursor-input" width="22" height="22"></i> 13. Inputs</h2>
+        <p>Focus ring uses primary colour (brand-blue). Inputs remain neutral by default.</p>
+
+        <div class="demo-box">
+          <div class="form-section">Delivery address</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Street address</label>
+              <input type="text" class="form-input" value="123 Industrial Drive" />
             </div>
-            <div class="progress">
-              <div class="progress-fill progress-fill-accent" style="width: 75%;"></div>
+            <div class="form-group">
+              <label class="form-label">City</label>
+              <input type="text" class="form-input" value="Auckland" />
             </div>
           </div>
-          
-          <div class="progress-labeled mb-3">
-            <div class="progress-label">
-              <span>Health Score</span>
-              <span class="progress-label-value" style="color: var(--color-success);">92%</span>
+
+          <div class="form-section">Contact details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Contact name</label>
+              <input type="text" class="form-input" value="Sarah Mitchell" />
             </div>
-            <div class="progress progress-lg">
-              <div class="progress-fill progress-fill-success" style="width: 92%;"></div>
-            </div>
-          </div>
-          
-          <div class="progress-labeled mb-3">
-            <div class="progress-label">
-              <span>Risk Level</span>
-              <span class="progress-label-value" style="color: var(--color-warning);">45%</span>
-            </div>
-            <div class="progress">
-              <div class="progress-fill progress-fill-warning" style="width: 45%;"></div>
-            </div>
-          </div>
-          
-          <div class="progress-labeled">
-            <div class="progress-label">
-              <span>Critical Threshold</span>
-              <span class="progress-label-value" style="color: var(--color-danger);">89%</span>
-            </div>
-            <div class="progress">
-              <div class="progress-fill progress-fill-danger" style="width: 89%;"></div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="text" class="form-input" value="+64 9 555 1234" />
+              <div class="form-hint">Used for delivery notifications</div>
             </div>
           </div>
         </div>
-        
-        <h4>Colour Usage</h4>
-        <ul>
-          <li><strong>Accent:</strong> Neutral progress, capacity, completion</li>
-          <li><strong>Success:</strong> Positive metrics, health scores</li>
-          <li><strong>Warning:</strong> Approaching thresholds, attention needed</li>
-          <li><strong>Danger:</strong> Critical levels, over capacity</li>
-        </ul>
       </section>
-      
-      <!-- Section: Tables -->
+
+      <!-- TABLES -->
       <section id="tables">
-        <h2><i data-lucide="table" width="24" height="24"></i> 4.6 Tables & Records</h2>
-        <p>Tables are the PRIMARY interface for working with records.</p>
-        
-        <div class="table-wrapper">
-          <div class="table-toolbar">
+        <h2><i data-lucide="table" width="22" height="22"></i> 14. Tables</h2>
+
+        <p class="note">
+          Tables must be: sortable headers, neutral rows, subtle hover, bulk selection, and contextual table actions.
+          Avoid “decorative colour”.
+        </p>
+
+        <div class="table-container">
+          <div class="table-menu">
             <div class="table-search">
               <i data-lucide="search" width="16" height="16"></i>
-              <input type="text" placeholder="Search orders...">
+              <input type="text" placeholder="Search orders..." />
             </div>
-            <div class="flex gap-1">
-              <button class="btn btn-ghost btn-sm"><i data-lucide="filter" width="16" height="16"></i> Filter</button>
-              <button class="btn btn-ghost btn-sm"><i data-lucide="download" width="16" height="16"></i> Export</button>
+            <div class="table-actions">
+              <div class="view-toggle">
+                <button class="view-toggle-btn"><i data-lucide="grid" width="14" height="14"></i> Cards</button>
+                <button class="view-toggle-btn active"><i data-lucide="list" width="14" height="14"></i> List</button>
+              </div>
+              <button class="btn btn-secondary btn-sm"><i data-lucide="columns" width="14" height="14"></i> Columns</button>
             </div>
           </div>
-          <div class="table-toolbar table-bulk-actions" id="bulkActions" style="display: none;">
-            <span><strong>3</strong> items selected</span>
-            <button class="btn btn-sm btn-ghost">Edit</button>
-            <button class="btn btn-sm btn-danger">Delete</button>
-          </div>
+
           <table>
             <thead>
               <tr>
-                <th style="width: 40px;"><input type="checkbox" class="table-checkbox" onclick="toggleBulk()"></th>
-                <th class="sortable">Order ID <i data-lucide="chevron-down" width="14" height="14"></i></th>
-                <th class="sortable">Customer</th>
-                <th>Status</th>
-                <th>Zone</th>
-                <th class="sortable align-right">Progress</th>
+                <th style="width: 44px;"><input type="checkbox" class="table-checkbox" aria-label="Select all"></th>
+                <th class="sortable">Order # <span class="sort-icon"><i data-lucide="chevrons-up-down" width="14" height="14"></i></span></th>
+                <th>Products</th>
+                <th class="sortable sorted">Date <span class="sort-icon"><i data-lucide="chevron-down" width="14" height="14"></i></span></th>
                 <th class="align-right">Total</th>
-                <th style="width: 80px;"></th>
+                <th>Status</th>
+                <th class="align-right">Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><input type="checkbox" class="table-checkbox"></td>
-                <td><code>ORD-001</code></td>
-                <td>Acme Corp</td>
-                <td><span class="tag tag-sm tag-success">Complete</span></td>
-                <td><span class="tag tag-sm tag-blue">Zone A</span></td>
+                <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
+                <td><code>ORD-2026-0894</code></td>
+                <td>Safety barriers (x12)</td>
+                <td>Jan 10, 2026</td>
+                <td class="align-right">$2,268.00</td>
+                <td><span class="tag tag-primary"><i data-lucide="loader" width="12" height="12"></i> Processing</span></td>
                 <td class="align-right">
-                  <div class="cell-progress">
-                    <div class="cell-progress-bar"><div class="cell-progress-fill progress-fill-success" style="width: 100%;"></div></div>
-                    <span class="cell-progress-value">100%</span>
-                  </div>
-                </td>
-                <td class="align-right">$12,450</td>
-                <td>
                   <div class="row-actions">
-                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="pencil" width="14" height="14"></i></button>
-                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="trash-2" width="14" height="14"></i></button>
+                    <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="table-checkbox"></td>
-                <td><code>ORD-002</code></td>
-                <td>BuildRight Ltd</td>
-                <td><span class="tag tag-sm tag-warning">Pending</span></td>
-                <td><span class="tag tag-sm tag-teal">Zone B</span></td>
+                <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
+                <td><code>ORD-2026-0891</code></td>
+                <td>Bollards, line marking</td>
+                <td>Jan 8, 2026</td>
+                <td class="align-right">$1,450.00</td>
+                <td><span class="tag tag-info"><i data-lucide="truck" width="12" height="12"></i> In Transit</span></td>
                 <td class="align-right">
-                  <div class="cell-progress">
-                    <div class="cell-progress-bar"><div class="cell-progress-fill progress-fill-warning" style="width: 60%;"></div></div>
-                    <span class="cell-progress-value">60%</span>
-                  </div>
-                </td>
-                <td class="align-right">$8,320</td>
-                <td>
                   <div class="row-actions">
-                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="pencil" width="14" height="14"></i></button>
-                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="trash-2" width="14" height="14"></i></button>
+                    <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="table-checkbox"></td>
-                <td><code>ORD-003</code></td>
-                <td>SafeWorks NZ</td>
-                <td><span class="tag tag-sm tag-info">Processing</span></td>
-                <td><span class="tag tag-sm tag-orange">Zone C</span></td>
+                <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
+                <td><code>ORD-2026-0887</code></td>
+                <td>Forklift safety cage</td>
+                <td>Jan 5, 2026</td>
+                <td class="align-right">$895.00</td>
+                <td><span class="tag tag-success"><i data-lucide="check" width="12" height="12"></i> Delivered</span></td>
                 <td class="align-right">
-                  <div class="cell-progress">
-                    <div class="cell-progress-bar"><div class="cell-progress-fill progress-fill-accent" style="width: 35%;"></div></div>
-                    <span class="cell-progress-value">35%</span>
-                  </div>
-                </td>
-                <td class="align-right">$3,890</td>
-                <td>
                   <div class="row-actions">
-                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="pencil" width="14" height="14"></i></button>
-                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="trash-2" width="14" height="14"></i></button>
+                    <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
                   </div>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        
-        <h4>Enhanced Table Rules</h4>
-        <ul>
-          <li><strong>Search:</strong> Integrated search field with meaningful default sorting</li>
-          <li><strong>Multi-select:</strong> Checkboxes reveal bulk actions only when items selected</li>
-          <li><strong>Row actions:</strong> Appear on hover to reduce clutter</li>
-          <li><strong>In-cell visualisations:</strong> Progress bars, charts where useful</li>
-          <li><strong>Alignment:</strong> Left-align text, right-align numbers</li>
-        </ul>
       </section>
-      
-      <!-- Section: Cards -->
+
+      <!-- CARDS -->
       <section id="cards">
-        <h2><i data-lucide="credit-card" width="24" height="24"></i> 4.7 Cards</h2>
-        
-        <h3>Metric Cards</h3>
-        <p>Single KPI with optional trend indicator. Use accent border for emphasis.</p>
-        <div class="card-grid card-grid-4">
-          <div class="card-metric">
-            <div class="card-metric-label">Total Orders</div>
-            <div class="card-metric-value">1,284</div>
-            <div class="card-metric-trend up"><i data-lucide="trending-up" width="14" height="14"></i> 12% vs last month</div>
-          </div>
-          <div class="card-metric" style="border-left-color: var(--color-success);">
-            <div class="card-metric-label">Completed</div>
-            <div class="card-metric-value">1,156</div>
-            <div class="card-metric-trend up"><i data-lucide="trending-up" width="14" height="14"></i> 8%</div>
-          </div>
-          <div class="card-metric" style="border-left-color: var(--color-warning);">
-            <div class="card-metric-label">Pending</div>
-            <div class="card-metric-value">98</div>
-            <div class="card-metric-trend down"><i data-lucide="trending-down" width="14" height="14"></i> 3%</div>
-          </div>
-          <div class="card-metric" style="border-left-color: var(--color-danger);">
-            <div class="card-metric-label">Overdue</div>
-            <div class="card-metric-value">30</div>
-            <div class="card-metric-trend up" style="color: var(--color-danger);"><i data-lucide="trending-up" width="14" height="14"></i> 5%</div>
-          </div>
-        </div>
-        
-        <h3>Aggregate Status Card</h3>
-        <p>Related metrics grouped together with visual breakdown.</p>
-        <div class="card-grid">
-          <div class="card-status">
-            <div class="card-status-header">
-              <span class="card-status-title">Fleet Health</span>
-              <span class="tag tag-sm tag-success">Good</span>
-            </div>
-            <div class="card-status-grid">
-              <div>
-                <div class="card-status-item-value" style="color: var(--color-success);">42</div>
-                <div class="card-status-item-label">Active</div>
-              </div>
-              <div>
-                <div class="card-status-item-value" style="color: var(--color-warning);">8</div>
-                <div class="card-status-item-label">Maintenance</div>
-              </div>
-              <div>
-                <div class="card-status-item-value" style="color: var(--color-danger);">2</div>
-                <div class="card-status-item-label">Offline</div>
-              </div>
-            </div>
-            <div class="progress mt-2">
-              <div class="progress-fill progress-fill-success" style="width: 81%;"></div>
-            </div>
-          </div>
-          
-          <div class="card-status">
-            <div class="card-status-header">
-              <span class="card-status-title">Zone Coverage</span>
-              <span class="tag tag-sm tag-info">Monitored</span>
-            </div>
-            <div class="card-status-grid">
-              <div>
-                <div class="card-status-item-value">12</div>
-                <div class="card-status-item-label">Zones</div>
-              </div>
-              <div>
-                <div class="card-status-item-value">48</div>
-                <div class="card-status-item-label">Sensors</div>
-              </div>
-              <div>
-                <div class="card-status-item-value">99%</div>
-                <div class="card-status-item-label">Uptime</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <h3>Warning & Alert Cards</h3>
-        <p>Tinted background with icon for safety alerts and critical notices.</p>
-        <div class="card-warning mb-3">
-          <i data-lucide="alert-triangle" width="24" height="24" class="card-warning-icon"></i>
-          <div class="card-warning-content">
-            <h4>Speed Limit Exceeded</h4>
-            <p>Vehicle FLT-042 exceeded 15km/h in Zone B at 14:32. Review required.</p>
-          </div>
-        </div>
-        
-        <div class="card-danger">
-          <i data-lucide="alert-octagon" width="24" height="24" class="card-danger-icon"></i>
-          <div class="card-warning-content">
-            <h4>Safety Incident Reported</h4>
-            <p>Near-miss event logged in Loading Bay 3. Immediate investigation required.</p>
-          </div>
+        <h2><i data-lucide="credit-card" width="22" height="22"></i> 15. Cards & KPIs</h2>
+
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-card-header"><span class="kpi-card-label">Open Orders</span></div><div class="kpi-card-value">4</div></div>
+          <div class="kpi-card"><div class="kpi-card-header"><span class="kpi-card-label">In Transit</span></div><div class="kpi-card-value">2</div></div>
+          <div class="kpi-card"><div class="kpi-card-header"><span class="kpi-card-label">YTD Spend</span></div><div class="kpi-card-value">$24.5k</div></div>
+          <div class="kpi-card"><div class="kpi-card-header"><span class="kpi-card-label">Support Tickets</span></div><div class="kpi-card-value">1</div></div>
         </div>
       </section>
-      
-      <!-- Section: Alerts -->
+
+      <!-- ALERTS -->
       <section id="alerts">
-        <h2><i data-lucide="alert-triangle" width="24" height="24"></i> 4.8 Alerts & Panels</h2>
-        <p>Use semantic colours and icons. Always provide clear messages and recovery actions.</p>
-        
-        <h4>Inline Alerts</h4>
-        <div class="alert alert-info">
-          <i data-lucide="info" width="20" height="20" class="alert-icon"></i>
-          <div class="alert-content">
-            <div class="alert-title">System Update Available</div>
-            <p class="alert-message">A new version is ready to install. Update during off-peak hours for minimal disruption.</p>
-            <div class="alert-actions">
-              <button class="btn btn-sm btn-primary">Update Now</button>
-              <button class="btn btn-sm btn-ghost">Remind Later</button>
-            </div>
-          </div>
-          <button class="alert-dismiss" aria-label="Dismiss"><i data-lucide="x" width="16" height="16"></i></button>
-        </div>
-        
-        <div class="alert alert-success">
-          <i data-lucide="check-circle" width="20" height="20" class="alert-icon"></i>
-          <div class="alert-content">
-            <div class="alert-title">Changes Saved Successfully</div>
-            <p class="alert-message">Your configuration has been updated and is now active.</p>
-          </div>
-          <button class="alert-dismiss" aria-label="Dismiss"><i data-lucide="x" width="16" height="16"></i></button>
-        </div>
-        
+        <h2><i data-lucide="alert-triangle" width="22" height="22"></i> 16. Alerts</h2>
+
         <div class="alert alert-warning">
-          <i data-lucide="alert-triangle" width="20" height="20" class="alert-icon"></i>
+          <i data-lucide="alert-triangle" width="18" height="18" class="alert-icon"></i>
           <div class="alert-content">
-            <div class="alert-title">Maintenance Window Approaching</div>
-            <p class="alert-message">Scheduled maintenance in 30 minutes. Save your work to avoid data loss.</p>
+            <div class="alert-title">Payment due soon</div>
+            <p class="alert-message">Invoice #INV-2026-0156 is due in 3 days.</p>
           </div>
-          <button class="alert-dismiss" aria-label="Dismiss"><i data-lucide="x" width="16" height="16"></i></button>
         </div>
-        
+
         <div class="alert alert-danger">
-          <i data-lucide="alert-octagon" width="20" height="20" class="alert-icon"></i>
+          <i data-lucide="alert-octagon" width="18" height="18" class="alert-icon"></i>
           <div class="alert-content">
-            <div class="alert-title">Connection Lost</div>
-            <p class="alert-message">Unable to reach the server. Check your network connection and try again.</p>
-            <div class="alert-actions">
-              <button class="btn btn-sm btn-danger">Retry Connection</button>
-            </div>
+            <div class="alert-title">Payment overdue</div>
+            <p class="alert-message">Invoice #INV-2026-0142 is 7 days overdue.</p>
           </div>
         </div>
-        
-        <h4>Banner Alerts</h4>
-        <p>Full-width, persistent system messages.</p>
-        
-        <div class="banner-alert banner-alert-warning">
-          <i data-lucide="alert-triangle" width="20" height="20" style="color: var(--color-warning);"></i>
-          <div style="flex: 1;">
-            <strong>System maintenance scheduled for Sunday 10pm–2am.</strong> Some features may be unavailable.
-          </div>
-          <button class="btn btn-sm btn-ghost">Dismiss</button>
-        </div>
-        
-        <div class="banner-alert banner-alert-danger">
-          <i data-lucide="alert-octagon" width="20" height="20" style="color: var(--color-danger);"></i>
-          <div style="flex: 1;">
-            <strong>Critical: Payment processing is temporarily unavailable.</strong> Our team is investigating.
+
+        <div class="alert alert-success">
+          <i data-lucide="check-circle" width="18" height="18" class="alert-icon"></i>
+          <div class="alert-content">
+            <div class="alert-title">Order dispatched</div>
+            <p class="alert-message">Order #ORD-2026-0891 has shipped. ETA: Jan 12.</p>
           </div>
         </div>
       </section>
-      
-      <!-- Section: Navigation -->
-      <section id="navigation">
-        <h2><i data-lucide="layout" width="24" height="24"></i> 5. Tabs & Navigation</h2>
-        
-        <h3>Primary Tabs</h3>
-        <p>Use for main content sections within a page.</p>
-        <div class="tabs">
-          <button class="tab active">Overview</button>
-          <button class="tab">Details</button>
-          <button class="tab">History</button>
-          <button class="tab">Settings</button>
-        </div>
-        
-        <div class="card">
-          <h4>Nested Tabs</h4>
-          <p>For secondary navigation within a section (e.g., SKU detail views).</p>
-          <div class="tabs-nested">
-            <button class="tab active">Specifications</button>
-            <button class="tab">Inventory</button>
-            <button class="tab">Pricing</button>
-          </div>
-          <p class="note">Content for nested section appears here...</p>
-        </div>
-        
-        <h4>Tabs vs Segmented Control</h4>
-        <ul>
-          <li><strong>Tabs:</strong> Switch between content sections (different content)</li>
-          <li><strong>Segmented Control:</strong> Switch view modes (same content, different presentation)</li>
-        </ul>
-        
-        <div class="flex gap-3 flex-wrap mt-3">
-          <div>
-            <p class="note mb-1">Tabs (content sections)</p>
-            <div class="tabs" style="margin-bottom: 0;">
-              <button class="tab active">Orders</button>
-              <button class="tab">Customers</button>
-            </div>
-          </div>
-          <div>
-            <p class="note mb-1">Segmented (view modes)</p>
-            <div class="segmented-control">
-              <button class="segmented-control-item active">List</button>
-              <button class="segmented-control-item">Grid</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Section: Layouts -->
-      <section id="layouts">
-        <h2><i data-lucide="columns" width="24" height="24"></i> 6. Layouts</h2>
-        
-        <h3>6.1 Master–Detail Layout</h3>
-        <p>List on the left, detail panel on the right. Use for browsing records with inline preview.</p>
-        
-        <div class="layout-master-detail">
-          <div class="master-list">
-            <div class="master-list-header">
-              <div class="table-search" style="max-width: none;">
-                <i data-lucide="search" width="16" height="16"></i>
-                <input type="text" placeholder="Search...">
-              </div>
-            </div>
-            <div class="master-list-item active">
-              <div class="master-list-item-title">ORD-2024-001</div>
-              <div class="master-list-item-subtitle">Acme Corp • $12,450</div>
-            </div>
-            <div class="master-list-item">
-              <div class="master-list-item-title">ORD-2024-002</div>
-              <div class="master-list-item-subtitle">BuildRight Ltd • $8,320</div>
-            </div>
-            <div class="master-list-item">
-              <div class="master-list-item-title">ORD-2024-003</div>
-              <div class="master-list-item-subtitle">SafeWorks NZ • $3,890</div>
-            </div>
-          </div>
-          <div class="detail-panel">
-            <div class="flex justify-between items-center mb-3">
+
+      <!-- MODALS -->
+      <section id="modals">
+        <h2><i data-lucide="square" width="22" height="22"></i> 17. Modals</h2>
+        <p>Settings-style modals use horizontal tabs, neutral forms, and a fixed footer with actions aligned right.</p>
+
+        <div class="demo-box demo-box-dark">
+          <div class="modal-demo">
+            <div class="modal-header">
               <div>
-                <h3 style="margin: 0;">ORD-2024-001</h3>
-                <span class="tag tag-success">Complete</span>
+                <h3>Settings</h3>
+                <p>Configure defaults and manage account preferences</p>
               </div>
-              <div class="btn-group" style="margin: 0;">
-                <button class="btn btn-primary btn-sm">Edit</button>
-                <button class="btn btn-ghost btn-sm">Print</button>
+              <button class="modal-close" aria-label="Close">
+                <i data-lucide="x" width="18" height="18"></i>
+              </button>
+            </div>
+
+            <div class="modal-tabs">
+              <button class="modal-tab active">Profile</button>
+              <button class="modal-tab">Billing</button>
+              <button class="modal-tab">Users</button>
+              <button class="modal-tab">Security</button>
+            </div>
+
+            <div class="modal-body">
+              <div class="form-section">Profile</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Company name</label>
+                  <input class="form-input" value="Acme Industries Ltd" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Account number</label>
+                  <input class="form-input is-disabled" value="10042" disabled />
+                </div>
               </div>
             </div>
-            <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
-              <div><div class="note">Customer</div><strong>Acme Corp</strong></div>
-              <div><div class="note">Total</div><strong>$12,450</strong></div>
-              <div><div class="note">Date</div><strong>12 Jan 2024</strong></div>
+
+            <div class="modal-footer">
+              <button class="btn btn-secondary">Cancel</button>
+              <button class="btn btn-primary">Save changes</button>
             </div>
-          </div>
-        </div>
-        
-        <h3 class="mt-3">6.2 Interactive Grid/Plan Layout</h3>
-        <p>For floor plans, site maps, or spatial data. Includes toolbar for zoom, search, and fullscreen.</p>
-        
-        <div class="layout-grid-view">
-          <div class="grid-view-toolbar">
-            <div class="flex gap-1">
-              <button class="btn btn-ghost btn-sm"><i data-lucide="zoom-in" width="16" height="16"></i></button>
-              <button class="btn btn-ghost btn-sm"><i data-lucide="zoom-out" width="16" height="16"></i></button>
-              <button class="btn btn-ghost btn-sm"><i data-lucide="home" width="16" height="16"></i> Reset</button>
-            </div>
-            <div class="grid-view-tools">
-              <div class="table-search" style="max-width: 200px;">
-                <i data-lucide="search" width="16" height="16"></i>
-                <input type="text" placeholder="Find zone...">
-              </div>
-              <button class="btn btn-ghost btn-sm"><i data-lucide="maximize-2" width="16" height="16"></i></button>
-            </div>
-          </div>
-          <div class="grid-view-canvas">
-            <span><i data-lucide="map" width="48" height="48"></i><br>Interactive floor plan canvas</span>
           </div>
         </div>
       </section>
-      
-      <!-- Section: Page Layout & Hierarchy (WMS) -->
-      <section id="page-layout">
-        <h2><i data-lucide="layout-grid" width="24" height="24"></i> 6.1. Page Layout &amp; Hierarchy (WMS)</h2>
-        <p>Define the overarching page structure used in warehouse management scenarios. Use this hierarchy to organise information clearly and support efficient workflows.</p>
-        <div class="card">
-          <h4>Hierarchical Structure</h4>
-          <ul>
-            <li><strong>Header:</strong> Displays the current warehouse, mode (e.g. Manual / Automatic) and user account information. Uses a neutral background with brand-blue text for context.</li>
-            <li><strong>Primary Menu:</strong> Shows the active module (e.g. Outbound) alongside global search, primary settings and user role icons. Actions sit on the same row as the module label to reduce height.</li>
-            <li><strong>KPI Row:</strong> Includes a small set of metric cards summarising key indicators (e.g. Outstanding Orders, Lines to Pick). Cards use <code>radius-sm</code> (4 px) and neutral backgrounds for a crisp, compact appearance.</li>
-            <li><strong>Secondary Menu:</strong> Provides page-level actions. Primary actions (e.g. Create fulfillment) align left; distinct or contextual actions (e.g. Update ERP) align right to separate them visually.</li>
-            <li><strong>Table Menu:</strong> Integrated contextual search appears on the left with a clear label (e.g. “Search fulfillments”). Table-specific actions like column visibility and export live on the far right.</li>
-            <li><strong>Table:</strong> Dense tables with sortable/filterable columns. Support multi-select checkboxes, bulk action toolbars and row actions on hover. Align text left and numbers right. Use minimal row heights and <code>radius-sm</code> corners for a utilitarian look.</li>
-          </ul>
+
+      <!-- ACTION HIERARCHY -->
+      <section id="action-hierarchy">
+        <h2><i data-lucide="split" width="22" height="22"></i> 18. Action Hierarchy</h2>
+        <p>Primary actions live on the left with the page switcher. Distinct/system actions live on the right.</p>
+
+        <div class="demo-box">
+          <div class="action-bar">
+            <div class="action-bar-left">
+              <div class="section-tabs">
+                <button class="section-tab active">Orders (47)</button>
+                <button class="section-tab">Quotes (3)</button>
+              </div>
+              <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> New order</button>
+            </div>
+            <div class="action-bar-right">
+              <button class="btn btn-secondary"><i data-lucide="download" width="16" height="16"></i> Export</button>
+              <button class="btn btn-secondary"><i data-lucide="refresh-cw" width="16" height="16"></i> Sync</button>
+            </div>
+          </div>
         </div>
-        <h4>Design Notes</h4>
+      </section>
+
+      <!-- BULK ACTIONS -->
+      <section id="bulk-actions">
+        <h2><i data-lucide="check-square" width="22" height="22"></i> 19. Bulk Actions</h2>
+        <p>Bulk actions appear only when one or more rows are selected. Keep them visually attached to the table container.</p>
         <ul>
-          <li><strong>Minimal Colour:</strong> Rely on neutral shades for most surfaces. Reserve accent and semantic colours for statuses, tags and interactive states.</li>
-          <li><strong>Compact Radii:</strong> Use the smallest radius token (<code>radius-sm = 4 px</code>) on cards, buttons and tables to mirror the crisp, industrial feel of WMS tools.</li>
-          <li><strong>Spacing:</strong> Maintain tight vertical spacing between each hierarchical row (8–16 px) to preserve vertical real estate while keeping elements distinct.</li>
-          <li><strong>Responsiveness:</strong> The hierarchy compresses gracefully on smaller screens, collapsing menu rows into dropdowns or stacked panels while preserving order.</li>
+          <li>Show selection count + key actions (export, update, archive, etc.)</li>
+          <li>Keep actions neutral; destructive actions must be explicit and confirm</li>
+          <li>Provide “Clear selection”</li>
         </ul>
       </section>
 
-      <!-- Section: Dashboards -->
-      <section id="dashboards">
-        <h2><i data-lucide="pie-chart" width="24" height="24"></i> 7. Dashboards</h2>
-        <p>Card-based layouts for KPIs and status monitoring. Use grid system with consistent spacing.</p>
-        
-        <h4>Typical Dashboard Layout</h4>
-        <div class="dashboard-grid">
-          <div class="card-metric">
-            <div class="card-metric-label">Active Units</div>
-            <div class="card-metric-value">42</div>
-            <div class="card-metric-trend up"><i data-lucide="trending-up" width="14" height="14"></i> 5%</div>
-          </div>
-          <div class="card-metric" style="border-left-color: var(--color-success);">
-            <div class="card-metric-label">Uptime</div>
-            <div class="card-metric-value">99.2%</div>
-          </div>
-          <div class="card-metric" style="border-left-color: var(--color-warning);">
-            <div class="card-metric-label">Alerts</div>
-            <div class="card-metric-value">7</div>
-          </div>
-          <div class="card-metric" style="border-left-color: var(--color-info);">
-            <div class="card-metric-label">Tasks</div>
-            <div class="card-metric-value">23</div>
-          </div>
-        </div>
-        
-        <div class="dashboard-grid dashboard-grid-3">
-          <div class="card card-span-2">
-            <h4 style="margin-top: 0;">Zone Activity</h4>
-            <div style="height: 120px; background: var(--color-neutral-surface); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--color-neutral-mid);">
-              <i data-lucide="bar-chart-2" width="32" height="32"></i> Chart placeholder
-            </div>
-          </div>
-          <div class="card-status">
-            <div class="card-status-header">
-              <span class="card-status-title">System Health</span>
-            </div>
-            <div class="progress-labeled mt-2">
-              <div class="progress-label"><span>CPU</span><span>45%</span></div>
-              <div class="progress"><div class="progress-fill progress-fill-success" style="width: 45%;"></div></div>
-            </div>
-            <div class="progress-labeled mt-2">
-              <div class="progress-label"><span>Memory</span><span>72%</span></div>
-              <div class="progress"><div class="progress-fill progress-fill-warning" style="width: 72%;"></div></div>
-            </div>
-            <div class="progress-labeled mt-2">
-              <div class="progress-label"><span>Storage</span><span>58%</span></div>
-              <div class="progress"><div class="progress-fill progress-fill-accent" style="width: 58%;"></div></div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="card-warning">
-          <i data-lucide="alert-triangle" width="24" height="24" class="card-warning-icon"></i>
-          <div class="card-warning-content">
-            <h4>3 Zones Require Attention</h4>
-            <p>Pedestrian density exceeds threshold in Zones A, C, and F. Review traffic patterns.</p>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Section: AI -->
-      <section id="ai">
-        <h2><i data-lucide="sparkles" width="24" height="24"></i> 8. AI & Data-Driven UX</h2>
-        <p class="note">AI is assistive, explainable, and accountable.</p>
-        
-        <div class="card" style="border-left: 4px solid var(--color-accent);">
-          <p style="font: var(--text-label); color: var(--color-accent); margin-bottom: 4px;"><i data-lucide="sparkles" width="14" height="14"></i> AI RECOMMENDATION</p>
-          <p style="margin-bottom: var(--space-1);"><strong>Optimise Zone B routing for pedestrian safety.</strong></p>
-          <p style="font: var(--text-body-sm); color: var(--color-neutral-mid); margin-bottom: var(--space-2);">Based on last 7 days traffic data. Assumes standard operating hours.</p>
-          <div class="btn-group">
-            <button class="btn btn-primary">Accept</button>
-            <button class="btn btn-primary-outline">Modify</button>
-            <button class="btn btn-ghost">Dismiss</button>
-          </div>
-        </div>
-        
-        <h4>AI UX Principles</h4>
+      <!-- DENSITY -->
+      <section id="density">
+        <h2><i data-lucide="minimize-2" width="22" height="22"></i> 20. Density Modes</h2>
+        <h4>Comfortable (default)</h4>
         <ul>
-          <li><strong>Assistive, Not Authoritative:</strong> AI suggests; humans decide</li>
-          <li><strong>Explain Before Trust:</strong> Show data and assumptions</li>
-          <li><strong>Reversible:</strong> Allow override without penalty</li>
+          <li>Table padding: 12px (approx)</li>
+          <li>Touch targets: 36–44px</li>
         </ul>
+
+        <h4>Compact</h4>
+        <ul>
+          <li>Table padding: 6–8px</li>
+          <li>Touch targets: 28–32px</li>
+        </ul>
+
+        <div class="table-container mt-4">
+          <table class="table-compact">
+            <thead>
+              <tr>
+                <th style="width: 40px;"><input type="checkbox" class="table-checkbox" aria-label="Select all"></th>
+                <th>Invoice #</th>
+                <th>Date</th>
+                <th class="align-right">Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td><td>INV-2026-0156</td><td>Jan 5, 2026</td><td class="align-right">$1,245.00</td><td><span class="tag tag-outline tiny">Due Jan 15</span></td></tr>
+              <tr><td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td><td>INV-2026-0142</td><td>Dec 28, 2025</td><td class="align-right">$647.00</td><td><span class="tag tag-danger tiny">Overdue</span></td></tr>
+              <tr><td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td><td>INV-2026-0128</td><td>Dec 15, 2025</td><td class="align-right">$2,180.00</td><td><span class="tag tag-success tiny">Paid</span></td></tr>
+            </tbody>
+          </table>
+        </div>
       </section>
-      
-      <!-- Section: Accessibility -->
+
+      <!-- ACCESSIBILITY -->
       <section id="accessibility">
-        <h2><i data-lucide="accessibility" width="24" height="24"></i> 9. Accessibility (WCAG AA)</h2>
-        
-        <div class="card-grid">
-          <div class="card">
-            <h4><i data-lucide="contrast" width="16" height="16"></i> Contrast</h4>
-            <p>4.5:1 for text, 3:1 for UI. Colour never sole indicator.</p>
-          </div>
-          <div class="card">
-            <h4><i data-lucide="keyboard" width="16" height="16"></i> Keyboard</h4>
-            <p>All elements reachable. Logical tab order. No trapped focus.</p>
-          </div>
-          <div class="card">
-            <h4><i data-lucide="focus" width="16" height="16"></i> Focus</h4>
-            <p>Always visible. Returns logically after modal close.</p>
-          </div>
-          <div class="card">
-            <h4><i data-lucide="file-code" width="16" height="16"></i> Semantics</h4>
-            <p>Native HTML. ARIA where needed. Labels linked.</p>
-          </div>
+        <h2><i data-lucide="accessibility" width="22" height="22"></i> 21. Accessibility</h2>
+        <div class="demo-box">
+          <h4>Contrast</h4>
+          <p>4.5:1 for text, 3:1 for UI. Colour is never the only indicator.</p>
+          <h4>Keyboard</h4>
+          <p>All interactive elements are keyboard accessible. Escape closes modals.</p>
+          <h4>Focus</h4>
+          <p>Use a visible 2px outline in primary colour with offset.</p>
+          <h4>Touch targets</h4>
+          <p>Minimum 36×36px (compact) or 44×44px (comfortable).</p>
         </div>
       </section>
-      
-      <!-- Section: Governance -->
-      <section id="governance">
-        <h2><i data-lucide="shield-check" width="24" height="24"></i> 10. Governance</h2>
-        
-        <h4>Source of Truth</h4>
-        <ol>
-          <li>This documentation</li>
-          <li>Figma – Vanguard UI Design Guidelines</li>
-          <li>Product implementations</li>
-        </ol>
-        
-        <h4>Anti-Patterns</h4>
-        <ul>
-          <li>One-off components for speed</li>
-          <li>Hard-coded colours/spacing</li>
-          <li>AI-generated UI without review</li>
-        </ul>
-      </section>
-      
-      <!-- Footer -->
-      <footer style="margin-top: var(--space-6); padding-top: var(--space-3); border-top: 1px solid var(--color-neutral-light);">
-        <p class="note">Vanguard UI Design Guidelines v1.1 — For developers and AI code generation tools</p>
+
+      <footer class="doc-footer">
+        <p class="note">Vanguard UI Design Guidelines v3.1 • Customer Portal</p>
       </footer>
-      
+
     </main>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
   <script>
-    // Initialize Lucide icons
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-      }
-    });
-    
-    if (typeof lucide !== 'undefined') {
-      lucide.createIcons();
+    function initIcons() {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+      else setTimeout(initIcons, 100);
     }
-    
-    // Mobile navigation
+    initIcons();
+    document.addEventListener('DOMContentLoaded', initIcons);
+    window.addEventListener('load', initIcons);
+
     function toggleNav() {
       document.getElementById('nav').classList.toggle('open');
     }
-    
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('nav').classList.remove('open');
-      });
+
+    document.querySelectorAll('.doc-nav-link').forEach(link => {
+      link.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
     });
-    
-    // Table bulk actions demo
-    function toggleBulk() {
-      const bulk = document.getElementById('bulkActions');
-      bulk.style.display = bulk.style.display === 'none' ? 'flex' : 'none';
-    }
-    
-    // Active nav highlighting
+
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
+    const navLinks = document.querySelectorAll('.doc-nav-link');
+
     function updateActiveNav() {
       let current = '';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
+        if (scrollY >= section.offsetTop - 120) current = section.getAttribute('id');
       });
-      
       navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
       });
     }
-    
     window.addEventListener('scroll', updateActiveNav);
     updateActiveNav();
   </script>
