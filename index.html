@@ -759,100 +759,27 @@
         </div>
       </section>
 
-<!-- PAGE HIERARCHY -->
-<section id="page-hierarchy">
-  <h2><i data-lucide="layers" width="22" height="22"></i> Page Layout & Hierarchy</h2>
+      <!-- ACTION HIERARCHY -->
+      <section id="action-hierarchy">
+        <h2><i data-lucide="split" width="22" height="22"></i> 18. Action Hierarchy</h2>
+        <p>Primary actions live on the left with the page switcher. Distinct/system actions live on the right.</p>
 
-  <p>
-    Vanguard applications follow a strict vertical hierarchy. Each horizontal row has a single
-    responsibility. This prevents visual noise, clarifies scope, and ensures consistent user
-    expectations across all modules.
-  </p>
-
-  <h3>Standard Page Stack (Top → Bottom)</h3>
-
-  <div class="hierarchy-stack">
-
-    <!-- HEADER -->
-    <div class="hierarchy-row header-row">
-      <strong>Main Header</strong>
-      <p>
-        Displays overall context: page or workspace name, mode switcher, and user identity.
-        No operational actions live here.
-      </p>
-      <ul>
-        <li>Page / account name</li>
-        <li>High-level context (counts, status)</li>
-        <li>Mode switcher (e.g. Customer/Admin)</li>
-        <li>User identity</li>
-      </ul>
-    </div>
-
-    <!-- PRIMARY NAV -->
-    <div class="hierarchy-row primary-nav-row">
-      <strong>Primary Navigation Bar</strong>
-      <p>
-        System-level navigation and controls that affect the entire application.
-      </p>
-      <ul>
-        <li>Module navigation</li>
-        <li>Global search (system-wide)</li>
-        <li>Settings</li>
-        <li>Role / persona switcher</li>
-      </ul>
-    </div>
-
-    <!-- KPIS -->
-    <div class="hierarchy-row kpi-row">
-      <strong>Metrics & KPI Row</strong>
-      <p>
-        Read-only overview of key metrics for the active module.
-      </p>
-      <ul>
-        <li>KPIs and summary cards</li>
-        <li>Status indicators</li>
-        <li>No primary actions</li>
-      </ul>
-    </div>
-
-    <!-- SECONDARY -->
-    <div class="hierarchy-row secondary-row">
-      <strong>Secondary Menu & Primary Actions</strong>
-      <p>
-        Page-level navigation and actions scoped to the current module or dataset.
-      </p>
-      <ul>
-        <li>Secondary tabs / page switcher</li>
-        <li><strong>Primary actions aligned right</strong> (Create, Start, Submit)</li>
-        <li><strong>Distinct / system actions aligned left</strong> (Import, Sync)</li>
-      </ul>
-    </div>
-
-    <!-- TABLE -->
-    <div class="hierarchy-row table-row">
-      <strong>Table Menu & Data Table</strong>
-      <p>
-        The working area. All dataset-specific controls are grouped together.
-      </p>
-      <ul>
-        <li>Contextual filters and table-scoped search (left)</li>
-        <li>Table controls (columns, export, view) aligned right</li>
-        <li>Sortable, filterable columns</li>
-        <li>Bulk selection and bulk action toolbar</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <h3 class="mt-4">Hierarchy Rules</h3>
-  <ul>
-    <li>Each row has a single responsibility — never mix scopes.</li>
-    <li>Global controls never appear inside tables.</li>
-    <li>Primary actions must visually dominate secondary actions.</li>
-    <li>Table controls always live on the same row as table search.</li>
-    <li>Colour is used sparingly to reinforce hierarchy, not decorate.</li>
-  </ul>
-</section>
+        <div class="demo-box">
+          <div class="action-bar">
+            <div class="action-bar-left">
+              <div class="section-tabs">
+                <button class="section-tab active">Orders (47)</button>
+                <button class="section-tab">Quotes (3)</button>
+              </div>
+              <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> New order</button>
+            </div>
+            <div class="action-bar-right">
+              <button class="btn btn-secondary"><i data-lucide="download" width="16" height="16"></i> Export</button>
+              <button class="btn btn-secondary"><i data-lucide="refresh-cw" width="16" height="16"></i> Sync</button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- BULK ACTIONS -->
       <section id="bulk-actions">
