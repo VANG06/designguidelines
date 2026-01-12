@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanguard UI Design Guidelines</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* =======================================================================
+       DESIGN TOKENS
+       All values from the guidelines - this IS the source of truth
+    ======================================================================= */
+    
+    :root {
+      /* Brand Anchors (Core Identity) */
+      --color-brand-blue: #004674;
+      --color-brand-red: #ff0000;
+      
+      /* Accent Colour (Primary Actions & Selected States) */
+      --color-accent: #0891B2;
+      --color-accent-hover: #0E7490;
+      --color-accent-active: #155E75;
+      --color-accent-light: #ECFEFF;
+      --color-accent-disabled: #A5F3FC;
+      
+      /* Neutral Palette (80-90% of UI) */
+      --color-neutral-dark: #1F2933;
+      --color-neutral-mid: #6B7280;
+      --color-neutral-light: #E5E7EB;
+      --color-neutral-surface: #F8FAFC;
+      --color-white: #FFFFFF;
+      
+      /* Semantic Colour Tokens */
+      --color-primary: #004674;
+      --color-primary-hover: #00385D;
+      --color-primary-active: #002A46;
+      --color-primary-disabled: #9FB3C8;
+      
+      --color-secondary: #6B7280;
+      --color-secondary-hover: #4B5563;
+      --color-secondary-active: #374151;
+      --color-secondary-disabled: #D1D5DB;
+      
+      --color-success: #15803D;
+      --color-success-hover: #166534;
+      --color-success-light: #DCFCE7;
+      --color-success-border: #86EFAC;
+      
+      --color-warning: #B45309;
+      --color-warning-hover: #92400E;
+      --color-warning-light: #FEF3C7;
+      --color-warning-border: #FCD34D;
+      
+      --color-danger: #DC2626;
+      --color-danger-hover: #B91C1C;
+      --color-danger-light: #FEE2E2;
+      --color-danger-border: #FCA5A5;
+      
+      --color-info: #2563EB;
+      --color-info-hover: #1D4ED8;
+      --color-info-light: #DBEAFE;
+      --color-info-border: #93C5FD;
+      
+      /* Category Colours (Tags, Chips, Status) */
+      --color-cat-blue: #3B82F6;
+      --color-cat-blue-light: #EFF6FF;
+      --color-cat-blue-border: #BFDBFE;
+      
+      --color-cat-teal: #14B8A6;
+      --color-cat-teal-light: #F0FDFA;
+      --color-cat-teal-border: #99F6E4;
+      
+      --color-cat-orange: #F97316;
+      --color-cat-orange-light: #FFF7ED;
+      --color-cat-orange-border: #FED7AA;
+      
+      --color-cat-purple: #8B5CF6;
+      --color-cat-purple-light: #F5F3FF;
+      --color-cat-purple-border: #DDD6FE;
+      
+      --color-cat-pink: #EC4899;
+      --color-cat-pink-light: #FDF2F8;
+      --color-cat-pink-border: #FBCFE8;
+      
+      --color-cat-green: #22C55E;
+      --color-cat-green-light: #F0FDF4;
+      --color-cat-green-border: #BBF7D0;
+      
+      --color-cat-red: #EF4444;
+      --color-cat-red-light: #FEF2F2;
+      --color-cat-red-border: #FECACA;
+      
+      --color-cat-yellow: #EAB308;
+      --color-cat-yellow-light: #FEFCE8;
+      --color-cat-yellow-border: #FEF08A;
+      
+      /* Typography */
+      --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      
+      --text-heading-xl: 600 32px/1.25 var(--font-family);
+      --text-heading-lg: 600 24px/1.3 var(--font-family);
+      --text-heading-md: 600 20px/1.35 var(--font-family);
+      --text-body-lg: 400 16px/1.5 var(--font-family);
+      --text-body-md: 400 14px/1.5 var(--font-family);
+      --text-body-sm: 400 12px/1.4 var(--font-family);
+      --text-label: 500 12px/1.2 var(--font-family);
+      --text-caption: 400 11px/1.2 var(--font-family);
+      
+      /* Spacing (8pt system) */
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 40px;
+      --space-6: 48px;
+      --space-7: 56px;
+      --space-8: 64px;
+      
+      /* Radius & Elevation */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+      
+      --elevation-0: none;
+      --elevation-1: 0 1px 2px rgba(0,0,0,0.06);
+      --elevation-2: 0 4px 8px rgba(0,0,0,0.08);
+      --elevation-3: 0 8px 16px rgba(0,0,0,0.12);
+      
+      /* Motion */
+      --duration: 200ms;
+      --easing: ease-in-out;
+    }
+    
+    /* =======================================================================
+       BASE STYLES
+    ======================================================================= */
+    
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    body {
+      margin: 0;
+      font: var(--text-body-md);
+      color: var(--color-neutral-dark);
+      background: var(--color-neutral-surface);
+    }
+    
+    /* =======================================================================
+       LAYOUT (Application Shell)
+    ======================================================================= */
+    
+    .shell {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+    
+    .nav {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-3);
+    }
+    
+    .nav-logo {
+      font: var(--text-heading-md);
+      color: white;
+      margin-bottom: var(--space-3);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .nav-section {
+      font: var(--text-label);
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: var(--space-3) 0 var(--space-1) 0;
+    }
+    
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-1);
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font: var(--text-body-sm);
+      border-radius: var(--radius-sm);
+      transition: background var(--duration) var(--easing);
+    }
+    
+    .nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
+    .nav-link:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+    .nav-link.active { background: rgba(255,255,255,0.15); color: white; }
+    .nav-link i, .nav-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+    
+    .main {
+      padding: var(--space-4);
+      max-width: 1000px;
+    }
+    
+    /* =======================================================================
+       TYPOGRAPHY
+    ======================================================================= */
+    
+    h1 { font: var(--text-heading-xl); color: var(--color-primary); margin: 0 0 var(--space-1) 0; }
+    h2 { font: var(--text-heading-lg); color: var(--color-primary); margin: var(--space-5) 0 var(--space-2) 0; padding-top: var(--space-3); border-top: 1px solid var(--color-neutral-light); }
+    h3 { font: var(--text-heading-md); color: var(--color-neutral-dark); margin: var(--space-3) 0 var(--space-2) 0; }
+    h4 { font: var(--text-body-lg); font-weight: 600; color: var(--color-neutral-dark); margin: var(--space-2) 0 var(--space-1) 0; }
+    p { margin: 0 0 var(--space-2) 0; max-width: 70ch; }
+    .subtitle { font: var(--text-body-lg); color: var(--color-neutral-mid); margin-bottom: var(--space-3); }
+    .note { font: var(--text-body-sm); color: var(--color-neutral-mid); font-style: italic; }
+    code { font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; background: var(--color-neutral-light); padding: 2px 6px; border-radius: var(--radius-sm); }
+    ul, ol { margin: 0 0 var(--space-2) 0; padding-left: var(--space-3); }
+    li { margin-bottom: 4px; }
+    kbd { display: inline-block; padding: 2px 6px; font: var(--text-body-sm); font-family: 'SF Mono', Consolas, monospace; background: var(--color-neutral-light); border: 1px solid var(--color-neutral-mid); border-radius: var(--radius-sm); box-shadow: 0 1px 0 var(--color-neutral-mid); }
+    
+    /* =======================================================================
+       CARDS
+    ======================================================================= */
+    
+    .card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--elevation-2);
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    
+    .card-grid-4 {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    
+    /* Metric Card */
+    .card-metric {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--elevation-1);
+      padding: var(--space-3);
+      border-left: 4px solid var(--color-accent);
+    }
+    
+    .card-metric-label {
+      font: var(--text-label);
+      color: var(--color-neutral-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--space-1);
+    }
+    
+    .card-metric-value {
+      font: var(--text-heading-xl);
+      color: var(--color-neutral-dark);
+      margin-bottom: 4px;
+    }
+    
+    .card-metric-trend {
+      font: var(--text-body-sm);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .card-metric-trend.up { color: var(--color-success); }
+    .card-metric-trend.down { color: var(--color-danger); }
+    
+    /* Aggregate Status Card */
+    .card-status {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--elevation-1);
+      padding: var(--space-3);
+    }
+    
+    .card-status-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2);
+    }
+    
+    .card-status-title {
+      font: var(--text-body-md);
+      font-weight: 600;
+    }
+    
+    .card-status-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-2);
+      text-align: center;
+    }
+    
+    .card-status-item-value {
+      font: var(--text-heading-md);
+      color: var(--color-neutral-dark);
+    }
+    
+    .card-status-item-label {
+      font: var(--text-caption);
+      color: var(--color-neutral-mid);
+    }
+    
+    /* Warning Card */
+    .card-warning {
+      background: var(--color-warning-light);
+      border: 1px solid var(--color-warning-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      display: flex;
+      gap: var(--space-2);
+    }
+    
+    .card-warning-icon {
+      color: var(--color-warning);
+      flex-shrink: 0;
+    }
+    
+    .card-warning-content h4 {
+      margin: 0 0 4px 0;
+      color: var(--color-warning-hover);
+    }
+    
+    .card-warning-content p {
+      margin: 0;
+      font: var(--text-body-sm);
+      color: var(--color-neutral-dark);
+    }
+    
+    /* Danger Card */
+    .card-danger {
+      background: var(--color-danger-light);
+      border: 1px solid var(--color-danger-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      display: flex;
+      gap: var(--space-2);
+    }
+    
+    .card-danger-icon {
+      color: var(--color-danger);
+      flex-shrink: 0;
+    }
+    
+    /* =======================================================================
+       GLOBAL NAVIGATION (Horizontal Module Bar)
+    ======================================================================= */
+    
+    .global-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      background: var(--color-white);
+      border-bottom: 1px solid var(--color-neutral-light);
+      padding: 0 var(--space-3);
+      height: 56px;
+    }
+    
+    .global-nav-logo {
+      font: var(--text-heading-md);
+      color: var(--color-primary);
+      margin-right: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+    
+    .global-nav-items {
+      display: flex;
+      gap: var(--space-1);
+      flex: 1;
+    }
+    
+    .global-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: var(--space-1) var(--space-2);
+      font: var(--text-body-md);
+      font-weight: 500;
+      color: var(--color-neutral-mid);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: all var(--duration) var(--easing);
+      white-space: nowrap;
+    }
+    
+    .global-nav-item:hover {
+      color: var(--color-neutral-dark);
+      background: var(--color-neutral-surface);
+    }
+    
+    .global-nav-item.active {
+      color: var(--color-accent);
+      background: var(--color-accent-light);
+    }
+    
+    .global-nav-item i, .global-nav-item svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    
+    .global-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    
+    .global-nav-overflow {
+      display: none;
+    }
+    
+    /* =======================================================================
+       COMMAND PALETTE / GLOBAL SEARCH
+    ======================================================================= */
+    
+    .command-palette-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 15vh;
+      z-index: 1000;
+    }
+    
+    .command-palette {
+      width: 100%;
+      max-width: 560px;
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--elevation-3);
+      overflow: hidden;
+    }
+    
+    .command-palette-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      border-bottom: 1px solid var(--color-neutral-light);
+    }
+    
+    .command-palette-input-wrapper i {
+      color: var(--color-neutral-mid);
+    }
+    
+    .command-palette-input {
+      flex: 1;
+      border: none;
+      font: var(--text-body-lg);
+      outline: none;
+      background: transparent;
+    }
+    
+    .command-palette-input::placeholder {
+      color: var(--color-neutral-mid);
+    }
+    
+    .command-palette-shortcut {
+      display: flex;
+      gap: 4px;
+    }
+    
+    .command-palette-results {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .command-palette-group {
+      padding: var(--space-1) var(--space-2);
+    }
+    
+    .command-palette-group-label {
+      font: var(--text-label);
+      color: var(--color-neutral-mid);
+      text-transform: uppercase;
+      padding: var(--space-1);
+    }
+    
+    .command-palette-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+    
+    .command-palette-item:hover,
+    .command-palette-item.focused {
+      background: var(--color-accent-light);
+    }
+    
+    .command-palette-item.focused {
+      outline: 2px solid var(--color-accent);
+      outline-offset: -2px;
+    }
+    
+    .command-palette-item i {
+      color: var(--color-neutral-mid);
+      width: 20px;
+      height: 20px;
+    }
+    
+    .command-palette-item-content {
+      flex: 1;
+    }
+    
+    .command-palette-item-title {
+      font: var(--text-body-md);
+      color: var(--color-neutral-dark);
+    }
+    
+    .command-palette-item-title mark {
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+    
+    .command-palette-item-subtitle {
+      font: var(--text-body-sm);
+      color: var(--color-neutral-mid);
+    }
+    
+    .command-palette-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-1) var(--space-3);
+      border-top: 1px solid var(--color-neutral-light);
+      background: var(--color-neutral-surface);
+      font: var(--text-caption);
+      color: var(--color-neutral-mid);
+    }
+    
+    .command-palette-hint {
+      display: flex;
+      gap: var(--space-2);
+    }
+    
+    .command-palette-hint span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    /* =======================================================================
+       SETTINGS MODAL
+    ======================================================================= */
+    
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: var(--space-4);
+    }
+    
+    .modal-large {
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--elevation-3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-3);
+      border-bottom: 1px solid var(--color-neutral-light);
+    }
+    
+    .modal-header h3 {
+      margin: 0;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-1);
+      color: var(--color-neutral-mid);
+      border-radius: var(--radius-sm);
+    }
+    
+    .modal-close:hover {
+      background: var(--color-neutral-light);
+      color: var(--color-neutral-dark);
+    }
+    
+    .modal-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    
+    .modal-tabs-vertical {
+      width: 200px;
+      background: var(--color-neutral-surface);
+      border-right: 1px solid var(--color-neutral-light);
+      padding: var(--space-2);
+      flex-shrink: 0;
+    }
+    
+    .modal-tab-vertical {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      width: 100%;
+      padding: var(--space-1) var(--space-2);
+      font: var(--text-body-md);
+      color: var(--color-neutral-mid);
+      background: none;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-align: left;
+      margin-bottom: 4px;
+    }
+    
+    .modal-tab-vertical:hover {
+      background: var(--color-neutral-light);
+      color: var(--color-neutral-dark);
+    }
+    
+    .modal-tab-vertical.active {
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+    }
+    
+    .modal-tab-vertical i {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .modal-content {
+      flex: 1;
+      padding: var(--space-3);
+      overflow-y: auto;
+    }
+    
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-2);
+      padding: var(--space-3);
+      border-top: 1px solid var(--color-neutral-light);
+      background: var(--color-neutral-surface);
+    }
+    
+    /* =======================================================================
+       TABLES
+    ======================================================================= */
+    
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: var(--space-3);
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--elevation-1);
+    }
+    
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-2);
+      border-bottom: 1px solid var(--color-neutral-light);
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    
+    .table-search {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      background: var(--color-neutral-surface);
+      border: 1px solid var(--color-neutral-light);
+      border-radius: var(--radius-sm);
+      padding: var(--space-1) var(--space-2);
+      flex: 1;
+      max-width: 300px;
+    }
+    
+    .table-search input {
+      border: none;
+      background: none;
+      font: var(--text-body-sm);
+      flex: 1;
+      outline: none;
+    }
+    
+    .table-search i { color: var(--color-neutral-mid); }
+    
+    .table-bulk-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-1) var(--space-2);
+      background: var(--color-accent-light);
+      border-radius: var(--radius-sm);
+      font: var(--text-body-sm);
+    }
+    
+    .view-toggle {
+      display: flex;
+      background: var(--color-neutral-light);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+    }
+    
+    .view-toggle-btn {
+      padding: 6px var(--space-1);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--color-neutral-mid);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font: var(--text-body-sm);
+    }
+    
+    .view-toggle-btn.active {
+      background: var(--color-white);
+      color: var(--color-neutral-dark);
+      box-shadow: var(--elevation-1);
+    }
+    
+    .view-toggle-btn i { width: 16px; height: 16px; }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font: var(--text-body-sm);
+    }
+    
+    th {
+      background: var(--color-neutral-surface);
+      color: var(--color-neutral-dark);
+      font-weight: 600;
+      text-align: left;
+      padding: var(--space-1) var(--space-2);
+      border-bottom: 2px solid var(--color-neutral-light);
+      white-space: nowrap;
+    }
+    
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { background: var(--color-neutral-light); }
+    th.align-right, td.align-right { text-align: right; }
+    
+    td {
+      padding: var(--space-1) var(--space-2);
+      border-bottom: 1px solid var(--color-neutral-light);
+      vertical-align: middle;
+    }
+    
+    tr:hover { background: var(--color-neutral-surface); }
+    tr:hover .row-actions { opacity: 1; }
+    
+    .row-actions {
+      display: flex;
+      gap: 4px;
+      opacity: 0;
+      transition: opacity var(--duration) var(--easing);
+    }
+    
+    .table-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-accent);
+    }
+    
+    /* =======================================================================
+       BUTTONS
+    ======================================================================= */
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      padding: var(--space-1) var(--space-2);
+      font: var(--text-body-md);
+      font-weight: 500;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--duration) var(--easing);
+      min-height: 44px;
+      min-width: 44px;
+      text-decoration: none;
+    }
+    
+    .btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    
+    .btn-primary { background: var(--color-accent); color: white; }
+    .btn-primary:hover { background: var(--color-accent-hover); }
+    .btn-primary:active { background: var(--color-accent-active); }
+    .btn-primary:disabled { background: var(--color-accent-disabled); cursor: not-allowed; }
+    
+    .btn-primary-outline {
+      background: transparent;
+      color: var(--color-accent);
+      border: 2px solid var(--color-accent);
+    }
+    .btn-primary-outline:hover { background: var(--color-accent-light); }
+    
+    .btn-brand { background: var(--color-brand-blue); color: white; }
+    .btn-brand:hover { background: var(--color-primary-hover); }
+    
+    .btn-secondary { background: var(--color-secondary); color: white; }
+    .btn-secondary:hover { background: var(--color-secondary-hover); }
+    
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-neutral-dark);
+      border: 1px solid var(--color-neutral-light);
+    }
+    .btn-ghost:hover { background: var(--color-neutral-light); }
+    
+    .btn-danger { background: var(--color-danger); color: white; }
+    .btn-danger:hover { background: var(--color-danger-hover); }
+    
+    .btn-icon { padding: var(--space-1); min-width: 44px; }
+    .btn-sm { padding: 6px var(--space-1); font: var(--text-body-sm); min-height: 32px; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-bottom: var(--space-2); }
+    
+    /* =======================================================================
+       SEGMENTED CONTROL
+    ======================================================================= */
+    
+    .segmented-control {
+      display: inline-flex;
+      background: var(--color-neutral-light);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      gap: 4px;
+    }
+    
+    .segmented-control-item {
+      flex: 1;
+      padding: var(--space-1) var(--space-2);
+      font: var(--text-body-sm);
+      font-weight: 500;
+      color: var(--color-neutral-dark);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--duration) var(--easing);
+      min-width: 80px;
+      text-align: center;
+    }
+    
+    .segmented-control-item:hover:not(.active) { background: rgba(255,255,255,0.5); }
+    .segmented-control-item.active {
+      background: var(--color-accent);
+      color: white;
+      box-shadow: var(--elevation-1);
+    }
+    .segmented-control-item:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    
+    /* =======================================================================
+       TABS
+    ======================================================================= */
+    
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--color-neutral-light);
+      margin-bottom: var(--space-3);
+    }
+    
+    .tab {
+      padding: var(--space-2) var(--space-3);
+      font: var(--text-body-md);
+      font-weight: 500;
+      color: var(--color-neutral-mid);
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      transition: color var(--duration) var(--easing);
+    }
+    
+    .tab:hover { color: var(--color-neutral-dark); }
+    .tab.active { color: var(--color-accent); }
+    .tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--color-accent);
+    }
+    .tab:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+    
+    /* Nested Tabs */
+    .tabs-nested {
+      border-bottom: 1px solid var(--color-neutral-light);
+      margin-bottom: var(--space-2);
+    }
+    .tabs-nested .tab {
+      padding: var(--space-1) var(--space-2);
+      font: var(--text-body-sm);
+    }
+    .tabs-nested .tab.active::after { height: 1px; bottom: -1px; }
+    
+    /* =======================================================================
+       TAGS / CHIPS
+    ======================================================================= */
+    
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 4px var(--space-1);
+      font: var(--text-body-sm);
+      font-weight: 500;
+      border-radius: var(--radius-lg);
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    
+    .tag i, .tag svg { width: 12px; height: 12px; flex-shrink: 0; color: inherit; }
+    .tag-sm { padding: 2px 6px; font: var(--text-caption); }
+    .tag-lg { padding: var(--space-1) var(--space-2); font: var(--text-body-md); }
+    .tag-lg i, .tag-lg svg { width: 14px; height: 14px; }
+    
+    .tag-default { background: var(--color-neutral-light); color: var(--color-neutral-dark); }
+    .tag-blue { background: var(--color-cat-blue-light); color: var(--color-cat-blue); border: 1px solid var(--color-cat-blue-border); }
+    .tag-teal { background: var(--color-cat-teal-light); color: #0D9488; border: 1px solid var(--color-cat-teal-border); }
+    .tag-orange { background: var(--color-cat-orange-light); color: #EA580C; border: 1px solid var(--color-cat-orange-border); }
+    .tag-purple { background: var(--color-cat-purple-light); color: var(--color-cat-purple); border: 1px solid var(--color-cat-purple-border); }
+    .tag-green { background: var(--color-cat-green-light); color: #16A34A; border: 1px solid var(--color-cat-green-border); }
+    .tag-red { background: var(--color-cat-red-light); color: var(--color-cat-red); border: 1px solid var(--color-cat-red-border); }
+    .tag-yellow { background: var(--color-cat-yellow-light); color: #A16207; border: 1px solid var(--color-cat-yellow-border); }
+    
+    .tag-success { background: var(--color-success-light); color: var(--color-success); border: 1px solid var(--color-success-border); }
+    .tag-warning { background: var(--color-warning-light); color: var(--color-warning); border: 1px solid var(--color-warning-border); }
+    .tag-danger { background: var(--color-danger-light); color: var(--color-danger); border: 1px solid var(--color-danger-border); }
+    .tag-info { background: var(--color-info-light); color: var(--color-info); border: 1px solid var(--color-info-border); }
+    .tag-accent { background: var(--color-accent-light); color: var(--color-accent); border: 1px solid var(--color-accent); }
+    
+    .tag-list { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+    
+    /* =======================================================================
+       PROGRESS BAR
+    ======================================================================= */
+    
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: var(--color-neutral-light);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    
+    .progress-lg { height: 8px; }
+    
+    .progress-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      transition: width var(--duration) var(--easing);
+    }
+    
+    .progress-fill-accent { background: var(--color-accent); }
+    .progress-fill-success { background: var(--color-success); }
+    .progress-fill-warning { background: var(--color-warning); }
+    .progress-fill-danger { background: var(--color-danger); }
+    
+    .progress-labeled { display: flex; flex-direction: column; gap: 4px; }
+    .progress-label { display: flex; justify-content: space-between; font: var(--text-body-sm); }
+    .progress-label-value { font-weight: 500; }
+    
+    /* =======================================================================
+       ALERTS
+    ======================================================================= */
+    
+    .alert {
+      display: flex;
+      gap: var(--space-2);
+      padding: var(--space-2);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-2);
+    }
+    
+    .alert-icon { flex-shrink: 0; margin-top: 2px; }
+    .alert-content { flex: 1; }
+    .alert-title { font: var(--text-body-md); font-weight: 600; margin-bottom: 4px; }
+    .alert-message { font: var(--text-body-sm); margin: 0; }
+    .alert-actions { margin-top: var(--space-1); display: flex; gap: var(--space-1); }
+    
+    .alert-dismiss {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: inherit;
+      opacity: 0.7;
+    }
+    .alert-dismiss:hover { opacity: 1; }
+    
+    .alert-info { background: var(--color-info-light); border: 1px solid var(--color-info-border); }
+    .alert-info .alert-icon { color: var(--color-info); }
+    .alert-info .alert-title { color: var(--color-info-hover); }
+    
+    .alert-success { background: var(--color-success-light); border: 1px solid var(--color-success-border); }
+    .alert-success .alert-icon { color: var(--color-success); }
+    .alert-success .alert-title { color: var(--color-success-hover); }
+    
+    .alert-warning { background: var(--color-warning-light); border: 1px solid var(--color-warning-border); }
+    .alert-warning .alert-icon { color: var(--color-warning); }
+    .alert-warning .alert-title { color: var(--color-warning-hover); }
+    
+    .alert-danger { background: var(--color-danger-light); border: 1px solid var(--color-danger-border); }
+    .alert-danger .alert-icon { color: var(--color-danger); }
+    .alert-danger .alert-title { color: var(--color-danger-hover); }
+    
+    /* =======================================================================
+       INTERACTIVE PANELS & TOOLBARS
+    ======================================================================= */
+    
+    .panel-interactive {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--elevation-2);
+      overflow: hidden;
+      min-height: 300px;
+    }
+    
+    .panel-toolbar-vertical {
+      background: var(--color-neutral-surface);
+      border-right: 1px solid var(--color-neutral-light);
+      padding: var(--space-1);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .panel-tool {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--color-neutral-mid);
+      transition: all var(--duration) var(--easing);
+    }
+    
+    .panel-tool:hover {
+      background: var(--color-neutral-light);
+      color: var(--color-neutral-dark);
+    }
+    
+    .panel-tool.active {
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+    }
+    
+    .panel-tool:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: -2px;
+    }
+    
+    .panel-tool i { width: 20px; height: 20px; }
+    
+    .panel-canvas {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .panel-canvas-area {
+      flex: 1;
+      padding: var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-neutral-mid);
+    }
+    
+    .panel-context-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-1) var(--space-2);
+      border-top: 1px solid var(--color-neutral-light);
+      background: var(--color-neutral-surface);
+    }
+    
+    /* =======================================================================
+       SECTION GROUPING
+    ======================================================================= */
+    
+    .section-group {
+      margin-bottom: var(--space-4);
+    }
+    
+    .section-group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2);
+      padding-bottom: var(--space-1);
+      border-bottom: 1px solid var(--color-neutral-light);
+    }
+    
+    .section-group-title {
+      font: var(--text-body-lg);
+      font-weight: 600;
+      color: var(--color-neutral-dark);
+      margin: 0;
+    }
+    
+    .section-group-action {
+      font: var(--text-body-sm);
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+    
+    .section-group-action:hover {
+      text-decoration: underline;
+    }
+    
+    /* =======================================================================
+       FORMS
+    ======================================================================= */
+    
+    .form-group { margin-bottom: var(--space-2); }
+    .form-label { display: block; font: var(--text-label); margin-bottom: 4px; }
+    
+    .form-input {
+      width: 100%;
+      max-width: 320px;
+      padding: var(--space-1) var(--space-2);
+      font: var(--text-body-md);
+      border: 1px solid var(--color-neutral-light);
+      border-radius: var(--radius-sm);
+      background: white;
+      transition: border-color var(--duration) var(--easing);
+    }
+    
+    .form-input:hover { border-color: var(--color-neutral-mid); }
+    .form-input:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1); }
+    .form-input.error { border-color: var(--color-danger); }
+    .form-error { font: var(--text-body-sm); color: var(--color-danger); margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+    
+    /* =======================================================================
+       COLOUR SWATCHES
+    ======================================================================= */
+    
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+    
+    .swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--elevation-1);
+    }
+    
+    .swatch-color {
+      height: 48px;
+      display: flex;
+      align-items: flex-end;
+      padding: 4px;
+    }
+    
+    .swatch-color code {
+      background: rgba(255,255,255,0.9);
+      font-size: 10px;
+      padding: 2px 4px;
+    }
+    
+    .swatch-label {
+      background: white;
+      padding: var(--space-1);
+      font: var(--text-caption);
+    }
+    
+    .swatch-row {
+      display: flex;
+      gap: 2px;
+      margin-bottom: var(--space-1);
+    }
+    
+    .swatch-row .swatch-cell {
+      flex: 1;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-family: monospace;
+      border-radius: var(--radius-sm);
+    }
+    
+    .swatch-row-label {
+      font: var(--text-label);
+      width: 70px;
+      display: flex;
+      align-items: center;
+    }
+    
+    /* =======================================================================
+       SPACING DEMO
+    ======================================================================= */
+    
+    .spacing-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+    
+    .spacing-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .spacing-visual {
+      background: var(--color-accent);
+      opacity: 0.3;
+    }
+    
+    .spacing-label {
+      font: var(--text-caption);
+      margin-top: 4px;
+      text-align: center;
+    }
+    
+    /* =======================================================================
+       ICON GRID
+    ======================================================================= */
+    
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+    
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: var(--space-2);
+      border-radius: var(--radius-sm);
+      background: white;
+      border: 1px solid var(--color-neutral-light);
+    }
+    
+    .icon-item i, .icon-item svg {
+      color: var(--color-neutral-dark);
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+    
+    .icon-item span { font: var(--text-caption); color: var(--color-neutral-mid); }
+    
+    /* =======================================================================
+       DASHBOARD LAYOUT
+    ======================================================================= */
+    
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    
+    .dashboard-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .dashboard-grid .card-span-2 { grid-column: span 2; }
+    
+    /* =======================================================================
+       RESPONSIVE
+    ======================================================================= */
+    
+    @media (max-width: 1024px) {
+      .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+      .global-nav-items { overflow-x: auto; }
+    }
+    
+    @media (max-width: 768px) {
+      .shell { grid-template-columns: 1fr; }
+      
+      .nav {
+        position: fixed;
+        left: -280px;
+        width: 280px;
+        z-index: 100;
+        transition: left var(--duration) var(--easing);
+      }
+      .nav.open { left: 0; }
+      
+      .mobile-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: var(--space-2);
+        background: var(--color-primary);
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      
+      .mobile-header h1 {
+        font: var(--text-body-lg);
+        font-weight: 600;
+        color: white;
+        margin: 0;
+      }
+      
+      .menu-btn {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: var(--space-1);
+      }
+      
+      .main { padding: var(--space-2); }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .dashboard-grid .card-span-2 { grid-column: span 1; }
+      .panel-interactive { grid-template-columns: 1fr; }
+      .panel-toolbar-vertical { flex-direction: row; border-right: none; border-bottom: 1px solid var(--color-neutral-light); }
+    }
+    
+    @media (min-width: 769px) {
+      .mobile-header { display: none; }
+    }
+    
+    /* =======================================================================
+       UTILITIES
+    ======================================================================= */
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+    
+    .flex { display: flex; }
+    .flex-wrap { flex-wrap: wrap; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-1 { gap: var(--space-1); }
+    .gap-2 { gap: var(--space-2); }
+    .gap-3 { gap: var(--space-3); }
+    .mt-1 { margin-top: var(--space-1); }
+    .mt-2 { margin-top: var(--space-2); }
+    .mt-3 { margin-top: var(--space-3); }
+    .mb-1 { margin-bottom: var(--space-1); }
+    .mb-2 { margin-bottom: var(--space-2); }
+    .mb-3 { margin-bottom: var(--space-3); }
+    
+    /* =======================================================================
+       PRINT STYLES
+    ======================================================================= */
+    
+    .print-btn {
+      position: fixed;
+      bottom: var(--space-3);
+      right: var(--space-3);
+      z-index: 100;
+      box-shadow: var(--elevation-3);
+    }
+    
+    .print-toc { display: none; }
+    
+    @media print {
+      .shell { display: block; }
+      .nav, .mobile-header, .print-btn { display: none !important; }
+      .main { max-width: 100%; padding: 0; margin: 0; }
+      body { background: white; font-size: 11pt; }
+      
+      .print-toc {
+        display: block;
+        page-break-after: always;
+        padding: 20mm 0;
+      }
+      
+      .print-toc h2 { border: none; margin-top: 0; padding-top: 0; }
+      
+      .print-toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        columns: 2;
+        column-gap: 40px;
+      }
+      
+      .print-toc-list li { margin-bottom: 8px; break-inside: avoid; }
+      
+      .print-toc-list a {
+        color: var(--color-neutral-dark);
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .print-toc-section {
+        font-weight: 600;
+        color: var(--color-primary);
+        margin-top: 16px;
+        margin-bottom: 8px;
+      }
+      
+      .print-toc-section:first-child { margin-top: 0; }
+      
+      h2 {
+        page-break-before: always;
+        page-break-after: avoid;
+        border-top: none;
+        padding-top: 0;
+        margin-top: 0;
+      }
+      
+      h2:first-of-type { page-break-before: avoid; }
+      h3, h4 { page-break-after: avoid; }
+      
+      .card, .card-metric, .card-status, .card-warning, .card-danger, .alert, .table-wrapper {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--color-neutral-light);
+      }
+      
+      .row-actions { opacity: 1; }
+      
+      .print-header {
+        display: block;
+        text-align: center;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--color-primary);
+      }
+      
+      .print-header h1 { margin-bottom: 8px; }
+      .print-header .subtitle { margin-bottom: 0; }
+      
+      @page { margin: 15mm; }
+    }
+    
+    @media screen { .print-toc { display: none; } }
+  </style>
+</head>
+<body>
+  
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <button class="menu-btn" onclick="toggleNav()" aria-label="Toggle navigation">
+      <i data-lucide="menu" width="24" height="24"></i>
+    </button>
+    <h1>Vanguard UI Guidelines</h1>
+  </header>
+  
+  <div class="shell">
+    <!-- Navigation -->
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <div class="nav-logo">Vanguard UI</div>
+      
+      <div class="nav-section">Foundation</div>
+      <a href="#principles" class="nav-link"><i data-lucide="compass"></i> IT Principles</a>
+      <a href="#approach" class="nav-link"><i data-lucide="layout"></i> Approach</a>
+      
+      <div class="nav-section">Tokens</div>
+      <a href="#colours" class="nav-link"><i data-lucide="palette"></i> Colours</a>
+      <a href="#typography" class="nav-link"><i data-lucide="type"></i> Typography</a>
+      <a href="#spacing" class="nav-link"><i data-lucide="move"></i> Spacing & Grouping</a>
+      <a href="#icons" class="nav-link"><i data-lucide="smile"></i> Icons</a>
+      
+      <div class="nav-section">Navigation</div>
+      <a href="#global-nav" class="nav-link"><i data-lucide="menu"></i> Global Navigation</a>
+      <a href="#command-palette" class="nav-link"><i data-lucide="search"></i> Command Palette</a>
+      <a href="#tabs-controls" class="nav-link"><i data-lucide="layout-list"></i> Tabs & Controls</a>
+      
+      <div class="nav-section">Components</div>
+      <a href="#buttons" class="nav-link"><i data-lucide="square"></i> Buttons</a>
+      <a href="#tags" class="nav-link"><i data-lucide="tag"></i> Tags & Chips</a>
+      <a href="#inputs" class="nav-link"><i data-lucide="text-cursor-input"></i> Inputs & Forms</a>
+      <a href="#tables" class="nav-link"><i data-lucide="table"></i> Tables</a>
+      <a href="#cards" class="nav-link"><i data-lucide="credit-card"></i> Cards</a>
+      <a href="#alerts" class="nav-link"><i data-lucide="alert-triangle"></i> Alerts</a>
+      
+      <div class="nav-section">Patterns</div>
+      <a href="#settings-modal" class="nav-link"><i data-lucide="settings"></i> Settings Modals</a>
+      <a href="#interactive-panels" class="nav-link"><i data-lucide="sliders"></i> Interactive Panels</a>
+      <a href="#dashboards" class="nav-link"><i data-lucide="pie-chart"></i> Dashboards</a>
+      <a href="#accessibility" class="nav-link"><i data-lucide="accessibility"></i> Accessibility</a>
+      <a href="#governance" class="nav-link"><i data-lucide="shield-check"></i> Governance</a>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main">
+      
+      <!-- Print Button -->
+      <button class="btn btn-primary print-btn" onclick="window.print()">
+        <i data-lucide="printer" width="20" height="20"></i> Print Guidelines
+      </button>
+      
+      <!-- Print-only Table of Contents -->
+      <div class="print-toc">
+        <div class="print-header">
+          <h1>Vanguard UI Design Guidelines</h1>
+          <p class="subtitle">Customer Portal Specification • v2.0</p>
+        </div>
+        <h2>Table of Contents</h2>
+        <ul class="print-toc-list">
+          <li class="print-toc-section">Foundation</li>
+          <li><a href="#principles">1. IT Principles</a></li>
+          <li><a href="#approach">2. Approach</a></li>
+          
+          <li class="print-toc-section">Design Tokens</li>
+          <li><a href="#colours">3. Colours</a></li>
+          <li><a href="#typography">4. Typography</a></li>
+          <li><a href="#spacing">5. Spacing & Grouping</a></li>
+          <li><a href="#icons">6. Icons</a></li>
+          
+          <li class="print-toc-section">Navigation</li>
+          <li><a href="#global-nav">7. Global Navigation</a></li>
+          <li><a href="#command-palette">8. Command Palette</a></li>
+          <li><a href="#tabs-controls">9. Tabs & Controls</a></li>
+          
+          <li class="print-toc-section">Components</li>
+          <li><a href="#buttons">10. Buttons</a></li>
+          <li><a href="#tags">11. Tags & Chips</a></li>
+          <li><a href="#inputs">12. Inputs</a></li>
+          <li><a href="#tables">13. Tables</a></li>
+          <li><a href="#cards">14. Cards</a></li>
+          <li><a href="#alerts">15. Alerts</a></li>
+          
+          <li class="print-toc-section">Patterns</li>
+          <li><a href="#settings-modal">16. Settings Modals</a></li>
+          <li><a href="#interactive-panels">17. Interactive Panels</a></li>
+          <li><a href="#dashboards">18. Dashboards</a></li>
+          <li><a href="#accessibility">19. Accessibility</a></li>
+          <li><a href="#governance">20. Governance</a></li>
+        </ul>
+      </div>
+      
+      <!-- Title -->
+      <header>
+        <h1>Vanguard UI Design Guidelines</h1>
+        <p class="subtitle">Customer Portal Specification • v2.0 • Developer & AI Reference</p>
+        <p>Single authoritative UI/UX design system for Vanguard customer portals. Desktop-first, responsive, token-driven, accessible.</p>
+      </header>
+      
+      <!-- Section 1: IT Principles -->
+      <section id="principles">
+        <h2><i data-lucide="compass" width="24" height="24"></i> 1. IT Principles</h2>
+        <p>All UI decisions must trace back to these five core principles:</p>
+        
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Principle</th>
+                <th>Meaning</th>
+                <th>UI Implication</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>User-First</strong></td><td>Reduce cognitive load</td><td>Next action obvious</td></tr>
+              <tr><td><strong>Autonomy by Design</strong></td><td>Enable self-service</td><td>No support dependency</td></tr>
+              <tr><td><strong>Process-First</strong></td><td>Reflect real workflows</td><td>Browse → Select → Action</td></tr>
+              <tr><td><strong>Integrated</strong></td><td>Consistent patterns</td><td>Same components everywhere</td></tr>
+              <tr><td><strong>Speed with Control</strong></td><td>Fast & predictable</td><td>Safe, reversible actions</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+      <!-- Section 2: Approach -->
+      <section id="approach">
+        <h2><i data-lucide="layout" width="24" height="24"></i> 2. Approach</h2>
+        
+        <div class="card">
+          <h4>Desktop-First, Responsive</h4>
+          <p>Design for desktop as the primary experience. Use columnar layouts and card-based panels that gracefully reflow on tablet and mobile. Desktop is authoritative; mobile prioritises key tasks over density.</p>
+        </div>
+        
+        <div class="card">
+          <h4>Grid-Based Layout</h4>
+          <p>Use CSS Grid and Flexbox for layouts. Standard patterns include 4-column metric grids, 3-column dashboards, and master-detail panels. All spacing uses multiples of 8px.</p>
+        </div>
+        
+        <div class="card">
+          <h4>Neutral-Dominant Palette</h4>
+          <p><strong>80–90% neutral colours</strong> for the interface. Reserve brand-blue (<code>#004674</code>) and brand-red (<code>#ff0000</code>) for identity accents only—logos, branded headers, and occasional emphasis. Use the accent colour (<code>#0891B2</code>) for primary actions and interactive states.</p>
+        </div>
+        
+        <div class="card">
+          <h4>Customer Portal Focus</h4>
+          <p>Design patterns optimised for customer-facing scenarios: account summaries, order history, invoices, support tickets, and profile management. Dashboards highlight account health and pending actions rather than operational metrics.</p>
+        </div>
+      </section>
+      
+      <!-- Section 3: Colours -->
+      <section id="colours">
+        <h2><i data-lucide="palette" width="24" height="24"></i> 3. Colours</h2>
+        <p class="note">Neutral colours dominate 80–90% of the interface. Brand colours are for identity only.</p>
+        
+        <h3>3.1 Brand Anchors (Identity Only)</h3>
+        <div class="swatch-grid">
+          <div class="swatch">
+            <div class="swatch-color" style="background: #004674;"><code style="color: #004674;">#004674</code></div>
+            <div class="swatch-label">brand-blue<br>Logo, headers</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: #ff0000;"><code style="color: #ff0000;">#ff0000</code></div>
+            <div class="swatch-label">brand-red<br>Accent identity</div>
+          </div>
+        </div>
+        
+        <h3>3.2 Accent Colour (Actions & Selection)</h3>
+        <div class="card">
+          <div class="swatch-row">
+            <span class="swatch-row-label">accent</span>
+            <div class="swatch-cell" style="background: #0891B2; color: white;">Default<br>#0891B2</div>
+            <div class="swatch-cell" style="background: #0E7490; color: white;">Hover<br>#0E7490</div>
+            <div class="swatch-cell" style="background: #155E75; color: white;">Active<br>#155E75</div>
+            <div class="swatch-cell" style="background: #ECFEFF; color: #0891B2;">Light<br>#ECFEFF</div>
+          </div>
+        </div>
+        
+        <h3>3.3 Neutral Palette (Primary UI)</h3>
+        <div class="swatch-grid">
+          <div class="swatch">
+            <div class="swatch-color" style="background: #1F2933;"><code style="color: #1F2933;">#1F2933</code></div>
+            <div class="swatch-label">neutral-dark<br>Primary text</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: #6B7280;"><code style="color: #6B7280;">#6B7280</code></div>
+            <div class="swatch-label">neutral-mid<br>Secondary text</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: #E5E7EB;"><code>#E5E7EB</code></div>
+            <div class="swatch-label">neutral-light<br>Borders</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background: #F8FAFC; border: 1px solid #E5E7EB;"><code>#F8FAFC</code></div>
+            <div class="swatch-label">neutral-surface<br>Backgrounds</div>
+          </div>
+        </div>
+        
+        <h3>3.4 Semantic Colours</h3>
+        <div class="card">
+          <div class="swatch-row">
+            <span class="swatch-row-label">success</span>
+            <div class="swatch-cell" style="background: #15803D; color: white;">Default</div>
+            <div class="swatch-cell" style="background: #DCFCE7; color: #15803D;">Light</div>
+          </div>
+          <div class="swatch-row">
+            <span class="swatch-row-label">warning</span>
+            <div class="swatch-cell" style="background: #B45309; color: white;">Default</div>
+            <div class="swatch-cell" style="background: #FEF3C7; color: #B45309;">Light</div>
+          </div>
+          <div class="swatch-row">
+            <span class="swatch-row-label">danger</span>
+            <div class="swatch-cell" style="background: #DC2626; color: white;">Default</div>
+            <div class="swatch-cell" style="background: #FEE2E2; color: #DC2626;">Light</div>
+          </div>
+          <div class="swatch-row">
+            <span class="swatch-row-label">info</span>
+            <div class="swatch-cell" style="background: #2563EB; color: white;">Default</div>
+            <div class="swatch-cell" style="background: #DBEAFE; color: #2563EB;">Light</div>
+          </div>
+        </div>
+        
+        <h3>3.5 Category Colours (Tags & Status)</h3>
+        <div class="tag-list mb-3">
+          <span class="tag tag-blue">Blue</span>
+          <span class="tag tag-teal">Teal</span>
+          <span class="tag tag-orange">Orange</span>
+          <span class="tag tag-purple">Purple</span>
+          <span class="tag tag-green">Green</span>
+          <span class="tag tag-red">Red</span>
+          <span class="tag tag-yellow">Yellow</span>
+        </div>
+      </section>
+      
+      <!-- Section 4: Typography -->
+      <section id="typography">
+        <h2><i data-lucide="type" width="24" height="24"></i> 4. Typography</h2>
+        <p><strong>Font:</strong> Inter (fallback: system-ui). Sentence case only—no ALL CAPS except acronyms.</p>
+        
+        <div class="card">
+          <p style="font: var(--text-heading-xl); margin-bottom: var(--space-1);">heading-xl — 32px/600</p>
+          <p style="font: var(--text-heading-lg); margin-bottom: var(--space-1);">heading-lg — 24px/600</p>
+          <p style="font: var(--text-heading-md); margin-bottom: var(--space-1);">heading-md — 20px/600</p>
+          <p style="font: var(--text-body-lg); margin-bottom: var(--space-1);">body-lg — 16px/400</p>
+          <p style="font: var(--text-body-md); margin-bottom: var(--space-1);">body-md — 14px/400 (default)</p>
+          <p style="font: var(--text-body-sm); margin-bottom: var(--space-1);">body-sm — 12px/400</p>
+          <p style="font: var(--text-label); margin-bottom: var(--space-1);">label — 12px/500</p>
+          <p style="font: var(--text-caption);">caption — 11px/400</p>
+        </div>
+      </section>
+      
+      <!-- Section 5: Spacing & Grouping -->
+      <section id="spacing">
+        <h2><i data-lucide="move" width="24" height="24"></i> 5. Spacing & Grouping</h2>
+        <p>All spacing uses multiples of 8px. Group related content with clear headings and adequate whitespace.</p>
+        
+        <div class="spacing-demo">
+          <div class="spacing-box"><div class="spacing-visual" style="width: 8px; height: 8px;"></div><span class="spacing-label">8px</span></div>
+          <div class="spacing-box"><div class="spacing-visual" style="width: 16px; height: 16px;"></div><span class="spacing-label">16px</span></div>
+          <div class="spacing-box"><div class="spacing-visual" style="width: 24px; height: 24px;"></div><span class="spacing-label">24px</span></div>
+          <div class="spacing-box"><div class="spacing-visual" style="width: 32px; height: 32px;"></div><span class="spacing-label">32px</span></div>
+          <div class="spacing-box"><div class="spacing-visual" style="width: 40px; height: 40px;"></div><span class="spacing-label">40px</span></div>
+          <div class="spacing-box"><div class="spacing-visual" style="width: 48px; height: 48px;"></div><span class="spacing-label">48px</span></div>
+        </div>
+        
+        <h3>Section Grouping Pattern</h3>
+        <p>Use clear headings with optional actions. Separate metrics from tables/forms with adequate whitespace (24–32px).</p>
+        
+        <div class="section-group">
+          <div class="section-group-header">
+            <h4 class="section-group-title">Account Summary</h4>
+            <a href="#" class="section-group-action">View Details →</a>
+          </div>
+          <div class="card-grid card-grid-4">
+            <div class="card-metric">
+              <div class="card-metric-label">Account Balance</div>
+              <div class="card-metric-value">$2,450</div>
+            </div>
+            <div class="card-metric" style="border-left-color: var(--color-success);">
+              <div class="card-metric-label">Paid This Month</div>
+              <div class="card-metric-value">$1,200</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section-group">
+          <div class="section-group-header">
+            <h4 class="section-group-title">Recent Activity</h4>
+            <a href="#" class="section-group-action">View All →</a>
+          </div>
+          <p class="note">Content separated from metrics by 32px spacing.</p>
+        </div>
+      </section>
+      
+      <!-- Section 6: Icons -->
+      <section id="icons">
+        <h2><i data-lucide="smile" width="24" height="24"></i> 6. Iconography</h2>
+        <p><strong>Library:</strong> Lucide icons only. <strong>Sizes:</strong> 16px inline, 20px buttons, 24px navigation. Icons accompany text—never replace it.</p>
+        
+        <div class="icon-grid">
+          <div class="icon-item"><i data-lucide="search" width="24" height="24"></i><span>Search</span></div>
+          <div class="icon-item"><i data-lucide="home" width="24" height="24"></i><span>Home</span></div>
+          <div class="icon-item"><i data-lucide="shopping-cart" width="24" height="24"></i><span>Orders</span></div>
+          <div class="icon-item"><i data-lucide="file-text" width="24" height="24"></i><span>Invoices</span></div>
+          <div class="icon-item"><i data-lucide="headphones" width="24" height="24"></i><span>Support</span></div>
+          <div class="icon-item"><i data-lucide="user" width="24" height="24"></i><span>Profile</span></div>
+          <div class="icon-item"><i data-lucide="settings" width="24" height="24"></i><span>Settings</span></div>
+          <div class="icon-item"><i data-lucide="bell" width="24" height="24"></i><span>Alerts</span></div>
+          <div class="icon-item"><i data-lucide="check-circle" width="24" height="24"></i><span>Success</span></div>
+          <div class="icon-item"><i data-lucide="alert-circle" width="24" height="24"></i><span>Error</span></div>
+          <div class="icon-item"><i data-lucide="alert-triangle" width="24" height="24"></i><span>Warning</span></div>
+          <div class="icon-item"><i data-lucide="info" width="24" height="24"></i><span>Info</span></div>
+        </div>
+      </section>
+      
+      <!-- Section 7: Global Navigation -->
+      <section id="global-nav">
+        <h2><i data-lucide="menu" width="24" height="24"></i> 7. Global Navigation</h2>
+        <p>Horizontal module bar for primary navigation. Icons with labels, clear active states.</p>
+        
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div class="global-nav">
+            <div class="global-nav-logo">
+              <i data-lucide="shield" width="24" height="24"></i>
+              Vanguard
+            </div>
+            <div class="global-nav-items">
+              <a href="#" class="global-nav-item active"><i data-lucide="home" width="20" height="20"></i> Dashboard</a>
+              <a href="#" class="global-nav-item"><i data-lucide="shopping-cart" width="20" height="20"></i> Orders</a>
+              <a href="#" class="global-nav-item"><i data-lucide="file-text" width="20" height="20"></i> Invoices</a>
+              <a href="#" class="global-nav-item"><i data-lucide="headphones" width="20" height="20"></i> Support</a>
+            </div>
+            <div class="global-nav-actions">
+              <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="search" width="20" height="20"></i></button>
+              <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="bell" width="20" height="20"></i></button>
+              <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="user" width="20" height="20"></i></button>
+            </div>
+          </div>
+        </div>
+        
+        <h4 class="mt-3">Rules</h4>
+        <ul>
+          <li><strong>Icons + labels:</strong> Navigation items must have both icon and text label</li>
+          <li><strong>Active state:</strong> Use accent colour background (<code>accent-light</code>) and text (<code>accent</code>)</li>
+          <li><strong>Max items:</strong> 5–7 primary items visible; overflow into "More" dropdown</li>
+          <li><strong>Responsive:</strong> Collapse to hamburger menu on mobile</li>
+        </ul>
+        
+        <h4>Horizontal vs Vertical Navigation</h4>
+        <ul>
+          <li><strong>Horizontal (top bar):</strong> Customer portals, marketing sites, simpler apps with ≤7 modules</li>
+          <li><strong>Vertical (side bar):</strong> Complex admin interfaces, apps with many modules, when deep hierarchy needed</li>
+        </ul>
+      </section>
+      
+      <!-- Section 8: Command Palette -->
+      <section id="command-palette">
+        <h2><i data-lucide="search" width="24" height="24"></i> 8. Command Palette / Global Search</h2>
+        <p>Centred modal for quick search and navigation. Access via <kbd>Ctrl</kbd>+<kbd>K</kbd> (or <kbd>⌘</kbd>+<kbd>K</kbd> on Mac).</p>
+        
+        <div class="card" style="padding: 0; background: rgba(0,0,0,0.1);">
+          <div style="padding: var(--space-4); display: flex; justify-content: center;">
+            <div class="command-palette" style="position: relative;">
+              <div class="command-palette-input-wrapper">
+                <i data-lucide="search" width="20" height="20"></i>
+                <input type="text" class="command-palette-input" placeholder="Search orders, invoices, support..." value="INV-">
+                <div class="command-palette-shortcut">
+                  <kbd>Esc</kbd>
+                </div>
+              </div>
+              <div class="command-palette-results">
+                <div class="command-palette-group">
+                  <div class="command-palette-group-label">Invoices</div>
+                  <div class="command-palette-item focused">
+                    <i data-lucide="file-text" width="20" height="20"></i>
+                    <div class="command-palette-item-content">
+                      <div class="command-palette-item-title"><mark>INV-</mark>2024-0042</div>
+                      <div class="command-palette-item-subtitle">$1,250.00 • Due Jan 15</div>
+                    </div>
+                  </div>
+                  <div class="command-palette-item">
+                    <i data-lucide="file-text" width="20" height="20"></i>
+                    <div class="command-palette-item-content">
+                      <div class="command-palette-item-title"><mark>INV-</mark>2024-0041</div>
+                      <div class="command-palette-item-subtitle">$890.00 • Paid</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="command-palette-group">
+                  <div class="command-palette-group-label">Orders</div>
+                  <div class="command-palette-item">
+                    <i data-lucide="shopping-cart" width="20" height="20"></i>
+                    <div class="command-palette-item-content">
+                      <div class="command-palette-item-title">ORD-2024-0128</div>
+                      <div class="command-palette-item-subtitle">In Transit • Est. Jan 12</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="command-palette-footer">
+                <div class="command-palette-hint">
+                  <span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+                  <span><kbd>Enter</kbd> Select</span>
+                  <span><kbd>Esc</kbd> Close</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h4 class="mt-3">Rules</h4>
+        <ul>
+          <li><strong>Keyboard navigation:</strong> Arrow keys to navigate, Enter to select, Escape to close</li>
+          <li><strong>Grouped results:</strong> Organise by entity type (Orders, Invoices, Support Tickets, etc.)</li>
+          <li><strong>Match highlighting:</strong> Use accent colour background for matched text</li>
+          <li><strong>Focus management:</strong> First result focused by default; trap focus within modal</li>
+        </ul>
+      </section>
+      
+      <!-- Section 9: Tabs & Controls -->
+      <section id="tabs-controls">
+        <h2><i data-lucide="layout-list" width="24" height="24"></i> 9. Tabs, Nested Tabs & Segmented Controls</h2>
+        
+        <h3>Primary Tabs</h3>
+        <p>Switch between content sections (different content).</p>
+        <div class="tabs">
+          <button class="tab active">Overview</button>
+          <button class="tab">Billing</button>
+          <button class="tab">Messages</button>
+          <button class="tab">Documents</button>
+        </div>
+        
+        <h3>Nested Tabs</h3>
+        <p>Subdivide details within a section. Visually lighter than primary tabs.</p>
+        <div class="card">
+          <div class="tabs-nested">
+            <button class="tab active">Activity</button>
+            <button class="tab">Invoices</button>
+            <button class="tab">Support Tickets</button>
+          </div>
+          <p class="note">Nested tab content appears here...</p>
+        </div>
+        
+        <h3>Segmented Control</h3>
+        <p>Toggle view modes (same content, different presentation). Max 5 options, equal widths.</p>
+        <div class="flex gap-3 flex-wrap mb-3">
+          <div class="segmented-control">
+            <button class="segmented-control-item active">List</button>
+            <button class="segmented-control-item">Grid</button>
+          </div>
+          <div class="segmented-control">
+            <button class="segmented-control-item">Day</button>
+            <button class="segmented-control-item active">Week</button>
+            <button class="segmented-control-item">Month</button>
+          </div>
+        </div>
+        
+        <h4>When to Use What</h4>
+        <ul>
+          <li><strong>Primary Tabs:</strong> Different content sections (Overview / Billing / Messages)</li>
+          <li><strong>Nested Tabs:</strong> Subdivisions within a section (Activity / Invoices / Tickets)</li>
+          <li><strong>Segmented Control:</strong> View modes for same data (List / Grid), time periods (Day / Week / Month)</li>
+        </ul>
+      </section>
+      
+      <!-- Section 10: Buttons -->
+      <section id="buttons">
+        <h2><i data-lucide="square" width="24" height="24"></i> 10. Buttons</h2>
+        
+        <h4>Primary Actions</h4>
+        <div class="btn-group">
+          <button class="btn btn-primary"><i data-lucide="check" width="16" height="16"></i> Submit</button>
+          <button class="btn btn-primary-outline"><i data-lucide="plus" width="16" height="16"></i> Add New</button>
+        </div>
+        
+        <h4>Other Types</h4>
+        <div class="btn-group">
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-ghost">Ghost</button>
+          <button class="btn btn-danger"><i data-lucide="trash-2" width="16" height="16"></i> Delete</button>
+        </div>
+        
+        <h4>Rules</h4>
+        <ul>
+          <li>Up to two primary actions when workflows require (solid vs outlined)</li>
+          <li>Minimum touch target: <strong>44×44px</strong></li>
+          <li>Destructive actions require confirmation</li>
+        </ul>
+      </section>
+      
+      <!-- Section 11: Tags -->
+      <section id="tags">
+        <h2><i data-lucide="tag" width="24" height="24"></i> 11. Tags & Chips</h2>
+        
+        <h4>Status Tags</h4>
+        <div class="tag-list mb-3">
+          <span class="tag tag-success"><i data-lucide="check-circle" width="12" height="12"></i> Paid</span>
+          <span class="tag tag-warning"><i data-lucide="clock" width="12" height="12"></i> Pending</span>
+          <span class="tag tag-danger"><i data-lucide="alert-circle" width="12" height="12"></i> Overdue</span>
+          <span class="tag tag-info"><i data-lucide="truck" width="12" height="12"></i> In Transit</span>
+          <span class="tag tag-accent"><i data-lucide="star" width="12" height="12"></i> Priority</span>
+        </div>
+        
+        <h4>Category Tags</h4>
+        <div class="tag-list mb-3">
+          <span class="tag tag-blue">Equipment</span>
+          <span class="tag tag-purple">Service</span>
+          <span class="tag tag-orange">Subscription</span>
+          <span class="tag tag-green">Consumables</span>
+        </div>
+      </section>
+      
+      <!-- Section 12: Inputs -->
+      <section id="inputs">
+        <h2><i data-lucide="text-cursor-input" width="24" height="24"></i> 12. Inputs & Forms</h2>
+        
+        <div class="card">
+          <div class="form-group">
+            <label class="form-label" for="name">Full name <span style="color: var(--color-danger);">*</span></label>
+            <input type="text" id="name" class="form-input" placeholder="Enter your name">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="email">Email address</label>
+            <input type="email" id="email" class="form-input error" value="invalid-email">
+            <div class="form-error"><i data-lucide="alert-circle" width="14" height="14"></i> Enter a valid email (e.g. name@example.com)</div>
+          </div>
+        </div>
+        
+        <h4>Rules</h4>
+        <ul>
+          <li>Labels always visible</li>
+          <li>Errors explain how to fix</li>
+          <li>Focus state uses accent colour</li>
+        </ul>
+      </section>
+      
+      <!-- Section 13: Tables -->
+      <section id="tables">
+        <h2><i data-lucide="table" width="24" height="24"></i> 13. Tables</h2>
+        <p>Primary interface for customer records. Integrated search, multi-select, bulk actions, and view toggle.</p>
+        
+        <div class="table-wrapper">
+          <div class="table-toolbar">
+            <div class="table-search">
+              <i data-lucide="search" width="16" height="16"></i>
+              <input type="text" placeholder="Search orders...">
+            </div>
+            <div class="flex gap-2">
+              <div class="view-toggle">
+                <button class="view-toggle-btn active"><i data-lucide="list" width="16" height="16"></i> List</button>
+                <button class="view-toggle-btn"><i data-lucide="grid" width="16" height="16"></i> Cards</button>
+              </div>
+              <button class="btn btn-ghost btn-sm"><i data-lucide="filter" width="16" height="16"></i> Filter</button>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 40px;"><input type="checkbox" class="table-checkbox"></th>
+                <th class="sortable">Order <i data-lucide="chevron-down" width="14" height="14"></i></th>
+                <th>Date</th>
+                <th>Status</th>
+                <th class="align-right">Amount</th>
+                <th style="width: 80px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" class="table-checkbox"></td>
+                <td><code>ORD-2024-0128</code></td>
+                <td>Jan 10, 2024</td>
+                <td><span class="tag tag-sm tag-info"><i data-lucide="truck" width="12" height="12"></i> In Transit</span></td>
+                <td class="align-right">$1,450.00</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="eye" width="14" height="14"></i></button>
+                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="download" width="14" height="14"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="table-checkbox"></td>
+                <td><code>ORD-2024-0127</code></td>
+                <td>Jan 8, 2024</td>
+                <td><span class="tag tag-sm tag-success"><i data-lucide="check-circle" width="12" height="12"></i> Delivered</span></td>
+                <td class="align-right">$890.00</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="eye" width="14" height="14"></i></button>
+                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="download" width="14" height="14"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="table-checkbox"></td>
+                <td><code>ORD-2024-0126</code></td>
+                <td>Jan 5, 2024</td>
+                <td><span class="tag tag-sm tag-warning"><i data-lucide="clock" width="12" height="12"></i> Processing</span></td>
+                <td class="align-right">$2,100.00</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="eye" width="14" height="14"></i></button>
+                    <button class="btn btn-ghost btn-icon btn-sm"><i data-lucide="download" width="14" height="14"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4>Table Rules</h4>
+        <ul>
+          <li><strong>Search:</strong> Integrated search with meaningful default sorting</li>
+          <li><strong>Multi-select:</strong> Checkboxes reveal bulk actions when items selected</li>
+          <li><strong>Row actions:</strong> Appear on hover to reduce clutter</li>
+          <li><strong>View toggle:</strong> Switch between table and card views</li>
+          <li><strong>Alignment:</strong> Left-align text, right-align numbers</li>
+        </ul>
+      </section>
+      
+      <!-- Section 14: Cards -->
+      <section id="cards">
+        <h2><i data-lucide="credit-card" width="24" height="24"></i> 14. Cards</h2>
+        
+        <h3>Customer KPI Cards</h3>
+        <div class="card-grid card-grid-4">
+          <div class="card-metric">
+            <div class="card-metric-label">Outstanding Balance</div>
+            <div class="card-metric-value">$2,450</div>
+            <div class="card-metric-trend down"><i data-lucide="trending-down" width="14" height="14"></i> 12% vs last month</div>
+          </div>
+          <div class="card-metric" style="border-left-color: var(--color-success);">
+            <div class="card-metric-label">Paid This Month</div>
+            <div class="card-metric-value">$4,200</div>
+          </div>
+          <div class="card-metric" style="border-left-color: var(--color-warning);">
+            <div class="card-metric-label">Open Support</div>
+            <div class="card-metric-value">3</div>
+          </div>
+          <div class="card-metric" style="border-left-color: var(--color-info);">
+            <div class="card-metric-label">Active Orders</div>
+            <div class="card-metric-value">5</div>
+          </div>
+        </div>
+        
+        <h3>Aggregate Status Card</h3>
+        <div class="card-grid">
+          <div class="card-status">
+            <div class="card-status-header">
+              <span class="card-status-title">Account Health</span>
+              <span class="tag tag-sm tag-success">Good Standing</span>
+            </div>
+            <div class="card-status-grid">
+              <div>
+                <div class="card-status-item-value" style="color: var(--color-success);">12</div>
+                <div class="card-status-item-label">Completed</div>
+              </div>
+              <div>
+                <div class="card-status-item-value" style="color: var(--color-info);">3</div>
+                <div class="card-status-item-label">In Progress</div>
+              </div>
+              <div>
+                <div class="card-status-item-value" style="color: var(--color-warning);">1</div>
+                <div class="card-status-item-label">Pending</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Alert/Warning Cards</h3>
+        <div class="card-warning mb-3">
+          <i data-lucide="alert-triangle" width="24" height="24" class="card-warning-icon"></i>
+          <div class="card-warning-content">
+            <h4>Payment Overdue</h4>
+            <p>Invoice INV-2024-0038 is 7 days overdue. Please make payment to avoid service interruption.</p>
+          </div>
+        </div>
+        
+        <div class="card-danger">
+          <i data-lucide="alert-octagon" width="24" height="24" class="card-danger-icon"></i>
+          <div class="card-warning-content">
+            <h4>ID Verification Required</h4>
+            <p>Please verify your identity to continue using all account features.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 15: Alerts -->
+      <section id="alerts">
+        <h2><i data-lucide="alert-triangle" width="24" height="24"></i> 15. Alerts & Notifications</h2>
+        
+        <div class="alert alert-success">
+          <i data-lucide="check-circle" width="20" height="20" class="alert-icon"></i>
+          <div class="alert-content">
+            <div class="alert-title">Payment Received</div>
+            <p class="alert-message">Your payment of $1,250.00 has been processed successfully.</p>
+          </div>
+          <button class="alert-dismiss"><i data-lucide="x" width="16" height="16"></i></button>
+        </div>
+        
+        <div class="alert alert-warning">
+          <i data-lucide="alert-triangle" width="20" height="20" class="alert-icon"></i>
+          <div class="alert-content">
+            <div class="alert-title">Invoice Due Soon</div>
+            <p class="alert-message">INV-2024-0042 is due in 3 days. Set up autopay to avoid late fees.</p>
+            <div class="alert-actions">
+              <button class="btn btn-sm btn-primary">Set Up Autopay</button>
+              <button class="btn btn-sm btn-ghost">Pay Now</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="alert alert-danger">
+          <i data-lucide="alert-octagon" width="20" height="20" class="alert-icon"></i>
+          <div class="alert-content">
+            <div class="alert-title">Action Required</div>
+            <p class="alert-message">Your account has been temporarily limited. Please update your payment method.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 16: Settings Modal -->
+      <section id="settings-modal">
+        <h2><i data-lucide="settings" width="24" height="24"></i> 16. Settings & Configuration Modals</h2>
+        <p>Large modals with vertical tabs for multi-section settings. Consistent Save/Cancel buttons.</p>
+        
+        <div class="card" style="padding: 0; background: rgba(0,0,0,0.05);">
+          <div style="padding: var(--space-3);">
+            <div class="modal-large" style="position: relative; max-height: 400px;">
+              <div class="modal-header">
+                <h3>Account Settings</h3>
+                <button class="modal-close"><i data-lucide="x" width="20" height="20"></i></button>
+              </div>
+              <div class="modal-body">
+                <div class="modal-tabs-vertical">
+                  <button class="modal-tab-vertical active"><i data-lucide="user" width="18" height="18"></i> Profile</button>
+                  <button class="modal-tab-vertical"><i data-lucide="sliders" width="18" height="18"></i> Preferences</button>
+                  <button class="modal-tab-vertical"><i data-lucide="shield" width="18" height="18"></i> Security</button>
+                  <button class="modal-tab-vertical"><i data-lucide="bell" width="18" height="18"></i> Notifications</button>
+                </div>
+                <div class="modal-content">
+                  <h4 style="margin-top: 0;">Profile Information</h4>
+                  <div class="form-group">
+                    <label class="form-label">Display Name</label>
+                    <input type="text" class="form-input" value="John Smith">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" value="john@example.com">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-input" value="+64 21 123 4567">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-ghost">Cancel</button>
+                <button class="btn btn-primary">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h4 class="mt-3">Modal Rules</h4>
+        <ul>
+          <li><strong>Vertical tabs:</strong> Use for 3+ settings sections</li>
+          <li><strong>Focus management:</strong> Trap focus within modal, return focus on close</li>
+          <li><strong>Scrollable content:</strong> Content area scrolls, header/footer fixed</li>
+          <li><strong>Consistent actions:</strong> Cancel (left), Save (right, primary)</li>
+          <li><strong>Escape to close:</strong> Always support keyboard dismissal</li>
+        </ul>
+      </section>
+      
+      <!-- Section 17: Interactive Panels -->
+      <section id="interactive-panels">
+        <h2><i data-lucide="sliders" width="24" height="24"></i> 17. Interactive Panels & Toolbars</h2>
+        <p>For timelines, plan views, or interactive content. Vertical toolbar on left, contextual actions at bottom.</p>
+        
+        <div class="panel-interactive">
+          <div class="panel-toolbar-vertical">
+            <button class="panel-tool active"><i data-lucide="mouse-pointer" width="20" height="20"></i></button>
+            <button class="panel-tool"><i data-lucide="zoom-in" width="20" height="20"></i></button>
+            <button class="panel-tool"><i data-lucide="zoom-out" width="20" height="20"></i></button>
+            <button class="panel-tool"><i data-lucide="move" width="20" height="20"></i></button>
+            <div style="flex: 1;"></div>
+            <button class="panel-tool"><i data-lucide="maximize-2" width="20" height="20"></i></button>
+          </div>
+          <div class="panel-canvas">
+            <div class="panel-canvas-area">
+              <div style="text-align: center;">
+                <i data-lucide="calendar" width="48" height="48"></i>
+                <p>Account Activity Timeline</p>
+              </div>
+            </div>
+            <div class="panel-context-menu">
+              <span class="note">Viewing: Last 30 days</span>
+              <div class="flex gap-1">
+                <button class="btn btn-sm btn-ghost">Export</button>
+                <button class="btn btn-sm btn-ghost">Print</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h4 class="mt-3">Toolbar Rules</h4>
+        <ul>
+          <li><strong>Touch targets:</strong> 44×44px minimum for all tools</li>
+          <li><strong>Active state:</strong> Use accent colour background</li>
+          <li><strong>Vertical placement:</strong> Left side for primary tools</li>
+          <li><strong>Context menu:</strong> Bottom bar for secondary actions and status</li>
+        </ul>
+      </section>
+      
+      <!-- Section 18: Dashboards -->
+      <section id="dashboards">
+        <h2><i data-lucide="pie-chart" width="24" height="24"></i> 18. Dashboards</h2>
+        <p>Card-based layouts for customer KPIs. Group metrics logically, separate from tables with whitespace.</p>
+        
+        <div class="section-group">
+          <div class="section-group-header">
+            <h4 class="section-group-title">Account Overview</h4>
+          </div>
+          <div class="dashboard-grid">
+            <div class="card-metric">
+              <div class="card-metric-label">Account Balance</div>
+              <div class="card-metric-value">$2,450</div>
+            </div>
+            <div class="card-metric" style="border-left-color: var(--color-success);">
+              <div class="card-metric-label">Credit Available</div>
+              <div class="card-metric-value">$7,550</div>
+            </div>
+            <div class="card-metric" style="border-left-color: var(--color-warning);">
+              <div class="card-metric-label">Next Payment</div>
+              <div class="card-metric-value">Jan 15</div>
+            </div>
+            <div class="card-metric" style="border-left-color: var(--color-info);">
+              <div class="card-metric-label">Rewards Points</div>
+              <div class="card-metric-value">1,240</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-warning">
+          <i data-lucide="alert-triangle" width="24" height="24" class="card-warning-icon"></i>
+          <div class="card-warning-content">
+            <h4>1 Action Required</h4>
+            <p>Please update your payment method before January 15 to avoid service interruption.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 19: Accessibility -->
+      <section id="accessibility">
+        <h2><i data-lucide="accessibility" width="24" height="24"></i> 19. Accessibility (WCAG AA)</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h4><i data-lucide="contrast" width="16" height="16"></i> Contrast</h4>
+            <p>4.5:1 for text, 3:1 for UI. Colour never sole indicator.</p>
+          </div>
+          <div class="card">
+            <h4><i data-lucide="keyboard" width="16" height="16"></i> Keyboard</h4>
+            <p>All interactive elements reachable. Escape closes modals.</p>
+          </div>
+          <div class="card">
+            <h4><i data-lucide="focus" width="16" height="16"></i> Focus</h4>
+            <p>Always visible. Trap in modals. Return on close.</p>
+          </div>
+          <div class="card">
+            <h4><i data-lucide="monitor" width="16" height="16"></i> Touch Targets</h4>
+            <p>44×44px minimum for all interactive elements.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 20: Governance -->
+      <section id="governance">
+        <h2><i data-lucide="shield-check" width="24" height="24"></i> 20. Governance</h2>
+        
+        <h4>Source of Truth</h4>
+        <ol>
+          <li>This documentation</li>
+          <li>Figma – Vanguard UI Design Guidelines</li>
+          <li>Product implementations</li>
+        </ol>
+        
+        <h4>Anti-Patterns</h4>
+        <ul>
+          <li>One-off components for speed</li>
+          <li>Hard-coded colours/spacing</li>
+          <li>Icons without text labels</li>
+          <li>AI-generated UI without review</li>
+        </ul>
+      </section>
+      
+      <!-- Footer -->
+      <footer style="margin-top: var(--space-6); padding-top: var(--space-3); border-top: 1px solid var(--color-neutral-light);">
+        <p class="note">Vanguard UI Design Guidelines v2.0 — Customer Portal Specification</p>
+      </footer>
+      
+    </main>
+  </div>
+  
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+  <script>
+    // Initialize Lucide icons
+    function initIcons() {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      } else {
+        setTimeout(initIcons, 100);
+      }
+    }
+    initIcons();
+    document.addEventListener('DOMContentLoaded', initIcons);
+    window.addEventListener('load', initIcons);
+    
+    // Mobile navigation
+    function toggleNav() {
+      document.getElementById('nav').classList.toggle('open');
+    }
+    
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('nav').classList.remove('open');
+      });
+    });
+    
+    // Active nav highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    function updateActiveNav() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
+  </script>
+</body>
+</html>
