@@ -1,894 +1,757 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanguard UI Design Guidelines</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vanguard UI Design Guidelines</title>
 
-  <!-- pages-rebuild-trigger: 2026-01-12T20:00:00Z -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- All CSS must live in styles.css -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-  <header class="mobile-header">
-    <button class="btn btn-ghost btn-icon" onclick="toggleNav()" aria-label="Toggle navigation">
-      <i data-lucide="menu" width="24" height="24"></i>
-    </button>
-    <span class="mobile-title">Vanguard UI Guidelines</span>
-  </header>
-
-  <div class="doc-shell">
-    <nav class="doc-nav" id="nav">
-      <div class="doc-nav-logo">Vanguard UI</div>
-
-      <div class="doc-nav-section">Foundation</div>
-      <a href="#principles" class="doc-nav-link"><i data-lucide="compass"></i> Principles</a>
-      <a href="#approach" class="doc-nav-link"><i data-lucide="layout"></i> Approach</a>
-
-      <div class="doc-nav-section">Tokens</div>
-      <a href="#colours" class="doc-nav-link"><i data-lucide="palette"></i> Colours</a>
-      <a href="#typography" class="doc-nav-link"><i data-lucide="type"></i> Typography</a>
-      <a href="#spacing" class="doc-nav-link"><i data-lucide="move"></i> Spacing</a>
-      <a href="#radius" class="doc-nav-link"><i data-lucide="square"></i> Radius</a>
-      <a href="#icons" class="doc-nav-link"><i data-lucide="smile"></i> Icons</a>
-
-      <div class="doc-nav-section">Page Structure</div>
-      <a href="#page-hierarchy" class="doc-nav-link"><i data-lucide="layers"></i> Page Hierarchy</a>
-      <a href="#navigation" class="doc-nav-link"><i data-lucide="menu"></i> Navigation</a>
-      <a href="#command-palette" class="doc-nav-link"><i data-lucide="search"></i> Global Search</a>
-
-      <div class="doc-nav-section">Components</div>
-      <a href="#buttons" class="doc-nav-link"><i data-lucide="mouse-pointer-click"></i> Buttons</a>
-      <a href="#tags" class="doc-nav-link"><i data-lucide="tag"></i> Tags</a>
-      <a href="#inputs" class="doc-nav-link"><i data-lucide="text-cursor-input"></i> Inputs</a>
-      <a href="#tables" class="doc-nav-link"><i data-lucide="table"></i> Tables</a>
-      <a href="#cards" class="doc-nav-link"><i data-lucide="credit-card"></i> Cards & KPIs</a>
-      <a href="#alerts" class="doc-nav-link"><i data-lucide="alert-triangle"></i> Alerts</a>
-      <a href="#modals" class="doc-nav-link"><i data-lucide="square"></i> Modals</a>
-
-      <div class="doc-nav-section">Patterns</div>
-      <a href="#action-hierarchy" class="doc-nav-link"><i data-lucide="split"></i> Action Hierarchy</a>
-      <a href="#bulk-actions" class="doc-nav-link"><i data-lucide="check-square"></i> Bulk Actions</a>
-      <a href="#density" class="doc-nav-link"><i data-lucide="minimize-2"></i> Density</a>
-      <a href="#accessibility" class="doc-nav-link"><i data-lucide="accessibility"></i> Accessibility</a>
-    </nav>
-
-    <main class="doc-main">
-
-      <button class="btn btn-primary print-btn" onclick="window.print()">
-        <i data-lucide="printer" width="16" height="16"></i> Print
+  <body>
+    <!-- Mobile header -->
+    <header class="mobile-header">
+      <button class="btn btn-ghost btn-icon" id="mobileNavBtn" aria-label="Open navigation">
+        <i data-lucide="menu"></i>
       </button>
+      <div class="mobile-title">Vanguard Design Guidelines</div>
+    </header>
 
-      <header>
+    <div class="doc-shell">
+      <!-- Left nav -->
+      <nav class="doc-nav" id="docNav" aria-label="Guidelines navigation">
+        <div class="doc-nav-logo">Vanguard Design Guidelines</div>
+
+        <div class="doc-nav-section">Foundations</div>
+        <a class="doc-nav-link" href="#principles"><i data-lucide="sparkles"></i> Principles</a>
+        <a class="doc-nav-link" href="#page-hierarchy"><i data-lucide="layers"></i> Page hierarchy</a>
+        <a class="doc-nav-link" href="#navigation"><i data-lucide="map"></i> Navigation</a>
+        <a class="doc-nav-link" href="#search"><i data-lucide="search"></i> Search</a>
+
+        <div class="doc-nav-section">Components</div>
+        <a class="doc-nav-link" href="#buttons"><i data-lucide="mouse-pointer-click"></i> Buttons</a>
+        <a class="doc-nav-link" href="#tags"><i data-lucide="tag"></i> Tags</a>
+        <a class="doc-nav-link" href="#forms"><i data-lucide="text-cursor-input"></i> Forms</a>
+        <a class="doc-nav-link" href="#tables"><i data-lucide="table"></i> Tables</a>
+        <a class="doc-nav-link" href="#cards"><i data-lucide="layout-grid"></i> Cards & KPIs</a>
+        <a class="doc-nav-link" href="#alerts"><i data-lucide="triangle-alert"></i> Alerts</a>
+
+        <div class="doc-nav-section">Patterns</div>
+        <a class="doc-nav-link" href="#action-hierarchy"><i data-lucide="corner-up-right"></i> Action hierarchy</a>
+        <a class="doc-nav-link" href="#notifications"><i data-lucide="bell"></i> Notifications</a>
+        <a class="doc-nav-link" href="#tooltips"><i data-lucide="info"></i> Tooltips</a>
+        <a class="doc-nav-link" href="#popovers"><i data-lucide="message-square"></i> Popovers</a>
+        <a class="doc-nav-link" href="#modals"><i data-lucide="square"></i> Modals</a>
+        <a class="doc-nav-link" href="#bulk-actions"><i data-lucide="check-square"></i> Bulk actions</a>
+        <a class="doc-nav-link" href="#density"><i data-lucide="rows-3"></i> Density</a>
+        <a class="doc-nav-link" href="#accessibility"><i data-lucide="accessibility"></i> Accessibility</a>
+      </nav>
+
+      <!-- Main content -->
+      <main class="doc-main">
         <h1>Vanguard UI Design Guidelines</h1>
-        <p class="subtitle">Customer Portal Design System • v3.1</p>
-      </header>
-
-      <!-- PRINCIPLES -->
-      <section id="principles">
-        <h2><i data-lucide="compass" width="22" height="22"></i> 1. IT Principles</h2>
-        <p>All UI decisions trace back to these core principles:</p>
-
-        <div class="demo-box">
-          <table>
-            <thead>
-              <tr>
-                <th>Principle</th>
-                <th>Meaning</th>
-                <th>UI Implication</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>User-first</strong></td><td>Reduce cognitive load</td><td>Next action is obvious</td></tr>
-              <tr><td><strong>Autonomy by design</strong></td><td>Enable self-service</td><td>No support dependency</td></tr>
-              <tr><td><strong>Process-first</strong></td><td>Reflect real workflows</td><td>Browse → Select → Action</td></tr>
-              <tr><td><strong>Integrated</strong></td><td>Consistent patterns</td><td>Same components everywhere</td></tr>
-              <tr><td><strong>Speed with control</strong></td><td>Fast & predictable</td><td>Safe, reversible actions</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- APPROACH -->
-      <section id="approach">
-        <h2><i data-lucide="layout" width="22" height="22"></i> 2. Approach</h2>
-
-        <h4>Desktop-first, responsive</h4>
-        <p>Design for desktop as the primary experience. Layouts reflow gracefully on smaller screens.</p>
-
-        <h4>Clean, utilitarian aesthetic</h4>
-        <p>Customer portals should feel calm, professional and easy to interpret. Use borders and spacing (not colour) to create structure.</p>
-
-        <h4>Neutral-dominant (95% rule)</h4>
-        <p>Most of the UI uses neutral colours. Reserve colour for primary actions, active states, focus rings, and semantic status.</p>
-
-        <h4>Small radii, crisp lines</h4>
-        <p>Use small radii (4–6px) on cards, buttons and table containers. Prefer subtle borders and minimal elevation.</p>
-
-      </section>
-
-      <!-- COLOURS -->
-      <section id="colours">
-        <h2><i data-lucide="palette" width="22" height="22"></i> 3. Colours</h2>
-        <p class="note">Use neutral first. Colour is functional: actions, selection, and status.</p>
-
-        <h3>Primary (Actions & Active State)</h3>
-        <p>Primary is used for buttons, selected nav, focus ring, links, and “active” indicators.</p>
-        <div class="swatch-grid">
-          <div class="swatch">
-            <div class="swatch-color" style="background: var(--color-primary);">
-              <code style="color: white;">var(--color-primary)</code>
-            </div>
-            <div class="swatch-label">primary</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: var(--color-primary-hover);">
-              <code style="color: white;">primary-hover</code>
-            </div>
-            <div class="swatch-label">hover</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: var(--color-primary-light); border: 1px solid var(--color-primary-muted);">
-              <code>primary-light</code>
-            </div>
-            <div class="swatch-label">light</div>
-          </div>
-        </div>
-
-        <h3>Brand (Identity Only)</h3>
-        <p>Brand colours are available for identity, but UI interaction should still follow the Primary/Semantic rules.</p>
-        <div class="swatch-grid">
-          <div class="swatch">
-            <div class="swatch-color" style="background: var(--color-brand-blue);">
-              <code style="color: white;">#004674</code>
-            </div>
-            <div class="swatch-label">brand-blue</div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background: var(--color-brand-red);">
-              <code style="color: white;">#ff0000</code>
-            </div>
-            <div class="swatch-label">brand-red</div>
-          </div>
-        </div>
-
-        <h3>Semantic (Status Only)</h3>
-        <p>Status colours are for outcomes/alerts only. Avoid using them for navigation or decoration.</p>
-        <div class="swatch-grid">
-          <div class="swatch"><div class="swatch-color" style="background: var(--color-success);"><code style="color:white;">success</code></div><div class="swatch-label">success</div></div>
-          <div class="swatch"><div class="swatch-color" style="background: var(--color-warning);"><code style="color:white;">warning</code></div><div class="swatch-label">warning</div></div>
-          <div class="swatch"><div class="swatch-color" style="background: var(--color-danger);"><code style="color:white;">danger</code></div><div class="swatch-label">danger</div></div>
-          <div class="swatch"><div class="swatch-color" style="background: var(--color-info);"><code style="color:white;">info</code></div><div class="swatch-label">info</div></div>
-        </div>
-      </section>
-
-      <!-- TYPOGRAPHY -->
-      <section id="typography">
-        <h2><i data-lucide="type" width="22" height="22"></i> 4. Typography</h2>
-        <p><strong>Font:</strong> Inter. <strong>Case:</strong> Sentence case (except uppercase labels).</p>
-
-        <div class="demo-box">
-          <p style="font: var(--text-heading-xl); margin-bottom: 8px;">heading-xl — 28px/600</p>
-          <p style="font: var(--text-heading-lg); margin-bottom: 8px;">heading-lg — 22px/600</p>
-          <p style="font: var(--text-heading-md); margin-bottom: 8px;">heading-md — 18px/600</p>
-          <p style="font: var(--text-body-md); margin-bottom: 8px;">body-md — 14px/400 (default)</p>
-          <p style="font: var(--text-body-sm); margin-bottom: 8px;">body-sm — 13px/400</p>
-          <p style="font: var(--text-label); margin-bottom: 8px;">label — 12px/500</p>
-          <p style="font: var(--text-label-caps); text-transform: uppercase; letter-spacing: 0.03em;">label-caps — 11px/600</p>
-        </div>
-      </section>
-
-      <!-- SPACING -->
-      <section id="spacing">
-        <h2><i data-lucide="move" width="22" height="22"></i> 5. Spacing</h2>
-        <p>Base unit: 4px. Common increments use multiples of 4 and 8.</p>
-
-        <div class="spacing-grid">
-          <div class="spacing-item"><div class="spacing-box" style="width: 4px; height: 16px;"></div><span class="spacing-label">4px</span></div>
-          <div class="spacing-item"><div class="spacing-box" style="width: 8px; height: 16px;"></div><span class="spacing-label">8px</span></div>
-          <div class="spacing-item"><div class="spacing-box" style="width: 12px; height: 16px;"></div><span class="spacing-label">12px</span></div>
-          <div class="spacing-item"><div class="spacing-box" style="width: 16px; height: 16px;"></div><span class="spacing-label">16px</span></div>
-          <div class="spacing-item"><div class="spacing-box" style="width: 24px; height: 16px;"></div><span class="spacing-label">24px</span></div>
-          <div class="spacing-item"><div class="spacing-box" style="width: 32px; height: 16px;"></div><span class="spacing-label">32px</span></div>
-          <div class="spacing-item"><div class="spacing-box" style="width: 48px; height: 16px;"></div><span class="spacing-label">48px</span></div>
-        </div>
-      </section>
-
-      <!-- RADIUS -->
-      <section id="radius">
-        <h2><i data-lucide="square" width="22" height="22"></i> 6. Radius & Borders</h2>
-        <p>Small radii for a crisp, professional interface. Avoid large rounded corners.</p>
-
-        <div class="radius-grid">
-          <div class="radius-item"><div class="radius-box" style="border-radius: 2px;"></div><span class="radius-label">xs 2px</span></div>
-          <div class="radius-item"><div class="radius-box" style="border-radius: 4px;"></div><span class="radius-label">sm 4px</span></div>
-          <div class="radius-item"><div class="radius-box" style="border-radius: 6px;"></div><span class="radius-label">md 6px</span></div>
-          <div class="radius-item"><div class="radius-box" style="border-radius: 8px;"></div><span class="radius-label">lg 8px</span></div>
-          <div class="radius-item"><div class="radius-box" style="border-radius: 9999px;"></div><span class="radius-label">full</span></div>
-        </div>
-
-        <h4>Border tokens</h4>
-        <ul>
-          <li><code>--border-default</code> — primary separators</li>
-          <li><code>--border-subtle</code> — table row dividers</li>
-          <li><code>--border-strong</code> — stronger emphasis edges</li>
-        </ul>
-      </section>
-
-      <!-- ICONS -->
-      <section id="icons">
-        <h2><i data-lucide="smile" width="22" height="22"></i> 7. Iconography</h2>
-        <p><strong>Library:</strong> Lucide. <strong>Sizes:</strong> 14px compact, 16px default, 18–20px nav. Icons accompany text—never replace it.</p>
-
-        <div class="icon-grid">
-          <div class="icon-item"><i data-lucide="search" width="20" height="20"></i><span>search</span></div>
-          <div class="icon-item"><i data-lucide="home" width="20" height="20"></i><span>home</span></div>
-          <div class="icon-item"><i data-lucide="settings" width="20" height="20"></i><span>settings</span></div>
-          <div class="icon-item"><i data-lucide="bell" width="20" height="20"></i><span>bell</span></div>
-          <div class="icon-item"><i data-lucide="user" width="20" height="20"></i><span>user</span></div>
-          <div class="icon-item"><i data-lucide="plus" width="20" height="20"></i><span>plus</span></div>
-          <div class="icon-item"><i data-lucide="download" width="20" height="20"></i><span>download</span></div>
-          <div class="icon-item"><i data-lucide="filter" width="20" height="20"></i><span>filter</span></div>
-          <div class="icon-item"><i data-lucide="eye" width="20" height="20"></i><span>eye</span></div>
-          <div class="icon-item"><i data-lucide="check" width="20" height="20"></i><span>check</span></div>
-          <div class="icon-item"><i data-lucide="x" width="20" height="20"></i><span>x</span></div>
-          <div class="icon-item"><i data-lucide="alert-triangle" width="20" height="20"></i><span>alert</span></div>
-        </div>
-      </section>
-
-<!-- PAGE HIERARCHY (CUSTOMER PORTAL VERSION OF THE PATTERN) -->
-<section id="page-hierarchy">
-  <h2><i data-lucide="layers" width="22" height="22"></i> 8. Page Hierarchy</h2>
-  <p>
-    This is the standard stacked layout used across customer portals. Each row has a distinct purpose and
-    should remain consistent across modules. Keep scopes separate: <strong>global</strong> controls at the top,
-    <strong>page-level</strong> controls in the secondary row, and <strong>dataset-level</strong> controls inside the table area.
-  </p>
-
-  <!-- Legend -->
-  <div class="hierarchy-legend">
-    <div class="legend-item"><span class="legend-swatch red"></span><span><strong>Header</strong> — Context, mode, user</span></div>
-    <div class="legend-item"><span class="legend-swatch yellow"></span><span><strong>Primary Nav</strong> — Modules, global search, settings, role</span></div>
-    <div class="legend-item"><span class="legend-swatch grey"></span><span><strong>KPIs</strong> — Read-only metrics</span></div>
-    <div class="legend-item"><span class="legend-swatch blue"></span><span><strong>Secondary Menu</strong> — Page switcher + actions</span></div>
-    <div class="legend-item"><span class="legend-swatch purple"></span><span><strong>Table Area</strong> — Table menu + table controls</span></div>
-  </div>
-
-  <!-- Visual Example (stacked page) -->
-  <div class="demo-box demo-box-flush demo-box-dark hierarchy-demo">
-
-    <!-- Row 1: Header (RED) -->
-    <div class="hierarchy-row-label red">Header (Context)</div>
-    <div class="page-header hierarchy-row red-outline">
-      <div class="page-header-context">
-        <h1>Acme Industries Ltd</h1>
-        <div class="meta">Account #10042 • Auckland, NZ</div>
-      </div>
-      <div class="page-header-actions">
-        <div class="mode-toggle">
-          <button class="mode-toggle-btn active"><i data-lucide="building-2" width="16" height="16"></i> Business</button>
-          <button class="mode-toggle-btn"><i data-lucide="user" width="16" height="16"></i> Personal</button>
-        </div>
-        <div class="user-info">
-          <div class="user-info-name">Sarah Mitchell</div>
-          <div class="user-info-email">sarah@acme.co.nz</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 2: Primary Navigation (YELLOW) -->
-    <div class="hierarchy-row-label yellow">Primary Navigation (Global)</div>
-    <div class="primary-nav hierarchy-row yellow-outline">
-      <div class="primary-nav-items">
-        <a href="#" class="primary-nav-item"><i data-lucide="home" width="16" height="16"></i> Dashboard</a>
-        <a href="#" class="primary-nav-item active"><i data-lucide="shopping-cart" width="16" height="16"></i> Orders</a>
-        <a href="#" class="primary-nav-item"><i data-lucide="file-text" width="16" height="16"></i> Invoices</a>
-        <a href="#" class="primary-nav-item"><i data-lucide="package" width="16" height="16"></i> Products</a>
-        <a href="#" class="primary-nav-item"><i data-lucide="headphones" width="16" height="16"></i> Support</a>
-      </div>
-      <div class="primary-nav-actions">
-        <div class="global-search">
-          <i data-lucide="search" width="16" height="16"></i>
-          <input type="text" placeholder="Search across the portal…">
-          <kbd>⌘K</kbd>
-        </div>
-        <button class="btn btn-ghost btn-icon" aria-label="Notifications"><i data-lucide="bell" width="18" height="18"></i></button>
-        <button class="btn btn-ghost btn-icon" aria-label="Settings"><i data-lucide="settings" width="18" height="18"></i></button>
-        <button class="btn btn-secondary btn-sm">Customer</button>
-      </div>
-    </div>
-
-    <!-- Row 3: KPI Cards (GREY) -->
-    <div class="hierarchy-row-label grey">KPIs (Read-only)</div>
-    <div class="hierarchy-row grey-outline hierarchy-kpis">
-      <div class="kpi-grid" style="margin: 0;">
-        <div class="kpi-card">
-          <div class="kpi-card-header"><span class="kpi-card-label">Open Orders</span></div>
-          <div class="kpi-card-value">4</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-card-header"><span class="kpi-card-label">In Transit</span></div>
-          <div class="kpi-card-value">2</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-card-header"><span class="kpi-card-label">Outstanding</span></div>
-          <div class="kpi-card-value warning">$1,892</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-card-header"><span class="kpi-card-label">Tickets</span></div>
-          <div class="kpi-card-value">1</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 4: Secondary Menu + Actions (BLUE) -->
-    <div class="hierarchy-row-label blue">Secondary Menu (Page-level)</div>
-    <div class="hierarchy-row blue-outline hierarchy-secondary">
-      <div class="action-bar">
-        <!-- LEFT: system/distinct actions -->
-        <div class="action-bar-left">
-          <button class="btn btn-secondary btn-sm"><i data-lucide="refresh-cw" width="16" height="16"></i> Sync</button>
-          <button class="btn btn-secondary btn-sm"><i data-lucide="download" width="16" height="16"></i> Export</button>
-
-          <div class="section-tabs">
-            <button class="section-tab active">Orders (47)</button>
-            <button class="section-tab">Quotes (3)</button>
-          </div>
-        </div>
-
-        <!-- RIGHT: primary actions -->
-        <div class="action-bar-right">
-          <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> New Order</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 5: Table Menu + Table (PURPLE) -->
-    <div class="hierarchy-row-label purple">Table Area (Dataset-level)</div>
-    <div class="hierarchy-row purple-outline">
-
-      <!-- Table Menu: filter + search + controls ON SAME ROW -->
-      <div class="table-menu">
-        <div class="table-menu-left">
-          <button class="btn btn-secondary btn-sm"><i data-lucide="filter" width="16" height="16"></i> Filters</button>
-
-          <div class="table-search">
-            <i data-lucide="search" width="16" height="16"></i>
-            <input type="text" placeholder="Search orders…">
-          </div>
-        </div>
-
-        <div class="table-actions">
-          <button class="btn btn-secondary btn-sm"><i data-lucide="columns-2" width="16" height="16"></i> Columns</button>
-
-          <div class="view-toggle">
-            <button class="view-toggle-btn"><i data-lucide="grid" width="14" height="14"></i> Cards</button>
-            <button class="view-toggle-btn active"><i data-lucide="list" width="14" height="14"></i> List</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Table -->
-      <div class="table-container" style="border-radius: var(--radius-md);">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 40px;"><input type="checkbox" class="table-checkbox"></th>
-              <th class="sortable">Order # <span class="sort-icon"><i data-lucide="chevrons-up-down" width="14" height="14"></i></span></th>
-              <th>Customer</th>
-              <th class="sortable">Created <span class="sort-icon"><i data-lucide="chevrons-up-down" width="14" height="14"></i></span></th>
-              <th>Status</th>
-              <th class="align-right">Total</th>
-              <th class="align-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" class="table-checkbox"></td>
-              <td><code>ORD-2026-0894</code></td>
-              <td>Acme Industries Ltd</td>
-              <td>Jan 10, 2026</td>
-              <td><span class="tag tag-primary">Processing</span></td>
-              <td class="align-right">$2,268.00</td>
-              <td class="align-right">
-                <div class="row-actions" style="opacity: 1;">
-                  <button class="btn btn-ghost btn-sm btn-icon"><i data-lucide="eye" width="14" height="14"></i></button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="table-checkbox"></td>
-              <td><code>ORD-2026-0891</code></td>
-              <td>SmartTech HQ</td>
-              <td>Jan 8, 2026</td>
-              <td><span class="tag tag-info">In Transit</span></td>
-              <td class="align-right">$1,450.00</td>
-              <td class="align-right">
-                <div class="row-actions" style="opacity: 1;">
-                  <button class="btn btn-ghost btn-sm btn-icon"><i data-lucide="eye" width="14" height="14"></i></button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="note mt-3" style="margin-bottom: 0;">
-        Table patterns include: sortable columns, filters, bulk selection, row actions, and a bulk action toolbar when selections exist.
-      </p>
-    </div>
-  </div>
-
-  <!-- Rules -->
-  <h3 class="mt-4">Rules by Row</h3>
-  <div class="demo-box">
-    <ul style="margin: 0;">
-      <li><strong>Header:</strong> Context only (where/what/who). No operational actions.</li>
-      <li><strong>Primary Nav:</strong> Modules + global search + settings + role/persona. Always present.</li>
-      <li><strong>KPIs:</strong> Read-only module metrics. Neutral styling.</li>
-      <li><strong>Secondary Menu:</strong> Page switcher + actions. <strong>System/distinct actions left</strong>. <strong>Primary actions right</strong>.</li>
-      <li><strong>Table Area:</strong> Table menu and controls belong together. Filter + search left, table controls right.</li>
-    </ul>
-  </div>
-</section>
-
-
-      <!-- NAVIGATION -->
-      <section id="navigation">
-        <h2><i data-lucide="menu" width="22" height="22"></i> 9. Navigation</h2>
-
-        <h3>Primary navigation</h3>
-        <p>Horizontal module bar. Icons + labels required. Active state uses primary colour (brand-blue).</p>
-        <div class="demo-box demo-box-flush">
-          <div class="primary-nav">
-            <div class="primary-nav-items">
-              <a href="#" class="primary-nav-item"><i data-lucide="home" width="16" height="16"></i> Dashboard</a>
-              <a href="#" class="primary-nav-item active"><i data-lucide="shopping-cart" width="16" height="16"></i> Orders</a>
-              <a href="#" class="primary-nav-item"><i data-lucide="file-text" width="16" height="16"></i> Invoices</a>
-              <a href="#" class="primary-nav-item"><i data-lucide="headphones" width="16" height="16"></i> Support</a>
-            </div>
-          </div>
-        </div>
-
-        <h3 class="mt-4">Secondary navigation (underline tabs)</h3>
-        <p>Underline-style tabs for page-level filtering/switching. Active underline uses primary colour.</p>
-        <div class="demo-box demo-box-flush">
-          <div class="secondary-nav">
-            <a href="#" class="secondary-nav-item active">Overview</a>
-            <a href="#" class="secondary-nav-item">Billing</a>
-            <a href="#" class="secondary-nav-item">Documents</a>
-            <a href="#" class="secondary-nav-item">Activity</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- GLOBAL SEARCH -->
-      <section id="command-palette">
-        <h2><i data-lucide="search" width="22" height="22"></i> 10. Global Search</h2>
-        <p>Global search is available from every module. Trigger via <kbd>⌘</kbd>+<kbd>K</kbd>. Results are grouped and keyboard navigable.</p>
-
-        <div class="demo-box" style="display:flex; justify-content:center; background: var(--color-neutral-100);">
-          <div class="command-palette-demo">
-            <div class="command-input">
-              <i data-lucide="search" width="18" height="18"></i>
-              <input type="text" placeholder="Search orders, invoices, products..." value="barrier" />
-            </div>
-            <div class="command-results">
-              <div class="command-group">
-                <div class="command-group-label">Products</div>
-                <div class="command-item focused">
-                  <i data-lucide="package" width="18" height="18"></i>
-                  <div class="command-item-content">
-                    <div class="command-item-title">Safety <mark>Barrier</mark> Yellow 2.0m</div>
-                    <div class="command-item-meta">SKU: SB-2000-Y • $189.00</div>
-                  </div>
-                </div>
-                <div class="command-item">
-                  <i data-lucide="package" width="18" height="18"></i>
-                  <div class="command-item-content">
-                    <div class="command-item-title">Pedestrian <mark>Barrier</mark> Gate</div>
-                    <div class="command-item-meta">SKU: PBG-100 • $245.00</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="command-group">
-                <div class="command-group-label">Orders</div>
-                <div class="command-item">
-                  <i data-lucide="shopping-cart" width="18" height="18"></i>
-                  <div class="command-item-content">
-                    <div class="command-item-title">Order #ORD-2026-0891</div>
-                    <div class="command-item-meta">Contains <mark>barrier</mark> products • Jan 8</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="command-footer">
-              <span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
-              <span><kbd>↵</kbd> Select</span>
-              <span><kbd>Esc</kbd> Close</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- BUTTONS -->
-      <section id="buttons">
-        <h2><i data-lucide="mouse-pointer-click" width="22" height="22"></i> 11. Buttons</h2>
-        <h4>Primary</h4>
-        <p>Primary uses brand-blue and is reserved for the main action in a row or area.</p>
-        <div class="demo-row">
-          <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> New Order</button>
-          <button class="btn btn-primary"><i data-lucide="credit-card" width="16" height="16"></i> Pay Invoice</button>
-        </div>
-
-        <h4>Secondary</h4>
-        <div class="demo-row">
-          <button class="btn btn-secondary"><i data-lucide="download" width="16" height="16"></i> Export</button>
-          <button class="btn btn-secondary">Cancel</button>
-        </div>
-
-        <h4>Ghost</h4>
-        <div class="demo-row">
-          <button class="btn btn-ghost"><i data-lucide="filter" width="16" height="16"></i> Filter</button>
-          <button class="btn btn-ghost btn-icon"><i data-lucide="settings" width="18" height="18"></i></button>
-        </div>
-
-        <h4>Danger</h4>
-        <div class="demo-row">
-          <button class="btn btn-danger"><i data-lucide="trash-2" width="16" height="16"></i> Cancel Order</button>
-        </div>
-      </section>
-
-      <!-- TAGS -->
-      <section id="tags">
-        <h2><i data-lucide="tag" width="22" height="22"></i> 12. Tags</h2>
-
-        <h4>Solid (status/active states)</h4>
-        <div class="demo-row">
-          <span class="tag tag-primary"><i data-lucide="loader" width="12" height="12"></i> Processing</span>
-          <span class="tag tag-info"><i data-lucide="truck" width="12" height="12"></i> In Transit</span>
-          <span class="tag tag-success"><i data-lucide="check" width="12" height="12"></i> Delivered</span>
-          <span class="tag tag-danger"><i data-lucide="alert-circle" width="12" height="12"></i> Overdue</span>
-        </div>
-
-        <h4>Outlined (neutral labels)</h4>
-        <div class="demo-row">
-          <span class="tag tag-outline"><i data-lucide="clock" width="12" height="12"></i> Pending</span>
-          <span class="tag tag-outline"><i data-lucide="check" width="12" height="12"></i> Paid</span>
-          <span class="tag tag-outline-primary">Priority</span>
-        </div>
-      </section>
-
-      <!-- INPUTS -->
-      <section id="inputs">
-        <h2><i data-lucide="text-cursor-input" width="22" height="22"></i> 13. Inputs</h2>
-        <p>Focus ring uses primary colour (brand-blue). Inputs remain neutral by default.</p>
-
-        <div class="demo-box">
-          <div class="form-section">Delivery address</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Street address</label>
-              <input type="text" class="form-input" value="123 Industrial Drive" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">City</label>
-              <input type="text" class="form-input" value="Auckland" />
-            </div>
-          </div>
-
-          <div class="form-section">Contact details</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Contact name</label>
-              <input type="text" class="form-input" value="Sarah Mitchell" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Phone</label>
-              <input type="text" class="form-input" value="+64 9 555 1234" />
-              <div class="form-hint">Used for delivery notifications</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TABLES -->
-      <section id="tables">
-        <h2><i data-lucide="table" width="22" height="22"></i> 14. Tables</h2>
-
-        <p class="note">
-          Tables must be: sortable headers, neutral rows, subtle hover, bulk selection, and contextual table actions.
-          Avoid “decorative colour”.
+        <p class="subtitle">
+          Codifying the UI/UX patterns from our prototype into a reusable design system for customer portal + website experiences.
         </p>
 
-        <div class="table-container">
-          <div class="table-menu">
-            <div class="table-search">
-              <i data-lucide="search" width="16" height="16"></i>
-              <input type="text" placeholder="Search orders..." />
+        <section id="principles">
+          <h2><i data-lucide="sparkles"></i> Principles</h2>
+
+          <div class="demo-box">
+            <ul>
+              <li><strong>Predictable structure:</strong> keep the same page “rows” in the same order so users can scan quickly.</li>
+              <li><strong>Scope separation:</strong> system-level controls belong higher than page-level; page-level higher than dataset-level.</li>
+              <li><strong>Neutral-first:</strong> 95% of the UI is neutral; colour is for states and emphasis only.</li>
+              <li><strong>Action clarity:</strong> CTAs should be discoverable by placement + styling without competing with utilities.</li>
+              <li><strong>Speed over decoration:</strong> compact, crisp controls; reduce “chrome”; keep interactions tight.</li>
+            </ul>
+            <p class="note">
+              These guidelines focus on structure, layout and interaction patterns. Colour + typography are already covered and remain unchanged.
+            </p>
+          </div>
+        </section>
+
+        <section id="page-hierarchy">
+          <h2><i data-lucide="layers"></i> Page hierarchy pattern (stacked rows)</h2>
+
+          <p>
+            Think of each page as a stack of horizontal “system rows”, each with one job. Keep the same order and responsibilities,
+            and the UI stays predictable even as modules change.
+          </p>
+
+          <div class="demo-box demo-box-dark">
+            <div class="hierarchy-legend">
+              <div class="legend-item"><span class="legend-swatch red"></span> Main header (Context)</div>
+              <div class="legend-item"><span class="legend-swatch yellow"></span> Primary nav (Global)</div>
+              <div class="legend-item"><span class="legend-swatch grey"></span> Metrics / overview</div>
+              <div class="legend-item"><span class="legend-swatch blue"></span> Secondary nav + primary actions (Local)</div>
+              <div class="legend-item"><span class="legend-swatch purple"></span> Table menu + work area (Dataset)</div>
             </div>
-            <div class="table-actions">
-              <div class="view-toggle">
-                <button class="view-toggle-btn"><i data-lucide="grid" width="14" height="14"></i> Cards</button>
-                <button class="view-toggle-btn active"><i data-lucide="list" width="14" height="14"></i> List</button>
+          </div>
+
+          <div class="demo-box demo-box-flush">
+            <div class="page-header">
+              <div class="page-header-context">
+                <h1>Main Warehouse</h1>
+                <div class="meta">12 rows • 365 bins • 217 items</div>
               </div>
-              <button class="btn btn-secondary btn-sm"><i data-lucide="columns" width="14" height="14"></i> Columns</button>
+
+              <div class="page-header-actions">
+                <div class="mode-toggle" role="tablist" aria-label="Mode switcher">
+                  <button class="mode-toggle-btn active" type="button"><i data-lucide="user"></i> Pedestrian</button>
+                  <button class="mode-toggle-btn" type="button"><i data-lucide="car"></i> Vehicle</button>
+                </div>
+                <div class="user-info" aria-label="User identity">
+                  <div class="user-info-name">John Smith</div>
+                  <div class="user-info-email">john@example.com</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="primary-nav">
+              <div class="primary-nav-items">
+                <a class="primary-nav-item" href="#"><i data-lucide="warehouse"></i> Warehouse</a>
+                <a class="primary-nav-item active" href="#"><i data-lucide="package"></i> Inbound</a>
+                <a class="primary-nav-item" href="#"><i data-lucide="truck"></i> Outbound</a>
+                <a class="primary-nav-item" href="#"><i data-lucide="hammer"></i> Manufacturing</a>
+                <a class="primary-nav-item" href="#"><i data-lucide="check-circle"></i> Tasks</a>
+              </div>
+
+              <div class="primary-nav-actions">
+                <div class="global-search" role="search">
+                  <i data-lucide="search"></i>
+                  <input aria-label="Global search" placeholder="Search…" />
+                  <kbd>⌘ K</kbd>
+                </div>
+                <button class="btn btn-secondary btn-sm"><i data-lucide="settings"></i> Settings</button>
+                <button class="btn btn-secondary btn-sm">Manager <i data-lucide="chevron-down"></i></button>
+              </div>
+            </div>
+
+            <div class="kpi-strip" aria-label="Overview metrics">
+              <div class="kpi-strip-card">
+                <div class="kpi-strip-label">Expected Orders</div>
+                <div class="kpi-strip-value">7</div>
+              </div>
+              <div class="kpi-strip-card">
+                <div class="kpi-strip-label">Receiving</div>
+                <div class="kpi-strip-value">4</div>
+              </div>
+              <div class="kpi-strip-card">
+                <div class="kpi-strip-label">Items to Receive</div>
+                <div class="kpi-strip-value">470</div>
+              </div>
+              <div class="kpi-strip-card">
+                <div class="kpi-strip-label">Put-away Pending</div>
+                <div class="kpi-strip-value">0</div>
+              </div>
+            </div>
+
+            <div class="action-bar action-bar--demo">
+              <div class="action-bar-left">
+                <div class="section-tabs" role="tablist" aria-label="Secondary menu">
+                  <button class="section-tab active" type="button"><i data-lucide="files"></i> Records (8)</button>
+                  <button class="section-tab" type="button"><i data-lucide="receipt"></i> Receipts (7)</button>
+                </div>
+                <button class="btn btn-secondary btn-sm"><i data-lucide="download"></i> Import from ERP</button>
+              </div>
+              <div class="action-bar-right">
+                <button class="btn btn-primary btn-sm"><i data-lucide="play"></i> Start Receiving</button>
+              </div>
+            </div>
+
+            <div class="table-container table-container--flush">
+              <div class="table-menu">
+                <div class="table-actions">
+                  <button class="btn btn-secondary btn-sm">Purchase Orders <i data-lucide="chevron-down"></i></button>
+                  <div class="table-search" role="search">
+                    <i data-lucide="search"></i>
+                    <input placeholder="Search records…" aria-label="Dataset search" />
+                  </div>
+                </div>
+
+                <div class="table-actions">
+                  <button class="btn btn-secondary btn-sm"><i data-lucide="columns-2"></i> Columns</button>
+                  <div class="view-toggle" role="group" aria-label="View">
+                    <button class="view-toggle-btn active" type="button"><i data-lucide="rows-3"></i> Rows</button>
+                    <button class="view-toggle-btn" type="button"><i data-lucide="layout-grid"></i> Cards</button>
+                  </div>
+                </div>
+              </div>
+
+              <table aria-label="Example work table">
+                <thead>
+                  <tr>
+                    <th style="width: 40px;"><input class="table-checkbox" type="checkbox" aria-label="Select all" /></th>
+                    <th class="sortable">Order # <span class="sort-icon"><i data-lucide="arrow-up-down"></i></span></th>
+                    <th>Vendor</th>
+                    <th class="sortable">Expected Date <span class="sort-icon"><i data-lucide="arrow-up"></i></span></th>
+                    <th class="align-right">Lines</th>
+                    <th class="align-right">Received</th>
+                    <th>Status</th>
+                    <th class="align-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input class="table-checkbox" type="checkbox" aria-label="Select row" /></td>
+                    <td>PO-353746</td>
+                    <td>Prime Electronics</td>
+                    <td>Jan 8, 2026</td>
+                    <td class="align-right">3</td>
+                    <td class="align-right">0% (0/90)</td>
+                    <td><span class="tag tag-outline-primary"><i data-lucide="clock"></i> Expected</span></td>
+                    <td class="align-right">
+                      <span class="row-actions">
+                        <a class="btn btn-primary btn-sm" href="#"><i data-lucide="play"></i> Start</a>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input class="table-checkbox" type="checkbox" aria-label="Select row" /></td>
+                    <td>PO-765768</td>
+                    <td>Global Supply Co</td>
+                    <td>Jan 9, 2026</td>
+                    <td class="align-right">3</td>
+                    <td class="align-right">143% (63/44)</td>
+                    <td><span class="tag tag-outline"><i data-lucide="check"></i> Received</span></td>
+                    <td class="align-right">
+                      <span class="row-actions">
+                        <a class="btn btn-secondary btn-sm" href="#"><i data-lucide="eye"></i> View</a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="bulk-bar" aria-label="Bulk toolbar (example)">
+                <div class="bulk-bar-left">
+                  <strong>2 selected</strong>
+                  <span class="bulk-bar-sep">•</span>
+                  <span>Purchase Orders</span>
+                </div>
+                <div class="bulk-bar-right">
+                  <button class="btn btn-secondary btn-sm"><i data-lucide="download"></i> Export</button>
+                  <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i> Delete</button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 44px;"><input type="checkbox" class="table-checkbox" aria-label="Select all"></th>
-                <th class="sortable">Order # <span class="sort-icon"><i data-lucide="chevrons-up-down" width="14" height="14"></i></span></th>
-                <th>Products</th>
-                <th class="sortable sorted">Date <span class="sort-icon"><i data-lucide="chevron-down" width="14" height="14"></i></span></th>
-                <th class="align-right">Total</th>
-                <th>Status</th>
-                <th class="align-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
-                <td><code>ORD-2026-0894</code></td>
-                <td>Safety barriers (x12)</td>
-                <td>Jan 10, 2026</td>
-                <td class="align-right">$2,268.00</td>
-                <td><span class="tag tag-primary"><i data-lucide="loader" width="12" height="12"></i> Processing</span></td>
-                <td class="align-right">
-                  <div class="row-actions">
-                    <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
-                <td><code>ORD-2026-0891</code></td>
-                <td>Bollards, line marking</td>
-                <td>Jan 8, 2026</td>
-                <td class="align-right">$1,450.00</td>
-                <td><span class="tag tag-info"><i data-lucide="truck" width="12" height="12"></i> In Transit</span></td>
-                <td class="align-right">
-                  <div class="row-actions">
-                    <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
-                <td><code>ORD-2026-0887</code></td>
-                <td>Forklift safety cage</td>
-                <td>Jan 5, 2026</td>
-                <td class="align-right">$895.00</td>
-                <td><span class="tag tag-success"><i data-lucide="check" width="12" height="12"></i> Delivered</span></td>
-                <td class="align-right">
-                  <div class="row-actions">
-                    <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- CARDS -->
-      <section id="cards">
-        <h2><i data-lucide="credit-card" width="22" height="22"></i> 15. Cards & KPIs</h2>
-
-        <div class="kpi-grid">
-          <div class="kpi-card"><div class="kpi-card-header"><span class="kpi-card-label">Open Orders</span></div><div class="kpi-card-value">4</div></div>
-          <div class="kpi-card"><div class="kpi-card-header"><span class="kpi-card-label">In Transit</span></div><div class="kpi-card-value">2</div></div>
-          <div class="kpi-card"><div class="kpi-card-header"><span class="kpi-card-label">YTD Spend</span></div><div class="kpi-card-value">$24.5k</div></div>
-          <div class="kpi-card"><div class="kpi-card-header"><span class="kpi-card-label">Support Tickets</span></div><div class="kpi-card-value">1</div></div>
-        </div>
-      </section>
-
-      <!-- ALERTS -->
-      <section id="alerts">
-        <h2><i data-lucide="alert-triangle" width="22" height="22"></i> 16. Alerts</h2>
-
-        <div class="alert alert-warning">
-          <i data-lucide="alert-triangle" width="18" height="18" class="alert-icon"></i>
-          <div class="alert-content">
-            <div class="alert-title">Payment due soon</div>
-            <p class="alert-message">Invoice #INV-2026-0156 is due in 3 days.</p>
+          <div class="demo-box">
+            <h3>Row responsibilities</h3>
+            <ul>
+              <li><strong>Main header (Context):</strong> where am I, who am I, what mode am I in. Avoid operational actions.</li>
+              <li><strong>Primary nav (Global):</strong> modules + global search + settings. Always present.</li>
+              <li><strong>Metrics:</strong> scannable, read-only KPIs. Neutral unless alerting.</li>
+              <li><strong>Secondary + actions (Local):</strong> page state + 1–2 primary actions. System/maintenance actions separated from CTA.</li>
+              <li><strong>Work area (Dataset):</strong> table tools + dataset search + view/columns controls tightly attached to the table.</li>
+            </ul>
           </div>
-        </div>
+        </section>
 
-        <div class="alert alert-danger">
-          <i data-lucide="alert-octagon" width="18" height="18" class="alert-icon"></i>
-          <div class="alert-content">
-            <div class="alert-title">Payment overdue</div>
-            <p class="alert-message">Invoice #INV-2026-0142 is 7 days overdue.</p>
+        <section id="navigation">
+          <h2><i data-lucide="map"></i> Navigation</h2>
+
+          <div class="demo-box">
+            <h3>Primary navigation</h3>
+            <ul>
+              <li>Lives in the global control bar (yellow row).</li>
+              <li>Uses a subtle pill style; selected state uses primary colour fill (prototype convention).</li>
+              <li>Keep items short and consistent; avoid mixing actions with navigation.</li>
+            </ul>
+
+            <h3>Secondary navigation</h3>
+            <ul>
+              <li>Uses the <strong>pill switcher</strong> style (distinct from primary nav).</li>
+              <li>Represents a local state of the page (e.g., Records vs Receipts), not a module change.</li>
+              <li>Should sit on the same row as primary actions.</li>
+            </ul>
           </div>
-        </div>
+        </section>
 
-        <div class="alert alert-success">
-          <i data-lucide="check-circle" width="18" height="18" class="alert-icon"></i>
-          <div class="alert-content">
-            <div class="alert-title">Order dispatched</div>
-            <p class="alert-message">Order #ORD-2026-0891 has shipped. ETA: Jan 12.</p>
+        <section id="search">
+          <h2><i data-lucide="search"></i> Search</h2>
+
+          <div class="demo-box">
+            <h3>Global search</h3>
+            <ul>
+              <li>Always lives in the primary nav row and searches the whole system.</li>
+              <li>Use <kbd>⌘ K</kbd> pattern for quick access (command palette recommended).</li>
+            </ul>
+
+            <h3>Dataset search</h3>
+            <ul>
+              <li>Always lives in the table menu row and is scoped to the current dataset.</li>
+              <li>Never duplicate global search inside table menus.</li>
+            </ul>
           </div>
-        </div>
-      </section>
 
-      <!-- MODALS -->
-      <section id="modals">
-        <h2><i data-lucide="square" width="22" height="22"></i> 17. Modals</h2>
-        <p>Settings-style modals use horizontal tabs, neutral forms, and a fixed footer with actions aligned right.</p>
-
-        <div class="demo-box demo-box-dark">
-          <div class="modal-demo">
-            <div class="modal-header">
-              <div>
-                <h3>Settings</h3>
-                <p>Configure defaults and manage account preferences</p>
+          <div class="demo-box demo-box-dark">
+            <div class="command-palette-demo" role="dialog" aria-label="Command palette example">
+              <div class="command-input">
+                <i data-lucide="search"></i>
+                <input value="ord" aria-label="Command search input" />
+                <kbd>Esc</kbd>
               </div>
-              <button class="modal-close" aria-label="Close">
-                <i data-lucide="x" width="18" height="18"></i>
+              <div class="command-results">
+                <div class="command-group">
+                  <div class="command-group-label">Navigate</div>
+                  <div class="command-item focused" tabindex="0">
+                    <i data-lucide="shopping-cart"></i>
+                    <div class="command-item-content">
+                      <div class="command-item-title">Orders <mark>ord</mark>ers</div>
+                      <div class="command-item-meta">Customer Portal → Orders</div>
+                    </div>
+                    <kbd>↵</kbd>
+                  </div>
+                  <div class="command-item" tabindex="0">
+                    <i data-lucide="building-2"></i>
+                    <div class="command-item-content">
+                      <div class="command-item-title">Organisation</div>
+                      <div class="command-item-meta">Account settings</div>
+                    </div>
+                    <kbd>↵</kbd>
+                  </div>
+                </div>
+              </div>
+              <div class="command-footer">
+                <span><kbd>↑</kbd><kbd>↓</kbd> to navigate</span>
+                <span><kbd>↵</kbd> to open</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="buttons">
+          <h2><i data-lucide="mouse-pointer-click"></i> Buttons</h2>
+          <div class="demo-box">
+            <div class="demo-row">
+              <a class="btn btn-primary" href="#"><i data-lucide="plus"></i> Primary</a>
+              <a class="btn btn-secondary" href="#"><i data-lucide="sliders"></i> Secondary</a>
+              <a class="btn btn-ghost" href="#"><i data-lucide="more-horizontal"></i> Ghost</a>
+              <a class="btn btn-danger" href="#"><i data-lucide="trash-2"></i> Danger</a>
+            </div>
+            <p class="note">Use Primary for the single “do the thing” action on a row; keep it rare.</p>
+          </div>
+        </section>
+
+        <section id="tags">
+          <h2><i data-lucide="tag"></i> Tags</h2>
+          <div class="demo-box">
+            <div class="demo-row">
+              <span class="tag tag-primary"><i data-lucide="sparkles"></i> Primary</span>
+              <span class="tag tag-success"><i data-lucide="check"></i> Success</span>
+              <span class="tag tag-warning"><i data-lucide="triangle-alert"></i> Warning</span>
+              <span class="tag tag-danger"><i data-lucide="x"></i> Danger</span>
+              <span class="tag tag-info"><i data-lucide="info"></i> Info</span>
+              <span class="tag tag-outline"><i data-lucide="clock"></i> Outline</span>
+              <span class="tag tag-outline-primary"><i data-lucide="clock"></i> Outline Primary</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="forms">
+          <h2><i data-lucide="text-cursor-input"></i> Forms</h2>
+          <div class="demo-box">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="f1">First name</label>
+                <input class="form-input" id="f1" placeholder="Louis" />
+                <div class="form-hint">Short, clear hint text where required.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f2">Last name</label>
+                <input class="form-input" id="f2" placeholder="Hart" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f3">Email</label>
+              <input class="form-input" id="f3" placeholder="louis@vanguardgroup.co.nz" />
+            </div>
+          </div>
+        </section>
+
+        <section id="tables">
+          <h2><i data-lucide="table"></i> Tables</h2>
+          <div class="demo-box">
+            <ul>
+              <li>Table menu row attaches to the table container.</li>
+              <li>Dataset search belongs in the table menu row; global search does not.</li>
+              <li>Row actions appear on hover; primary CTA remains in the local action bar.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="cards">
+          <h2><i data-lucide="layout-grid"></i> Cards & KPIs</h2>
+
+          <div class="demo-box">
+            <h3>KPI cards</h3>
+            <div class="dashboard-grid">
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Active Jobs</div>
+                <div class="dashboard-card-value">12</div>
+                <div class="dashboard-card-meta">Last 7 days</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Overdue Actions</div>
+                <div class="dashboard-card-value">3</div>
+                <div class="dashboard-card-meta">Requires attention</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Pending Requests</div>
+                <div class="dashboard-card-value">5</div>
+                <div class="dashboard-card-meta">Join / access</div>
+              </div>
+            </div>
+            <p class="note">These are read-only; click-through is allowed but avoid “controls” on KPI cards.</p>
+          </div>
+        </section>
+
+        <section id="alerts">
+          <h2><i data-lucide="triangle-alert"></i> Alerts</h2>
+
+          <div class="demo-box">
+            <div class="alert alert-warning">
+              <div class="alert-icon"><i data-lucide="triangle-alert"></i></div>
+              <div class="alert-content">
+                <div class="alert-title">Warning</div>
+                <p class="alert-message">Something needs attention, but the user can continue.</p>
+              </div>
+            </div>
+            <div class="alert alert-danger">
+              <div class="alert-icon"><i data-lucide="x-circle"></i></div>
+              <div class="alert-content">
+                <div class="alert-title">Error</div>
+                <p class="alert-message">A blocking problem that must be resolved.</p>
+              </div>
+            </div>
+            <div class="alert alert-success">
+              <div class="alert-icon"><i data-lucide="check-circle"></i></div>
+              <div class="alert-content">
+                <div class="alert-title">Success</div>
+                <p class="alert-message">Action completed successfully.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="action-hierarchy">
+          <h2><i data-lucide="corner-up-right"></i> Action hierarchy</h2>
+
+          <div class="demo-box">
+            <h3>Right side = “do the thing”</h3>
+            <ul>
+              <li>Primary CTA (1–2 max) lives on the right of the local action bar.</li>
+              <li>CTA styling uses <code>.btn-primary</code> to stay visually dominant.</li>
+            </ul>
+
+            <h3>Left side = context + maintenance</h3>
+            <ul>
+              <li>Secondary menu lives left.</li>
+              <li>System/maintenance actions (sync/import/update ERP) live left and should not compete with CTA.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="notifications">
+          <h2><i data-lucide="bell"></i> Notifications</h2>
+
+          <div class="demo-box">
+            <p>
+              Notifications are part of the customer portal operating model: they surface time-sensitive events and requests.
+              A notification should be <strong>actionable</strong>: clicking it should take the user to the relevant location,
+              or offer an inline action (approve/review/pay).
+            </p>
+
+            <h3>Rules</h3>
+            <ul>
+              <li><strong>Clickable by default:</strong> the whole item is a target (not just tiny links).</li>
+              <li><strong>Always includes a “why”:</strong> title + short context line (ID/status) + timestamp.</li>
+              <li><strong>Inline actions are optional:</strong> only when it prevents a trip (e.g., “Review request”).</li>
+              <li><strong>Don’t bury critical states:</strong> warnings/overdue should use semantic icon + subtle background only inside the panel.</li>
+              <li><strong>Batching:</strong> group by context (Orders, Access, Billing) with section labels when volume is high.</li>
+            </ul>
+
+            <h3>Example: actionable notification items</h3>
+            <div class="notification-panel" role="menu" aria-label="Notifications">
+              <button class="notification-item" type="button">
+                <div class="notification-icon"><i data-lucide="truck"></i></div>
+                <div class="notification-content">
+                  <div class="notification-title">Your order has been dispatched</div>
+                  <div class="notification-meta">Order #ORD-2026-0891 • 2m ago</div>
+                  <div class="notification-actions">
+                    <span class="notification-link">View order</span>
+                  </div>
+                </div>
+              </button>
+
+              <button class="notification-item" type="button">
+                <div class="notification-icon"><i data-lucide="user-plus"></i></div>
+                <div class="notification-content">
+                  <div class="notification-title">Joe Bloggs requests to join your organisation</div>
+                  <div class="notification-meta">Authorisation request • 1h ago</div>
+                  <div class="notification-actions">
+                    <button class="btn btn-secondary btn-sm" type="button">Review request</button>
+                  </div>
+                </div>
+              </button>
+
+              <button class="notification-item notification-item--warning" type="button">
+                <div class="notification-icon"><i data-lucide="triangle-alert"></i></div>
+                <div class="notification-content">
+                  <div class="notification-title">Invoice overdue</div>
+                  <div class="notification-meta">INV-2026-0156 • Yesterday</div>
+                  <div class="notification-actions">
+                    <button class="btn btn-primary btn-sm" type="button">Pay now</button>
+                  </div>
+                </div>
               </button>
             </div>
+          </div>
+        </section>
 
-            <div class="modal-tabs">
-              <button class="modal-tab active">Profile</button>
-              <button class="modal-tab">Billing</button>
-              <button class="modal-tab">Users</button>
-              <button class="modal-tab">Security</button>
+        <section id="tooltips">
+          <h2><i data-lucide="info"></i> Tooltips</h2>
+
+          <div class="demo-box">
+            <p>
+              Tooltips provide <strong>micro-help</strong> for an icon, label, or control. They should not contain workflows,
+              multiple links, or long content (use a popover instead).
+            </p>
+
+            <h3>When to use</h3>
+            <ul>
+              <li>Explain an icon-only control (e.g., “Columns”).</li>
+              <li>Clarify a data label (e.g., “Received % is based on expected quantity”).</li>
+              <li>Show an abbreviated value (e.g., truncated IDs).</li>
+            </ul>
+
+            <h3>Placement rules</h3>
+            <ul>
+              <li>Default placement: <strong>top</strong> (above the trigger) with an arrow.</li>
+              <li>If space is limited: auto-flip to bottom/left/right (implementation detail).</li>
+              <li>Never cover the trigger; keep a small offset (8px).</li>
+            </ul>
+
+            <div class="demo-row">
+              <span class="tooltip" data-tooltip="Export this dataset as CSV" tabindex="0">
+                <button class="btn btn-secondary btn-icon" type="button" aria-label="Export">
+                  <i data-lucide="download"></i>
+                </button>
+              </span>
+
+              <span class="tooltip" data-tooltip="This metric excludes cancelled orders" tabindex="0">
+                <span class="tag tag-outline"><i data-lucide="info"></i> Net orders</span>
+              </span>
             </div>
 
-            <div class="modal-body">
-              <div class="form-section">Profile</div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">Company name</label>
-                  <input class="form-input" value="Acme Industries Ltd" />
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Account number</label>
-                  <input class="form-input is-disabled" value="10042" disabled />
+            <p class="note">
+              Accessibility: tooltips must be available via keyboard focus, and trigger elements must have clear
+              <code>aria-label</code> or visible text.
+            </p>
+          </div>
+        </section>
+
+        <section id="popovers">
+          <h2><i data-lucide="message-square"></i> Popovers</h2>
+
+          <div class="demo-box">
+            <p>
+              Popovers are for <strong>lightweight interactive content</strong> anchored to a trigger: short forms, filters,
+              contextual actions, or previews. If it blocks the whole page or requires a decision, use a modal.
+            </p>
+
+            <h3>Rules</h3>
+            <ul>
+              <li>Contain a title when content is more than one line.</li>
+              <li>Keep actions to 1–3 and align them to the right.</li>
+              <li>Click outside closes; <kbd>Esc</kbd> closes; focus is trapped only for modals (not popovers).</li>
+            </ul>
+
+            <div class="demo-row">
+              <div class="popover-demo">
+                <button class="btn btn-secondary" type="button" data-popover-trigger="filters">
+                  <i data-lucide="sliders"></i> Filters
+                </button>
+
+                <div class="popover" data-popover="filters" role="dialog" aria-label="Filters popover">
+                  <div class="popover-header">
+                    <div class="popover-title">Filters</div>
+                    <button class="btn btn-ghost btn-icon" type="button" data-popover-close aria-label="Close">
+                      <i data-lucide="x"></i>
+                    </button>
+                  </div>
+                  <div class="popover-body">
+                    <div class="form-group" style="margin-bottom: 12px;">
+                      <label class="form-label" for="status">Status</label>
+                      <select class="form-input" id="status">
+                        <option>Any</option>
+                        <option>Expected</option>
+                        <option>Receiving</option>
+                        <option>Received</option>
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                      <label class="form-label" for="vendor">Vendor</label>
+                      <input class="form-input" id="vendor" placeholder="Search vendor…" />
+                    </div>
+                  </div>
+                  <div class="popover-footer">
+                    <button class="btn btn-secondary btn-sm" type="button">Reset</button>
+                    <button class="btn btn-primary btn-sm" type="button">Apply</button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="modal-footer">
-              <button class="btn btn-secondary">Cancel</button>
-              <button class="btn btn-primary">Save changes</button>
-            </div>
+            <p class="note">Popovers should never be used for long content or multi-step flows.</p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ACTION HIERARCHY -->
-      <section id="action-hierarchy">
-        <h2><i data-lucide="split" width="22" height="22"></i> 18. Action Hierarchy</h2>
-        <p>Primary actions live on the left with the page switcher. Distinct/system actions live on the right.</p>
-        
-        <div class="demo-box">
-          <div class="action-bar">
-            <div class="action-bar-left">
-              <div class="section-tabs">
-                <button class="section-tab active">Orders (47)</button>
-                <button class="section-tab">Quotes (3)</button>
+        <section id="modals">
+          <h2><i data-lucide="square"></i> Modals</h2>
+
+          <div class="demo-box">
+            <div class="modal-demo" role="dialog" aria-label="Modal example">
+              <div class="modal-header">
+                <div>
+                  <h3>Start receiving</h3>
+                  <p>Confirm details before proceeding.</p>
+                </div>
+                <button class="modal-close" type="button" aria-label="Close"><i data-lucide="x"></i></button>
               </div>
-              <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> New order</button>
-            </div>
-            <div class="action-bar-right">
-              <button class="btn btn-secondary"><i data-lucide="download" width="16" height="16"></i> Export</button>
-              <button class="btn btn-secondary"><i data-lucide="refresh-cw" width="16" height="16"></i> Sync</button>
+
+              <div class="modal-tabs" role="tablist" aria-label="Modal tabs">
+                <button class="modal-tab active" type="button">Details</button>
+                <button class="modal-tab" type="button">History</button>
+              </div>
+
+              <div class="modal-body">
+                <div class="form-group">
+                  <label class="form-label">Reference</label>
+                  <input class="form-input" value="PO-353746" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Notes</label>
+                  <input class="form-input" placeholder="Optional notes…" />
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-primary"><i data-lucide="play"></i> Start</button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- BULK ACTIONS -->
-      <section id="bulk-actions">
-        <h2><i data-lucide="check-square" width="22" height="22"></i> 19. Bulk Actions</h2>
-        <p>Bulk actions appear only when one or more rows are selected. Keep them visually attached to the table container.</p>
-        <ul>
-          <li>Show selection count + key actions (export, update, archive, etc.)</li>
-          <li>Keep actions neutral; destructive actions must be explicit and confirm</li>
-          <li>Provide “Clear selection”</li>
-        </ul>
-      </section>
+        <section id="bulk-actions">
+          <h2><i data-lucide="check-square"></i> Bulk actions</h2>
+          <div class="demo-box">
+            <ul>
+              <li>Bulk toolbar appears only when rows are selected.</li>
+              <li>Actions are contextual to selection and grouped on the right.</li>
+              <li>Show count + scope on the left.</li>
+            </ul>
+          </div>
+        </section>
 
-      <!-- DENSITY -->
-      <section id="density">
-        <h2><i data-lucide="minimize-2" width="22" height="22"></i> 20. Density Modes</h2>
-        <h4>Comfortable (default)</h4>
-        <ul>
-          <li>Table padding: 12px (approx)</li>
-          <li>Touch targets: 36–44px</li>
-        </ul>
+        <section id="density">
+          <h2><i data-lucide="rows-3"></i> Density</h2>
+          <div class="demo-box">
+            <ul>
+              <li>Default: comfortable spacing for customers.</li>
+              <li>Provide compact mode in tables for power users where needed.</li>
+              <li>Never reduce hit targets below 36px for touch.</li>
+            </ul>
+          </div>
+        </section>
 
-        <h4>Compact</h4>
-        <ul>
-          <li>Table padding: 6–8px</li>
-          <li>Touch targets: 28–32px</li>
-        </ul>
+        <section id="accessibility">
+          <h2><i data-lucide="accessibility"></i> Accessibility</h2>
+          <div class="demo-box">
+            <ul>
+              <li>Focus states are required for all interactive controls.</li>
+              <li>Don’t rely on colour alone to indicate status; use icons + labels.</li>
+              <li>Tooltips must work on keyboard focus; popovers must have close affordances + <kbd>Esc</kbd>.</li>
+              <li>Buttons and links must have descriptive text or <code>aria-label</code>.</li>
+            </ul>
+          </div>
+        </section>
 
-        <div class="table-container mt-4">
-          <table class="table-compact">
-            <thead>
-              <tr>
-                <th style="width: 40px;"><input type="checkbox" class="table-checkbox" aria-label="Select all"></th>
-                <th>Invoice #</th>
-                <th>Date</th>
-                <th class="align-right">Amount</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td><td>INV-2026-0156</td><td>Jan 5, 2026</td><td class="align-right">$1,245.00</td><td><span class="t[...]"></span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+        <button class="btn btn-primary print-btn" type="button" onclick="window.print()">
+          <i data-lucide="printer"></i> Print
+        </button>
+      </main>
+    </div>
 
-      <!-- ACCESSIBILITY -->
-      <section id="accessibility">
-        <h2><i data-lucide="accessibility" width="22" height="22"></i> 21. Accessibility</h2>
-        <div class="demo-box">
-          <h4>Contrast</h4>
-          <p>4.5:1 for text, 3:1 for UI. Colour is never the only indicator.</p>
-          <h4>Keyboard</h4>
-          <p>All interactive elements are keyboard accessible. Escape closes modals.</p>
-          <h4>Focus</h4>
-          <p>Use a visible 2px outline in primary colour with offset.</p>
-          <h4>Touch targets</h4>
-          <p>Minimum 36×36px (compact) or 44×44px (comfortable).</p>
-        </div>
-      </section>
+    <script>
+      if (window.lucide) lucide.createIcons();
 
-      <footer class="doc-footer">
-        <p class="note">Vanguard UI Design Guidelines v3.1 • Customer Portal</p>
-      </footer>
+      const nav = document.getElementById("docNav");
+      const btn = document.getElementById("mobileNavBtn");
+      if (btn && nav) btn.addEventListener("click", () => nav.classList.toggle("is-open"));
 
-    </main>
-  </div>
+      const links = Array.from(document.querySelectorAll(".doc-nav-link"));
+      const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
 
-  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
-  <script>
-    function initIcons() {
-      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
-      else setTimeout(initIcons, 100);
-    }
-    initIcons();
-    document.addEventListener('DOMContentLoaded', initIcons);
-    window.addEventListener('load', initIcons);
+      const setActive = (id) => {
+        links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+      };
 
-    function toggleNav() {
-      document.getElementById('nav').classList.toggle('open');
-    }
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible && visible.target && visible.target.id) setActive(visible.target.id);
+        },
+        { rootMargin: "-20% 0px -70% 0px", threshold: [0.1, 0.2, 0.35] }
+      );
+      sections.forEach((s) => observer.observe(s));
 
-    document.querySelectorAll('.doc-nav-link').forEach(link => {
-      link.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
-    });
+      // Popover demo (guideline example only)
+      const triggers = document.querySelectorAll("[data-popover-trigger]");
+      const popovers = document.querySelectorAll(".popover");
 
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.doc-nav-link');
+      function closeAllPopovers() {
+        popovers.forEach((p) => p.classList.remove("is-open"));
+      }
 
-    function updateActiveNav() {
-      let current = '';
-      sections.forEach(section => {
-        if (scrollY >= section.offsetTop - 120) current = section.getAttribute('id');
+      triggers.forEach((t) => {
+        t.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const key = t.getAttribute("data-popover-trigger");
+          const p = document.querySelector(`[data-popover="${key}"]`);
+          if (!p) return;
+          const isOpen = p.classList.contains("is-open");
+          closeAllPopovers();
+          if (!isOpen) p.classList.add("is-open");
+        });
       });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+
+      document.querySelectorAll("[data-popover-close]").forEach((c) => {
+        c.addEventListener("click", (e) => {
+          e.stopPropagation();
+          closeAllPopovers();
+        });
       });
-    }
-    window.addEventListener('scroll', updateActiveNav);
-    updateActiveNav();
-  </script>
-</body>
+
+      document.addEventListener("click", () => closeAllPopovers());
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeAllPopovers();
+      });
+    </script>
+  </body>
 </html>
