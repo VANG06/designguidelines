@@ -242,193 +242,202 @@
         </div>
       </section>
 
-      <!-- PAGE HIERARCHY (CUSTOMER PORTAL VERSION OF THE PATTERN) -->
-      <section id="page-hierarchy">
-        <h2><i data-lucide="layers" width="22" height="22"></i> 8. Page Hierarchy</h2>
-        <p>This is the standard stacked layout used across customer portals. Each row has a distinct purpose and should remain consistent across modules.</p>
+<!-- PAGE HIERARCHY (CUSTOMER PORTAL VERSION OF THE PATTERN) -->
+<section id="page-hierarchy">
+  <h2><i data-lucide="layers" width="22" height="22"></i> 8. Page Hierarchy</h2>
+  <p>
+    This is the standard stacked layout used across customer portals. Each row has a distinct purpose and
+    should remain consistent across modules. Keep scopes separate: <strong>global</strong> controls at the top,
+    <strong>page-level</strong> controls in the secondary row, and <strong>dataset-level</strong> controls inside the table area.
+  </p>
 
-        <div class="demo-box demo-box-flush demo-box-dark">
-          <!-- Row 1: Header -->
-          <div class="page-header">
-            <div class="page-header-context">
-              <h1>Acme Industries Ltd</h1>
-              <div class="meta">Account #10042 • Auckland, NZ</div>
-            </div>
-            <div class="page-header-actions">
-              <div class="mode-toggle">
-                <button class="mode-toggle-btn active"><i data-lucide="building-2" width="16" height="16"></i> Business</button>
-                <button class="mode-toggle-btn"><i data-lucide="user" width="16" height="16"></i> Personal</button>
-              </div>
-              <div class="user-info">
-                <div class="user-info-name">Sarah Mitchell</div>
-                <div class="user-info-email">sarah@acme.co.nz</div>
-              </div>
-            </div>
-          </div>
+  <!-- Legend -->
+  <div class="hierarchy-legend">
+    <div class="legend-item"><span class="legend-swatch red"></span><span><strong>Header</strong> — Context, mode, user</span></div>
+    <div class="legend-item"><span class="legend-swatch yellow"></span><span><strong>Primary Nav</strong> — Modules, global search, settings, role</span></div>
+    <div class="legend-item"><span class="legend-swatch grey"></span><span><strong>KPIs</strong> — Read-only metrics</span></div>
+    <div class="legend-item"><span class="legend-swatch blue"></span><span><strong>Secondary Menu</strong> — Page switcher + actions</span></div>
+    <div class="legend-item"><span class="legend-swatch purple"></span><span><strong>Table Area</strong> — Table menu + table controls</span></div>
+  </div>
 
-          <!-- Row 2: Primary Nav + global search/settings/role -->
-          <div class="primary-nav">
-            <div class="primary-nav-items">
-              <a href="#" class="primary-nav-item"><i data-lucide="home" width="16" height="16"></i> Dashboard</a>
-              <a href="#" class="primary-nav-item active"><i data-lucide="shopping-cart" width="16" height="16"></i> Orders</a>
-              <a href="#" class="primary-nav-item"><i data-lucide="file-text" width="16" height="16"></i> Invoices</a>
-              <a href="#" class="primary-nav-item"><i data-lucide="package" width="16" height="16"></i> Products</a>
-              <a href="#" class="primary-nav-item"><i data-lucide="headphones" width="16" height="16"></i> Support</a>
-            </div>
-            <div class="primary-nav-actions">
-              <div class="global-search">
-                <i data-lucide="search" width="16" height="16"></i>
-                <input type="text" placeholder="Search...">
-                <kbd>⌘K</kbd>
-              </div>
-              <button class="btn btn-ghost btn-icon"><i data-lucide="bell" width="18" height="18"></i></button>
-              <button class="btn btn-ghost btn-icon"><i data-lucide="settings" width="18" height="18"></i></button>
-              <button class="btn btn-secondary btn-sm">Manager</button>
-            </div>
-          </div>
+  <!-- Visual Example (stacked page) -->
+  <div class="demo-box demo-box-flush demo-box-dark hierarchy-demo">
 
-          <!-- Row 3: KPI strip -->
-          <div class="kpi-strip">
-            <div class="kpi-strip-card">
-              <div class="kpi-strip-label">Open Orders</div>
-              <div class="kpi-strip-value">7</div>
-            </div>
-            <div class="kpi-strip-card">
-              <div class="kpi-strip-label">Outstanding Invoices</div>
-              <div class="kpi-strip-value">3</div>
-            </div>
-            <div class="kpi-strip-card">
-              <div class="kpi-strip-label">Deliveries In Transit</div>
-              <div class="kpi-strip-value">2</div>
-            </div>
-            <div class="kpi-strip-card">
-              <div class="kpi-strip-label">Support Tickets</div>
-              <div class="kpi-strip-value">1</div>
-            </div>
-          </div>
+    <!-- Row 1: Header (RED) -->
+    <div class="hierarchy-row-label red">Header (Context)</div>
+    <div class="page-header hierarchy-row red-outline">
+      <div class="page-header-context">
+        <h1>Acme Industries Ltd</h1>
+        <div class="meta">Account #10042 • Auckland, NZ</div>
+      </div>
+      <div class="page-header-actions">
+        <div class="mode-toggle">
+          <button class="mode-toggle-btn active"><i data-lucide="building-2" width="16" height="16"></i> Business</button>
+          <button class="mode-toggle-btn"><i data-lucide="user" width="16" height="16"></i> Personal</button>
+        </div>
+        <div class="user-info">
+          <div class="user-info-name">Sarah Mitchell</div>
+          <div class="user-info-email">sarah@acme.co.nz</div>
+        </div>
+      </div>
+    </div>
 
-          <!-- Row 4: Secondary (page switcher / filters) -->
-          <div class="secondary-nav">
-            <a href="#" class="secondary-nav-item active">All Orders</a>
-            <a href="#" class="secondary-nav-item">Pending</a>
-            <a href="#" class="secondary-nav-item">In Transit</a>
-            <a href="#" class="secondary-nav-item">Delivered</a>
-            <a href="#" class="secondary-nav-item">Returns</a>
-          </div>
+    <!-- Row 2: Primary Navigation (YELLOW) -->
+    <div class="hierarchy-row-label yellow">Primary Navigation (Global)</div>
+    <div class="primary-nav hierarchy-row yellow-outline">
+      <div class="primary-nav-items">
+        <a href="#" class="primary-nav-item"><i data-lucide="home" width="16" height="16"></i> Dashboard</a>
+        <a href="#" class="primary-nav-item active"><i data-lucide="shopping-cart" width="16" height="16"></i> Orders</a>
+        <a href="#" class="primary-nav-item"><i data-lucide="file-text" width="16" height="16"></i> Invoices</a>
+        <a href="#" class="primary-nav-item"><i data-lucide="package" width="16" height="16"></i> Products</a>
+        <a href="#" class="primary-nav-item"><i data-lucide="headphones" width="16" height="16"></i> Support</a>
+      </div>
+      <div class="primary-nav-actions">
+        <div class="global-search">
+          <i data-lucide="search" width="16" height="16"></i>
+          <input type="text" placeholder="Search across the portal…">
+          <kbd>⌘K</kbd>
+        </div>
+        <button class="btn btn-ghost btn-icon" aria-label="Notifications"><i data-lucide="bell" width="18" height="18"></i></button>
+        <button class="btn btn-ghost btn-icon" aria-label="Settings"><i data-lucide="settings" width="18" height="18"></i></button>
+        <button class="btn btn-secondary btn-sm">Customer</button>
+      </div>
+    </div>
 
-          <!-- Row 5: Action bar (primary left, distinct right) -->
-          <div class="action-bar action-bar--demo">
-            <div class="action-bar-left">
-              <div class="section-tabs">
-                <button class="section-tab active">Records (20)</button>
-                <button class="section-tab">Shipments (9)</button>
-              </div>
-              <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> Create Request</button>
-            </div>
-            <div class="action-bar-right">
-              <button class="btn btn-secondary"><i data-lucide="download" width="16" height="16"></i> Export</button>
-              <button class="btn btn-secondary"><i data-lucide="refresh-cw" width="16" height="16"></i> Sync</button>
-            </div>
-          </div>
+    <!-- Row 3: KPI Cards (GREY) -->
+    <div class="hierarchy-row-label grey">KPIs (Read-only)</div>
+    <div class="hierarchy-row grey-outline hierarchy-kpis">
+      <div class="kpi-grid" style="margin: 0;">
+        <div class="kpi-card">
+          <div class="kpi-card-header"><span class="kpi-card-label">Open Orders</span></div>
+          <div class="kpi-card-value">4</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card-header"><span class="kpi-card-label">In Transit</span></div>
+          <div class="kpi-card-value">2</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card-header"><span class="kpi-card-label">Outstanding</span></div>
+          <div class="kpi-card-value warning">$1,892</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card-header"><span class="kpi-card-label">Tickets</span></div>
+          <div class="kpi-card-value">1</div>
+        </div>
+      </div>
+    </div>
 
-          <!-- Row 6: Table menu (context search left, table tools right) -->
-          <div class="table-container table-container--flush">
-            <div class="table-menu">
-              <div class="table-search">
-                <i data-lucide="search" width="16" height="16"></i>
-                <input type="text" placeholder="Search orders...">
-              </div>
-              <div class="table-actions">
-                <div class="view-toggle">
-                  <button class="view-toggle-btn"><i data-lucide="grid" width="14" height="14"></i> Cards</button>
-                  <button class="view-toggle-btn active"><i data-lucide="list" width="14" height="14"></i> Columns</button>
-                </div>
-                <button class="btn btn-secondary btn-sm"><i data-lucide="columns" width="14" height="14"></i> Columns</button>
-              </div>
-            </div>
+    <!-- Row 4: Secondary Menu + Actions (BLUE) -->
+    <div class="hierarchy-row-label blue">Secondary Menu (Page-level)</div>
+    <div class="hierarchy-row blue-outline hierarchy-secondary">
+      <div class="action-bar">
+        <!-- LEFT: system/distinct actions -->
+        <div class="action-bar-left">
+          <button class="btn btn-secondary btn-sm"><i data-lucide="refresh-cw" width="16" height="16"></i> Sync</button>
+          <button class="btn btn-secondary btn-sm"><i data-lucide="download" width="16" height="16"></i> Export</button>
 
-            <!-- Row 7: Table -->
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 44px;"><input type="checkbox" class="table-checkbox" aria-label="Select all"></th>
-                  <th class="sortable">Order # <span class="sort-icon"><i data-lucide="chevrons-up-down" width="14" height="14"></i></span></th>
-                  <th>Customer</th>
-                  <th class="sortable sorted">Created <span class="sort-icon"><i data-lucide="chevron-down" width="14" height="14"></i></span></th>
-                  <th class="align-right">Total</th>
-                  <th>Status</th>
-                  <th class="align-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
-                  <td><code>ORD-2026-0894</code></td>
-                  <td>Acme Industries Ltd</td>
-                  <td>Jan 10, 2026</td>
-                  <td class="align-right">$2,268.00</td>
-                  <td><span class="tag tag-primary"><i data-lucide="loader" width="12" height="12"></i> Processing</span></td>
-                  <td class="align-right">
-                    <div class="row-actions">
-                      <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
-                  <td><code>ORD-2026-0891</code></td>
-                  <td>CloudFirst Ltd</td>
-                  <td>Jan 8, 2026</td>
-                  <td class="align-right">$1,450.00</td>
-                  <td><span class="tag tag-info"><i data-lucide="truck" width="12" height="12"></i> In Transit</span></td>
-                  <td class="align-right">
-                    <div class="row-actions">
-                      <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" class="table-checkbox" aria-label="Select row"></td>
-                  <td><code>ORD-2026-0887</code></td>
-                  <td>SmartTech HQ</td>
-                  <td>Jan 5, 2026</td>
-                  <td class="align-right">$895.00</td>
-                  <td><span class="tag tag-success"><i data-lucide="check" width="12" height="12"></i> Delivered</span></td>
-                  <td class="align-right">
-                    <div class="row-actions">
-                      <button class="btn btn-ghost btn-sm btn-icon" aria-label="View"><i data-lucide="eye" width="14" height="14"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <!-- Bulk actions toolbar (pattern preview) -->
-            <div class="bulk-bar">
-              <div class="bulk-bar-left">
-                <strong>3 selected</strong>
-                <span class="bulk-bar-sep">•</span>
-                <button class="btn btn-secondary btn-sm">Export</button>
-                <button class="btn btn-secondary btn-sm">Mark as Delivered</button>
-              </div>
-              <div class="bulk-bar-right">
-                <button class="btn btn-ghost btn-sm">Clear</button>
-              </div>
-            </div>
+          <div class="section-tabs">
+            <button class="section-tab active">Orders (47)</button>
+            <button class="section-tab">Quotes (3)</button>
           </div>
         </div>
 
-        <h4 class="mt-4">Row-by-row checklist</h4>
-        <ol>
-          <li><strong>Header:</strong> account context + user + (optional) mode/toggle</li>
-          <li><strong>Primary row:</strong> module navigation + global search + settings + role</li>
-          <li><strong>KPI row:</strong> module-specific KPIs</li>
-          <li><strong>Secondary row:</strong> page filters / switcher</li>
-          <li><strong>Action row:</strong> primary actions left, distinct/system actions right</li>
-          <li><strong>Table menu row:</strong> contextual search left, view/columns/actions right</li>
-          <li><strong>Table:</strong> sortable/filterable, bulk selection + bulk action bar</li>
-        </ol>
-      </section>
+        <!-- RIGHT: primary actions -->
+        <div class="action-bar-right">
+          <button class="btn btn-primary"><i data-lucide="plus" width="16" height="16"></i> New Order</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 5: Table Menu + Table (PURPLE) -->
+    <div class="hierarchy-row-label purple">Table Area (Dataset-level)</div>
+    <div class="hierarchy-row purple-outline">
+
+      <!-- Table Menu: filter + search + controls ON SAME ROW -->
+      <div class="table-menu">
+        <div class="table-menu-left">
+          <button class="btn btn-secondary btn-sm"><i data-lucide="filter" width="16" height="16"></i> Filters</button>
+
+          <div class="table-search">
+            <i data-lucide="search" width="16" height="16"></i>
+            <input type="text" placeholder="Search orders…">
+          </div>
+        </div>
+
+        <div class="table-actions">
+          <button class="btn btn-secondary btn-sm"><i data-lucide="columns-2" width="16" height="16"></i> Columns</button>
+
+          <div class="view-toggle">
+            <button class="view-toggle-btn"><i data-lucide="grid" width="14" height="14"></i> Cards</button>
+            <button class="view-toggle-btn active"><i data-lucide="list" width="14" height="14"></i> List</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-container" style="border-radius: var(--radius-md);">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40px;"><input type="checkbox" class="table-checkbox"></th>
+              <th class="sortable">Order # <span class="sort-icon"><i data-lucide="chevrons-up-down" width="14" height="14"></i></span></th>
+              <th>Customer</th>
+              <th class="sortable">Created <span class="sort-icon"><i data-lucide="chevrons-up-down" width="14" height="14"></i></span></th>
+              <th>Status</th>
+              <th class="align-right">Total</th>
+              <th class="align-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" class="table-checkbox"></td>
+              <td><code>ORD-2026-0894</code></td>
+              <td>Acme Industries Ltd</td>
+              <td>Jan 10, 2026</td>
+              <td><span class="tag tag-primary">Processing</span></td>
+              <td class="align-right">$2,268.00</td>
+              <td class="align-right">
+                <div class="row-actions" style="opacity: 1;">
+                  <button class="btn btn-ghost btn-sm btn-icon"><i data-lucide="eye" width="14" height="14"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="table-checkbox"></td>
+              <td><code>ORD-2026-0891</code></td>
+              <td>SmartTech HQ</td>
+              <td>Jan 8, 2026</td>
+              <td><span class="tag tag-info">In Transit</span></td>
+              <td class="align-right">$1,450.00</td>
+              <td class="align-right">
+                <div class="row-actions" style="opacity: 1;">
+                  <button class="btn btn-ghost btn-sm btn-icon"><i data-lucide="eye" width="14" height="14"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note mt-3" style="margin-bottom: 0;">
+        Table patterns include: sortable columns, filters, bulk selection, row actions, and a bulk action toolbar when selections exist.
+      </p>
+    </div>
+  </div>
+
+  <!-- Rules -->
+  <h3 class="mt-4">Rules by Row</h3>
+  <div class="demo-box">
+    <ul style="margin: 0;">
+      <li><strong>Header:</strong> Context only (where/what/who). No operational actions.</li>
+      <li><strong>Primary Nav:</strong> Modules + global search + settings + role/persona. Always present.</li>
+      <li><strong>KPIs:</strong> Read-only module metrics. Neutral styling.</li>
+      <li><strong>Secondary Menu:</strong> Page switcher + actions. <strong>System/distinct actions left</strong>. <strong>Primary actions right</strong>.</li>
+      <li><strong>Table Area:</strong> Table menu and controls belong together. Filter + search left, table controls right.</li>
+    </ul>
+  </div>
+</section>
+
 
       <!-- NAVIGATION -->
       <section id="navigation">
