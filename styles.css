@@ -852,7 +852,7 @@ tr:hover .row-actions {
   padding: 3px 8px;
   font: var(--text-body-xs);
   font-weight: 600;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
   white-space: nowrap;
 }
 
