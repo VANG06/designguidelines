@@ -37,7 +37,7 @@
     <!-- Sub navigation for categories -->
     <nav class="sub-nav foundations" id="subNavFoundations" role="navigation" aria-label="Foundations sub-navigation">
       <a href="#principles">Principles</a>
-      <a href="#page-hierarchy">Page Hierarchy</a>
+      <a href="#page-hierarchy">Page hierarchy</a>
       <a href="#navigation">Navigation</a>
       <a href="#search">Search</a>
     </nav>
@@ -46,16 +46,16 @@
       <a href="#tags">Tags</a>
       <a href="#forms">Forms</a>
       <a href="#tables">Tables</a>
-      <a href="#cards">Cards &amp; KPIs</a>
+      <a href="#cards">Cards & KPIs</a>
       <a href="#alerts">Alerts</a>
     </nav>
     <nav class="sub-nav patterns hidden" id="subNavPatterns" role="navigation" aria-label="Patterns sub-navigation">
-      <a href="#action-hierarchy">Action Hierarchy</a>
-      <a href="#bulk-actions">Bulk Actions</a>
+      <a href="#action-hierarchy">Action hierarchy</a>
+      <a href="#bulk-actions">Bulk actions</a>
       <a href="#density">Density</a>
       <a href="#accessibility">Accessibility</a>
       <a href="#notifications">Notifications</a>
-      <a href="#onboarding">Customer Onboarding</a>
+      <a href="#onboarding">Customer onboarding</a>
       <a href="#tooltips">Tooltips</a>
       <a href="#popovers">Popovers</a>
       <a href="#modals">Modals</a>
@@ -787,80 +787,83 @@
     <script>
       if (window.lucide) lucide.createIcons();
 
+      // Mobile nav toggle (doc-nav is hidden on desktop but may be used on mobile)
       const nav = document.getElementById("docNav");
       const btn = document.getElementById("mobileNavBtn");
-      if (btn && nav) btn.addEventListener("click", () => nav.classList.toggle("is-open"));
+      if (btn && nav) {
+        btn.addEventListener("click", () => nav.classList.toggle("is-open"));
+      }
 
-      const links = Array.from(document.querySelectorAll(".doc-nav-link"));
-      const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+      // Top navigation behaviour
+      const topNavItems = document.querySelectorAll('.top-nav-item');
+      const subNavs = document.querySelectorAll('.sub-nav');
+      const subNavLinks = document.querySelectorAll('.sub-nav a');
 
-      const setActive = (id) => {
-        links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
-      };
+      function activateCategory(target) {
+        // Highlight selected top-level category
+        topNavItems.forEach((item) => {
+          item.classList.toggle('active', item.getAttribute('data-target') === target);
+        });
+        // Show only the matching sub-nav
+        subNavs.forEach((nav) => {
+          nav.classList.toggle('hidden', !nav.classList.contains(target));
+        });
+      }
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-          if (visible && visible.target && visible.target.id) setActive(visible.target.id);
-        },
-        { rootMargin: "-20% 0px -70% 0px", threshold: [0.1, 0.2, 0.35] }
-      );
-      sections.forEach((s) => observer.observe(s));
+      // When clicking a top nav item, activate its category
+      topNavItems.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = item.getAttribute('data-target');
+          activateCategory(target);
+        });
+      });
+
+      // Intersection observer to highlight sub-nav links as sections enter view
+      const pageSections = document.querySelectorAll('main section[id]');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            subNavLinks.forEach((link) => {
+              link.classList.toggle('active', link.getAttribute('href').slice(1) === id);
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -60% 0px', threshold: [0, 0.3] });
+      pageSections.forEach((section) => sectionObserver.observe(section));
+
+      // Initialise default category (Foundations)
+      activateCategory('foundations');
 
       // Popover demo (guideline example only)
-      const triggers = document.querySelectorAll("[data-popover-trigger]");
-      const popovers = document.querySelectorAll(".popover");
+      const triggers = document.querySelectorAll('[data-popover-trigger]');
+      const popovers = document.querySelectorAll('.popover');
 
       function closeAllPopovers() {
-        popovers.forEach((p) => p.classList.remove("is-open"));
+        popovers.forEach((p) => p.classList.remove('is-open'));
       }
 
       triggers.forEach((t) => {
-        t.addEventListener("click", (e) => {
+        t.addEventListener('click', (e) => {
           e.stopPropagation();
-          const key = t.getAttribute("data-popover-trigger");
+          const key = t.getAttribute('data-popover-trigger');
           const p = document.querySelector(`[data-popover="${key}"]`);
           if (!p) return;
-          const isOpen = p.classList.contains("is-open");
+          const isOpen = p.classList.contains('is-open');
           closeAllPopovers();
-          if (!isOpen) p.classList.add("is-open");
+          if (!isOpen) p.classList.add('is-open');
         });
-  
-        // Top navigation toggling
-  const topNavItems = document.querySelectorAll('.top-nav-item');
-  const foundationsNav = document.querySelector('.sub-nav.foundations');
-  const componentsNav = document.querySelector('.sub-nav.components');
-  const patternsNav = document.querySelector('.sub-nav.patterns');
-
-  topNavItems.forEach((item) => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      // Remove active class from all top-level items
-      topNavItems.forEach((nav) => nav.classList.remove('active'));
-      // Hide all sub navs
-      foundationsNav.classList.add('hidden');
-      componentsNav.classList.add('hidden');
-      patternsNav.classList.add('hidden');
-
-      // Activate clicked item and show corresponding sub-nav
-      item.classList.add('active');
-      const target = item.getAttribute('data-target');
-      document.querySelector(`.sub-nav.${target}`).classList.remove('hidden');
-    });
-  });
-})
-        ;
-
-      document.querySelectorAll("[data-popover-close]").forEach((c) => {
-        c.addEventListener("click", (e) => {
+      });
+      document.querySelectorAll('[data-popover-close]').forEach((c) => {
+        c.addEventListener('click', (e) => {
           e.stopPropagation();
           closeAllPopovers();
         });
       });
-
-      document.addEventListener("click", () => closeAllPopovers());
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeAllPopovers();
+      document.addEventListener('click', () => closeAllPopovers());
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllPopovers();
       });
     </script>
   </body>
