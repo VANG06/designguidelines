@@ -27,6 +27,41 @@
       <div class="mobile-title">Vanguard Design Guidelines</div>
     </header>
 
+    <!-- Top-level navigation -->
+    <nav class="top-nav" id="topNav" role="navigation" aria-label="Primary categories">
+      <a class="top-nav-item active" href="#" data-target="foundations">Foundations</a>
+      <a class="top-nav-item" href="#" data-target="components">Components</a>
+      <a class="top-nav-item" href="#" data-target="patterns">Patterns</a>
+    </nav>
+
+    <!-- Sub navigation for categories -->
+    <nav class="sub-nav foundations" id="subNavFoundations" role="navigation" aria-label="Foundations sub-navigation">
+      <a href="#principles">Principles</a>
+      <a href="#page-hierarchy">Page Hierarchy</a>
+      <a href="#navigation">Navigation</a>
+      <a href="#search">Search</a>
+    </nav>
+    <nav class="sub-nav components hidden" id="subNavComponents" role="navigation" aria-label="Components sub-navigation">
+      <a href="#buttons">Buttons</a>
+      <a href="#tags">Tags</a>
+      <a href="#forms">Forms</a>
+      <a href="#tables">Tables</a>
+      <a href="#cards">Cards &amp; KPIs</a>
+      <a href="#alerts">Alerts</a>
+    </nav>
+    <nav class="sub-nav patterns hidden" id="subNavPatterns" role="navigation" aria-label="Patterns sub-navigation">
+      <a href="#action-hierarchy">Action Hierarchy</a>
+      <a href="#bulk-actions">Bulk Actions</a>
+      <a href="#density">Density</a>
+      <a href="#accessibility">Accessibility</a>
+      <a href="#notifications">Notifications</a>
+      <a href="#onboarding">Customer Onboarding</a>
+      <a href="#tooltips">Tooltips</a>
+      <a href="#popovers">Popovers</a>
+      <a href="#modals">Modals</a>
+    </nav>
+
+    
     <div class="doc-shell">
       <!-- Left nav -->
       <nav class="doc-nav" id="docNav" aria-label="Guidelines navigation">
@@ -790,7 +825,31 @@
           closeAllPopovers();
           if (!isOpen) p.classList.add("is-open");
         });
-      });
+  
+        // Top navigation toggling
+  const topNavItems = document.querySelectorAll('.top-nav-item');
+  const foundationsNav = document.querySelector('.sub-nav.foundations');
+  const componentsNav = document.querySelector('.sub-nav.components');
+  const patternsNav = document.querySelector('.sub-nav.patterns');
+
+  topNavItems.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Remove active class from all top-level items
+      topNavItems.forEach((nav) => nav.classList.remove('active'));
+      // Hide all sub navs
+      foundationsNav.classList.add('hidden');
+      componentsNav.classList.add('hidden');
+      patternsNav.classList.add('hidden');
+
+      // Activate clicked item and show corresponding sub-nav
+      item.classList.add('active');
+      const target = item.getAttribute('data-target');
+      document.querySelector(`.sub-nav.${target}`).classList.remove('hidden');
+    });
+  });
+})
+        ;
 
       document.querySelectorAll("[data-popover-close]").forEach((c) => {
         c.addEventListener("click", (e) => {
