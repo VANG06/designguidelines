@@ -82,20 +82,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Collapse layout to a single column and remove reserved nav column */
 .doc-shell {
-  display: grid;
-  grid-template-columns: 240px 1fr;
+  display: block;
   min-height: 100vh;
 }
 
+/* Hide vertical nav entirely. It exists in markup for legacy support but is not shown */
 .doc-nav {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  background: var(--color-neutral-800);
-  color: #fff;
-  padding: var(--space-5);
+  display: none;
 }
 
 .doc-nav-logo {
@@ -140,6 +135,7 @@ body {
 .doc-main {
   padding: var(--space-6);
   max-width: 980px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -782,7 +778,7 @@ tr:hover .row-actions { opacity: 1; }
     z-index: 200;
   }
   .doc-nav.is-open { transform: translateX(0); }
-  .doc-main { padding: var(--space-5); }
+  .doc-main { padding: var(--space-5); margin: 0 auto; }
   .primary-nav { height: auto; padding: var(--space-2) var(--space-3); gap: var(--space-2); flex-direction: column; align-items: stretch; }
   .primary-nav-actions { width: 100%; justify-content: space-between; }
   .kpi-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -847,7 +843,18 @@ tr:hover .row-actions { opacity: 1; }
   display: none;
 }
 
+/* Highlight the active sub-navigation link */
+.sub-nav a.active {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+}
+
 /* Hide vertical nav */
 .doc-nav {
   display: none;
+}
+
+/* Offset section anchor positions for sticky navigation */
+main section {
+  scroll-margin-top: 120px;
 }
