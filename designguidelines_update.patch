@@ -1,0 +1,67 @@
+*** Begin Patch
+*** Update File: index.html
+@@ <nav class="doc-nav" id="docNav" aria-label="Guidelines navigation">
+-            <a class="doc-nav-link" href="#notifications"><i data-lucide="bell"></i> Notifications</a>
++            <a class="doc-nav-link" href="#notifications"><i data-lucide="bell"></i> Notifications</a>
++            <!-- Added customer onboarding link in the patterns section -->
++            <a class="doc-nav-link" href="#onboarding"><i data-lucide="user-plus"></i> Customer onboarding</a>
+             <a class="doc-nav-link" href="#tooltips"><i data-lucide="info"></i> Tooltips</a>
+*** End Patch
+
+*** Begin Patch
+*** Update File: index.html
+@@
+ <!-- NOTIFICATIONS -->
+ <section id="notifications">
+@@
+ </section>
++
++      <!-- CUSTOMER ONBOARDING -->
++      <section id="onboarding">
++        <h2><i data-lucide="user-plus"></i> Customer onboarding</h2>
++        <p>Onboarding should be step-based, low-friction, and explicit about outcomes. It must support company association (join an existing organisation vs create a new one) and handle authorisation requests cleanly.</p>
++        <h3>Recommended flow</h3>
++        <ol>
++          <li><strong>Choose account type:</strong> customer, admin, or other.</li>
++          <li><strong>Enter contact and company details:</strong> with inline validation and helpful hints.</li>
++          <li><strong>Company association:</strong> match existing organisations or allow creating a new one.</li>
++          <li><strong>Join request:</strong> show request summary and provide clear CTAs for the requester (continue to portal) and administrators (review/approve).</li>
++          <li><strong>Portal landing:</strong> show current status (e.g., awaiting approval) and what’s available to the user now.</li>
++        </ol>
++        <h3>Rules</h3>
++        <ul>
++          <li>Use a stepper or progress indicator so users know where they are in the flow.</li>
++          <li>Show errors next to fields; success confirmations can use toasts.</li>
++          <li>Provide a clear path to review join requests for admins and a continue option for requesters.</li>
++          <li>Allow cancel or save-and-resume to reduce friction.</li>
++        </ul>
++        <h3>Example: simple onboarding form</h3>
++        <div class="demo-box">
++          <div class="form-row">
++            <div class="form-group">
++              <label class="form-label">First name</label>
++              <input class="form-input" type="text" value="Louis" />
++            </div>
++            <div class="form-group">
++              <label class="form-label">Last name</label>
++              <input class="form-input" type="text" value="Hart" />
++            </div>
++          </div>
++          <div class="form-row">
++            <div class="form-group">
++              <label class="form-label">Email</label>
++              <input class="form-input" type="email" value="louis@example.com" />
++            </div>
++            <div class="form-group">
++              <label class="form-label">Phone</label>
++              <input class="form-input" type="tel" value="+6421705087" />
++            </div>
++          </div>
++          <div class="form-group">
++            <label class="form-label">Company</label>
++            <input class="form-input" type="text" value="Vanguard Group Ltd" />
++          </div>
++          <button class="btn btn-primary" type="button">Continue</button>
++        </div>
++      </section>
+*** End Patch
