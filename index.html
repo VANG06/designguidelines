@@ -524,18 +524,18 @@
 
             <h3>Example: actionable notification items</h3>
             <div class="notification-panel" role="menu" aria-label="Notifications">
-              <button class="notification-item" type="button">
+              <div class="notification-item" role="menuitem" tabindex="0" data-href="#order-ORD-2026-0891">
                 <div class="notification-icon"><i data-lucide="truck"></i></div>
                 <div class="notification-content">
                   <div class="notification-title">Your order has been dispatched</div>
                   <div class="notification-meta">Order #ORD-2026-0891 • 2m ago</div>
                   <div class="notification-actions">
-                    <span class="notification-link">View order</span>
+                    <a class="notification-link" href="#order-ORD-2026-0891">View order</a>
                   </div>
                 </div>
-              </button>
+              </div>
 
-              <button class="notification-item" type="button">
+              <div class="notification-item" role="menuitem" tabindex="0">
                 <div class="notification-icon"><i data-lucide="user-plus"></i></div>
                 <div class="notification-content">
                   <div class="notification-title">Joe Bloggs requests to join your organisation</div>
@@ -544,9 +544,9 @@
                     <button class="btn btn-secondary btn-sm" type="button">Review request</button>
                   </div>
                 </div>
-              </button>
+              </div>
 
-              <button class="notification-item notification-item--warning" type="button">
+              <div class="notification-item notification-item--warning" role="menuitem" tabindex="0">
                 <div class="notification-icon"><i data-lucide="triangle-alert"></i></div>
                 <div class="notification-content">
                   <div class="notification-title">Invoice overdue</div>
@@ -555,7 +555,7 @@
                     <button class="btn btn-primary btn-sm" type="button">Pay now</button>
                   </div>
                 </div>
-              </button>
+              </div>
             </div>
           </div>
         </section>
@@ -819,22 +819,84 @@
         });
       });
 
-      // Intersection observer to highlight sub-nav links as sections enter view
+      // Map section IDs to their categories
+      const sectionToCategory = {
+        'principles': 'foundations',
+        'page-hierarchy': 'foundations',
+        'navigation': 'foundations',
+        'search': 'foundations',
+        'buttons': 'components',
+        'tags': 'components',
+        'forms': 'components',
+        'tables': 'components',
+        'cards': 'components',
+        'alerts': 'components',
+        'action-hierarchy': 'patterns',
+        'bulk-actions': 'patterns',
+        'density': 'patterns',
+        'accessibility': 'patterns',
+        'notifications': 'patterns',
+        'onboarding': 'patterns',
+        'tooltips': 'patterns',
+        'popovers': 'patterns',
+        'modals': 'patterns'
+      };
+
+      // Intersection observer to highlight sub-nav links and update top-level category
       const pageSections = document.querySelectorAll('main section[id]');
+      const sectionRatios = new Map();
+      
       const sectionObserver = new IntersectionObserver((entries) => {
+        // Update ratios for all entries
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const id = entry.target.id;
-            subNavLinks.forEach((link) => {
-              link.classList.toggle('active', link.getAttribute('href').slice(1) === id);
-            });
+            sectionRatios.set(entry.target, entry.intersectionRatio);
+          } else {
+            sectionRatios.delete(entry.target);
           }
         });
+        
+        // Find the section with the highest intersection ratio
+        let mostVisible = null;
+        let maxRatio = 0;
+        sectionRatios.forEach((ratio, section) => {
+          if (ratio > maxRatio) {
+            maxRatio = ratio;
+            mostVisible = section;
+          }
+        });
+        
+        if (mostVisible) {
+          const id = mostVisible.id;
+          
+          // Update sub-nav links
+          subNavLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href').slice(1) === id);
+          });
+          
+          // Update top-level category
+          const category = sectionToCategory[id];
+          if (category) {
+            activateCategory(category);
+          }
+        }
       }, { rootMargin: '-40% 0px -60% 0px', threshold: [0, 0.3] });
       pageSections.forEach((section) => sectionObserver.observe(section));
 
       // Initialise default category (Foundations)
       activateCategory('foundations');
+
+      // Notification items: make whole row clickable
+      document.addEventListener('click', (e) => {
+        const item = e.target.closest('.notification-item');
+        if (!item) return;
+
+        // If user clicked a real button/link inside, let that handle it
+        if (e.target.closest('button, a')) return;
+
+        const href = item.getAttribute('data-href');
+        if (href) window.location.hash = href;
+      });
 
       // Popover demo (guideline example only)
       const triggers = document.querySelectorAll('[data-popover-trigger]');
